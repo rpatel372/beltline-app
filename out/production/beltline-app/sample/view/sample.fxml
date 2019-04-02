@@ -55,8 +55,8 @@
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <Button id="loginButton" layoutX="280.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="89.0" text="Login" />
-                        <Button id="registerButton" layoutX="431.0" layoutY="-3.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" text="Register" />
-                        <Label id="errorMessage" layoutX="105.0" layoutY="74.0" prefHeight="36.0" prefWidth="615.0" textFill="#cd2121">
+                        <Button id="registerButton" layoutX="431.0" layoutY="-3.0" mnemonicParsing="false" onAction="#navigateToRegister" prefHeight="39.0" prefWidth="89.0" text="Register" />
+                        <Label fx:id="errorMessage" layoutX="395.0" layoutY="74.0" textFill="#cd2121">
                            <font>
                               <Font size="22.0" />
                            </font>

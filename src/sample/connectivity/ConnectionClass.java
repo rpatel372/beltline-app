@@ -6,20 +6,17 @@ import java.sql.DriverManager;
 public class ConnectionClass {
     public Connection connection;
 
-
-    public Connection getConnection(String dbName) {
-
+    public Connection getConnection() {
+        String dbName = "beltline";
         String username = "root";
-        String pass = "fake";
+        String pass = "hi!";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://beltline/" + dbName, username, pass);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/" + dbName,username,pass);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return connection;
     }
 }
-
-
