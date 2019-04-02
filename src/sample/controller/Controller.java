@@ -16,7 +16,7 @@ public class Controller {
 
     public void login(ActionEvent actionEvent) throws SQLException {
         ConnectionClass connectionClass = new ConnectionClass();
-        Connection connection = connectionClass.getConnection();
+        Connection connection = connectionClass.getConnection("username");
 
         String sql= "INSERT INTO USER VALUES('" + emailField.getText() + "')";
         Statement statement = connection.createStatement();
