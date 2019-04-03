@@ -7,11 +7,11 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Register">
    <children>
-      <Button layoutX="326.0" layoutY="128.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="148.0" text="User Only" />
-      <Button layoutX="326.0" layoutY="203.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="148.0" text="Visitor Only" />
-      <Button layoutX="326.0" layoutY="274.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="148.0" text="Employee Only" />
-      <Button layoutX="315.0" layoutY="346.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="171.0" text="Employee-Visitor" />
-      <Button layoutX="327.0" layoutY="462.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="148.0" text="Back" />
+      <Button layoutX="326.0" layoutY="128.0" mnemonicParsing="false" onAction="#goToUserReg" prefHeight="53.0" prefWidth="148.0" text="User Only" />
+      <Button layoutX="326.0" layoutY="203.0" mnemonicParsing="false" onAction="#goToVisReg" prefHeight="53.0" prefWidth="148.0" text="Visitor Only" />
+      <Button layoutX="326.0" layoutY="274.0" mnemonicParsing="false" onAction="#goToEmpReg" prefHeight="53.0" prefWidth="148.0" text="Employee Only" />
+      <Button layoutX="315.0" layoutY="346.0" mnemonicParsing="false" onAction="#goToEmpVisReg" prefHeight="53.0" prefWidth="171.0" text="Employee-Visitor" />
+      <Button layoutX="327.0" layoutY="462.0" mnemonicParsing="false" onAction="#goBackToLogin" prefHeight="53.0" prefWidth="148.0" text="Back" />
       <Label layoutX="241.0" layoutY="53.0" text="Register Navigation">
          <font>
             <Font size="37.0" />

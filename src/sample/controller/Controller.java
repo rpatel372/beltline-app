@@ -25,7 +25,7 @@ public class Controller {
         Connection connection = connectionClass.getConnection();
         Statement stmt = connection.createStatement();
 
-        String sql = "SELECT EmailAddress FROM email WHERE EmailAddress = '" + emailField.getText() + "'";
+        String sql = "CALL getEmailForLogin('" + emailField.getText() + "')";
         ResultSet rs = stmt.executeQuery(sql);
         if (rs.next() == false) {
             errorMessage.setText("There is no account with this email!");

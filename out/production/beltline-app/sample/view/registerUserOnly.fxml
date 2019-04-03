@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.RegisterUserOnly">
+   <children>
+      <Label layoutX="249.0" layoutY="22.0" text="Register User Only">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <TextField fx:id="firstName" layoutX="149.0" layoutY="86.0" prefHeight="39.0" prefWidth="206.0" />
+      <Label layoutX="39.0" layoutY="92.0" text="First Name" />
+      <TextField fx:id="lastName" layoutX="549.0" layoutY="86.0" prefHeight="39.0" prefWidth="206.0" />
+      <Label layoutX="386.0" layoutY="92.0" text="Last Name" />
+      <Label layoutX="39.0" layoutY="153.0" text="Username" />
+      <Label layoutX="42.0" layoutY="215.0" text="Password" />
+      <Label layoutX="390.0" layoutY="196.0" prefHeight="65.0" prefWidth="157.0" text="Confirm Password" />
+      <PasswordField fx:id="confirmPassword" layoutX="549.0" layoutY="209.0" prefHeight="39.0" prefWidth="206.0" />
+      <PasswordField fx:id="password" layoutX="149.0" layoutY="216.0" prefHeight="39.0" prefWidth="206.0" />
+      <TextField fx:id="initialEmail" layoutX="149.0" layoutY="281.0" prefHeight="39.0" prefWidth="206.0" />
+      <Label layoutX="39.0" layoutY="287.0" text="Email" />
+      <Button layoutX="389.0" layoutY="281.0" mnemonicParsing="false" onAction="#addEmail" text="Add" />
+      <Button layoutX="284.0" layoutY="490.0" mnemonicParsing="false" onAction="#register" text="Register" />
+      <Button layoutX="435.0" layoutY="490.0" mnemonicParsing="false" onAction="#goBackToRegNav" text="Back" />
+      <Label fx:id="errorMessage" layoutX="383.0" layoutY="550.0" textFill="#e12727">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="username" layoutX="149.0" layoutY="147.0" prefHeight="39.0" prefWidth="206.0" />
+      <ScrollPane layoutX="149.0" layoutY="329.0" prefHeight="121.0" prefWidth="302.0">
+         <content>
+            <Pane fx:id="addEmailPane" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
