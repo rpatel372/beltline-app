@@ -11,10 +11,16 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import sample.connectivity.ConnectionClass;
 import sample.model.Main;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
+@SuppressWarnings("MagicConstant")
 public class RegisterUserOnly {
     public TextField firstName;
     public TextField lastName;
@@ -43,7 +49,7 @@ public class RegisterUserOnly {
 
     }
 
-    public void register(ActionEvent actionEvent) {
+    public void register(ActionEvent actionEvent) throws SQLException {
         String firstNameText = firstName.getText();
         String lastNameText = lastName.getText();
         String usernameText = username.getText();
@@ -56,10 +62,20 @@ public class RegisterUserOnly {
             errorMessage.setText("Must fill out all fields!");
         } else if (pwText.length() < 8) {
             errorMessage.setText("Password must be 8 characters!");
-        } else if (pwText != confirmPwText) {
+        } else if (!pwText.equals(confirmPwText)) {
             errorMessage.setText("The passwords do not match!");
         } else {
             System.out.println("Create account");
+            ConnectionClass connectionClass = new ConnectionClass();
+            Connection connection = connectionClass.getConnection();
+
+            String sql = "CALL registerUserOnly('" + firstNameText + "', '" + lastNameText + "', '" + usernameText + "', '" + pwText + "')";
+            String sql2 = "CALL addEmail('" + initialEmailText + "', '" + usernameText + "')";
+            System.out.println(sql);
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+            statement.executeUpdate(sql2);
+//
         }
     }
 

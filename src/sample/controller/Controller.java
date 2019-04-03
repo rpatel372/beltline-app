@@ -15,8 +15,11 @@ import java.io.IOException;
 import java.sql.*;
 import sample.model.Main;
 
+import javax.xml.transform.Result;
+
 public class Controller {
     public TextField emailField;
+    public TextField passwordField;
     public Label errorMessage;
     private Main mainApp;
 
@@ -25,10 +28,24 @@ public class Controller {
         Connection connection = connectionClass.getConnection();
         Statement stmt = connection.createStatement();
 
-        String sql = "CALL getEmailForLogin('" + emailField.getText() + "')";
+        String sql = "CALL getUsernameForLogin('" + emailField.getText() + "')";
         ResultSet rs = stmt.executeQuery(sql);
         if (rs.next() == false) {
             errorMessage.setText("There is no account with this email!");
+        } else {
+
+                String username = rs.getString("Username");
+                String sql2 = "CALL getUserInfoForLogin('" + username + "')";
+                ResultSet rs2 = stmt.executeQuery(sql2);
+                if (rs2.next()) {
+                    String pw = rs2.getString("Password");
+                    if (pw.equals(passwordField.getText())) {
+                        System.out.println("Successful login");
+                    } else {
+                        errorMessage.setText("User credentials are incorrect!");
+                    }
+                }
+          
         }
     }
 
