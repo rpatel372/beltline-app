@@ -27,19 +27,20 @@
       <PasswordField fx:id="password" layoutX="149.0" layoutY="216.0" prefHeight="39.0" prefWidth="206.0" />
       <TextField fx:id="initialEmail" layoutX="149.0" layoutY="281.0" prefHeight="39.0" prefWidth="206.0" />
       <Label layoutX="39.0" layoutY="287.0" text="Email" />
-      <Button layoutX="389.0" layoutY="281.0" mnemonicParsing="false" onAction="#addEmail" text="Add" />
+      <Button fx:id="initialAddButton" layoutX="435.0" layoutY="310.0" mnemonicParsing="false" onAction="#addEmail" prefHeight="39.0" prefWidth="129.0" text="Add Email" />
       <Button layoutX="284.0" layoutY="490.0" mnemonicParsing="false" onAction="#register" text="Register" />
       <Button layoutX="435.0" layoutY="490.0" mnemonicParsing="false" onAction="#goBackToRegNav" text="Back" />
-      <Label fx:id="errorMessage" layoutX="383.0" layoutY="550.0" textFill="#e12727">
+      <Label fx:id="errorMessage" layoutX="61.0" layoutY="541.0" textFill="#d31e1e">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
       <TextField fx:id="username" layoutX="149.0" layoutY="147.0" prefHeight="39.0" prefWidth="206.0" />
-      <ScrollPane layoutX="149.0" layoutY="329.0" prefHeight="121.0" prefWidth="302.0">
+      <ScrollPane layoutX="149.0" layoutY="329.0" prefHeight="137.0" prefWidth="251.0">
          <content>
             <Pane fx:id="addEmailPane" />
          </content>
       </ScrollPane>
+      <Button layoutX="435.0" layoutY="370.0" mnemonicParsing="false" onAction="#removeEmail" prefHeight="39.0" prefWidth="142.0" text="Remove Email" />
    </children>
 </AnchorPane>

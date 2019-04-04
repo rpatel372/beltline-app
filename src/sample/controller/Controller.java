@@ -1,6 +1,7 @@
 
 package sample.controller;
 
+import javafx.scene.paint.Color;
 import sample.connectivity.ConnectionClass;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
@@ -14,7 +15,7 @@ import sample.model.Main;
 import java.io.IOException;
 import java.sql.*;
 import sample.model.Main;
-
+import sample.controller.Register;
 import javax.xml.transform.Result;
 
 public class Controller {
@@ -37,15 +38,36 @@ public class Controller {
                 String username = rs.getString("Username");
                 String sql2 = "CALL getUserInfoForLogin('" + username + "')";
                 ResultSet rs2 = stmt.executeQuery(sql2);
+
+                //TODO: FIX LOGIN (in relation to the piazza question)
+
                 if (rs2.next()) {
                     String pw = rs2.getString("Password");
                     if (pw.equals(passwordField.getText())) {
                         System.out.println("Successful login");
+
+                        //TODO: need to figure out user type and navigate them to the correct menu page
+
+                        // TESTING PASSING INFORMATION
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/register.fxml"));
+                        try {
+                            Parent root = (Parent)fxmlLoader.load();
+                            Register controller = fxmlLoader.<Register>getController();
+                            controller.testing(pw);
+                            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                            Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+
                     } else {
                         errorMessage.setText("User credentials are incorrect!");
                     }
                 }
-          
+
         }
     }
 
@@ -62,6 +84,11 @@ public class Controller {
         appStage.show();
 
 
+    }
+
+    public void displaySuccessfulReg() {
+        errorMessage.setText("Registration successful! Please login.");
+        errorMessage.setTextFill(Color.web("#75c24e"));
     }
 
 

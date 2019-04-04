@@ -85,4 +85,8 @@ public class Register {
 
 
     }
+    public void testing(String pw) {
+        System.out.println("TESTING PASS INFO");
+        System.out.println(pw);
+    }
 }
