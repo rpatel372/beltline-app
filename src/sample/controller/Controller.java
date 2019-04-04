@@ -36,7 +36,7 @@ public class Controller {
         } else {
 
             String username = rs.getString("Username");
-            String sql2 = "CALL userLogin('" + username + "')";
+            String sql2 = "CALL userLogin('" + username + "', '" + passwordField.getText() + "')";
             ResultSet rs2 = stmt.executeQuery(sql2);
 
             //TODO: FIX LOGIN (in relation to the piazza question)

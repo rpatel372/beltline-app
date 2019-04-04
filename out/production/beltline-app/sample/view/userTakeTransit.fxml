@@ -20,7 +20,7 @@
             <TableColumn fx:id="connectedCol" prefWidth="146.0" text="Connected Sites" />
         </columns>
       </TableView>
-      <Label layoutX="70.0" layoutY="38.0" text="Contain SIte" />
+      <Label layoutX="70.0" layoutY="38.0" text="Contain Site" />
       <Button layoutX="586.0" layoutY="79.0" mnemonicParsing="false" onAction="#filter" prefHeight="33.0" prefWidth="54.0" text="Filter" />
       <ChoiceBox fx:id="siteOptions" layoutX="166.0" layoutY="34.0" prefWidth="150.0" >
 
