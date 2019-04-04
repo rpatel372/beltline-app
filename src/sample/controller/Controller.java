@@ -29,45 +29,28 @@ public class Controller {
         Connection connection = connectionClass.getConnection();
         Statement stmt = connection.createStatement();
 
-        String sql = "CALL getUsernameForLogin('" + emailField.getText() + "')";
+        String sql = "CALL checkIfUsernameExistsForLogin('" + emailField.getText() + "')";
         ResultSet rs = stmt.executeQuery(sql);
         if (rs.next() == false) {
             errorMessage.setText("There is no account with this email!");
         } else {
 
-                String username = rs.getString("Username");
-                String sql2 = "CALL getUserInfoForLogin('" + username + "')";
-                ResultSet rs2 = stmt.executeQuery(sql2);
+            String username = rs.getString("Username");
+            String sql2 = "CALL userLogin('" + username + "')";
+            ResultSet rs2 = stmt.executeQuery(sql2);
 
-                //TODO: FIX LOGIN (in relation to the piazza question)
+            //TODO: FIX LOGIN (in relation to the piazza question)
 
-                if (rs2.next()) {
-                    String pw = rs2.getString("Password");
-                    if (pw.equals(passwordField.getText())) {
-                        System.out.println("Successful login");
+            if (rs2.next()) {
 
-                        //TODO: need to figure out user type and navigate them to the correct menu page
+                System.out.println("Successful login");
 
-                        // TESTING PASSING INFORMATION
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/register.fxml"));
-                        try {
-                            Parent root = (Parent)fxmlLoader.load();
-                            Register controller = fxmlLoader.<Register>getController();
-                            controller.testing(pw);
-                            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                            Scene scene = new Scene(root);
-                            stage.setScene(scene);
-                            stage.show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                //TODO: need to figure out user type and navigate them to the correct menu page
 
 
-                    } else {
-                        errorMessage.setText("User credentials are incorrect!");
-                    }
-                }
-
+            } else {
+                errorMessage.setText("User credentials are incorrect!");
+            }
         }
     }
 

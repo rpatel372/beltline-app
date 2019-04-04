@@ -124,7 +124,7 @@ public class RegisterUserOnly {
                         //TODO: Hash password
 
 
-                        String sql = "CALL registerUserOnly('" + firstNameText + "', '" + lastNameText + "', '" + usernameText + "', '" + pwText + "')";
+                        String sql = "CALL registerUser('" + firstNameText + "', '" + lastNameText + "', '" + usernameText + "', '" + pwText + "')";
                         String sql2 = "CALL addEmail('" + initialEmailText + "', '" + usernameText + "')";
                         statement.executeUpdate(sql);
                         statement.executeUpdate(sql2);
