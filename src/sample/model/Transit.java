@@ -3,14 +3,14 @@ package sample.model;
 public class Transit {
     public String route;
     public String type;
-    public int price;
-    public String connected;
+    public double price;
+    public int connectedSites;
 
-    public Transit(String r, String t, int p, String c) {
+    public Transit(String r, String t, double p, int c) {
         route = r;
         type = t;
         price = p;
-        connected = c;
+        connectedSites = c;
 
     }
 
@@ -20,10 +20,10 @@ public class Transit {
     public String getType() {
         return type;
     }
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
-    public String getConnected() {
-        return connected;
+    public int getConnected() {
+        return connectedSites;
     }
 }
