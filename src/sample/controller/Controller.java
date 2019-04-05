@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.sql.*;
 import sample.model.Main;
 import sample.controller.Register;
+import sample.controller.UserMenu;
+import sample.model.User;
+
 import javax.xml.transform.Result;
 
 public class Controller {
@@ -39,17 +42,19 @@ public class Controller {
             String sql2 = "CALL userLogin('" + username + "', '" + passwordField.getText() + "')";
             ResultSet rs2 = stmt.executeQuery(sql2);
 
-            //TODO: FIX LOGIN (in relation to the piazza question)
+            //TODO: MAKE SURE UESR IS NOT LOGGING IN WITH A DECLINED ACCOUNT
 
             if (rs2.next()) {
 
                 System.out.println("Successful login");
 
                 //TODO: need to figure out user type and navigate them to the correct menu page
+                
+                navigateToCorrectMenu(username, "User", "../view/userMenu.fxml", actionEvent);
 
 
             } else {
-                errorMessage.setText("User credentials are incorrect!");
+                errorMessage.setText("User credentials are incorrect or your account has not been accepted by admin!");
             }
         }
     }
@@ -67,6 +72,23 @@ public class Controller {
         appStage.show();
 
 
+    }
+
+    public void navigateToCorrectMenu(String username, String userType, String userMenuOption, ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/userMenu.fxml"));
+        Parent root = null;
+        try {
+            root = (Parent)fxmlLoader.load();
+            UserMenu controller = fxmlLoader.<UserMenu>getController();
+            User newUser = new User(username, userType);
+            controller.setUser(newUser);
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void displaySuccessfulReg() {

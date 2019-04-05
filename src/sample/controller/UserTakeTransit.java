@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import sample.connectivity.ConnectionClass;
 import sample.model.Transit;
+import sample.model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -48,6 +49,13 @@ public class UserTakeTransit {
     Object sOption = "";
     String filterBy = "TransitRoute";
     String ascOrDesc = "ASC";
+
+    User globalUser;
+
+    public void setUser(User loggedUser) {
+        globalUser = loggedUser;
+        System.out.println(globalUser.username);
+    }
 
     @FXML
     protected void initialize() {
@@ -106,17 +114,57 @@ public class UserTakeTransit {
 
     }
 
-    public void logTransit(ActionEvent actionEvent) {
+    public void logTransit(ActionEvent actionEvent) throws SQLException {
         if (transitTable.getSelectionModel().getSelectedItem() != null) {
             Transit selectedTransit = transitTable.getSelectionModel().getSelectedItem();
             System.out.println(selectedTransit.getRoute());
 
             //TODO: check to ese that date is in the correct format
+//            for (int i = 0; i < transitDateInput.getText().length(); i++) {
+//
+//            }
+            if (!transitDateInput.getText().matches("([0-9]{4})-([0-9]{2})-([0-9]{2})")) {
+                errorMessage.setText("Date is not in correct format! Follow format indicated.");
+            } else {
 
-            //TODO: log the transit (need to have user passed in)
+                //TODO: log the transit (need to have user passed in)
+                List<Transit> transitsToAdd = new ArrayList<Transit>();
+                ConnectionClass connectionClass = new ConnectionClass();
+                Connection connection = connectionClass.getConnection();
+                Statement stmt = null;
+                try {
+                    stmt = connection.createStatement();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                String sql2 = "CALL checkIfTransitAlreadyTaken('" + globalUser.username + "', '" + selectedTransit.getType() + "', '" + selectedTransit.getRoute() + "', '" + transitDateInput.getText() + "')";
+                ResultSet rs = null;
+                try {
+                    rs = stmt.executeQuery(sql2);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                int count = 0;
+                if (rs.next()) {
+                    count = rs.getInt("COUNT(*)");
+                }
 
-            errorMessage.setText("Transit successfully logged.");
-            errorMessage.setTextFill(Color.web("#75c24e"));
+                if (count != 0) {
+                    errorMessage.setText("You have already taken this transit today. You can only take the same transit once a day.");
+                } else {
+                    String sql = "CALL logTransit('" + globalUser.username + "', '" + selectedTransit.getType() + "', '" + selectedTransit.getRoute() + "', '" + transitDateInput.getText() + "')";
+                    System.out.println(sql);
+                    try {
+                        stmt.execute(sql);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    errorMessage.setText("Transit successfully logged.");
+                    errorMessage.setTextFill(Color.web("#75c24e"));
+                }
+            }
 
         } else {
             errorMessage.setText("You must select a transit!");

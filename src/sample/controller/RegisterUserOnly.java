@@ -70,6 +70,8 @@ public class RegisterUserOnly {
             errorMessage.setText("Password must be 8 characters!");
         } else if (!pwText.equals(confirmPwText)) {
             errorMessage.setText("The passwords do not match!");
+        } else if (usernameText.length() > 30) {
+            errorMessage.setText("Username cannot be more than 30 characters.");
         } else {
             emails[0] = initialEmail;
             System.out.println("Create account");

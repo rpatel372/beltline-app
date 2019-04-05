@@ -21,20 +21,20 @@
             <TableColumn fx:id="connectedCol" editable="false" prefWidth="146.0" sortable="false" text="Connected Sites" />
         </columns>
       </TableView>
-      <Label layoutX="70.0" layoutY="38.0" text="Contain Site" />
-      <Button layoutX="301.0" layoutY="79.0" mnemonicParsing="false" onAction="#filter" prefHeight="33.0" prefWidth="54.0" text="Filter" />
-      <ChoiceBox fx:id="siteOptions" layoutX="166.0" layoutY="34.0" prefWidth="150.0">
+      <Label layoutX="355.0" layoutY="544.0" prefHeight="17.0" prefWidth="220.0" text="FORMAT: year(xxxx)-month(xx)-day(xx)" />
+      <Button layoutX="301.0" layoutY="88.0" mnemonicParsing="false" onAction="#filter" prefHeight="33.0" prefWidth="54.0" text="Filter" />
+      <ChoiceBox fx:id="siteOptions" layoutX="166.0" layoutY="43.0" prefWidth="150.0">
 
       </ChoiceBox>
-      <TextField fx:id="lowPrice" layoutX="167.0" layoutY="83.0" prefHeight="25.0" prefWidth="39.0" />
-      <Label layoutX="70.0" layoutY="87.0" prefHeight="17.0" prefWidth="80.0" text="Price Range" />
-      <Label fx:id="errorMessage" layoutX="69.0" layoutY="552.0" textFill="#e12828">
+      <TextField fx:id="lowPrice" layoutX="167.0" layoutY="92.0" prefHeight="25.0" prefWidth="39.0" />
+      <Label layoutX="70.0" layoutY="96.0" prefHeight="17.0" prefWidth="80.0" text="Price Range" />
+      <Label fx:id="errorMessage" layoutX="69.0" layoutY="565.0" textFill="#e12828">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <TextField fx:id="highPrice" layoutX="228.0" layoutY="83.0" prefHeight="25.0" prefWidth="39.0" />
-      <Label layoutX="452.0" layoutY="38.0" text="Transport Type" />
-      <ChoiceBox fx:id="transportOptions" layoutX="548.0" layoutY="34.0" prefWidth="150.0">
+      <TextField fx:id="highPrice" layoutX="228.0" layoutY="92.0" prefHeight="25.0" prefWidth="39.0" />
+      <Label layoutX="452.0" layoutY="47.0" text="Transport Type" />
+      <ChoiceBox fx:id="transportOptions" layoutX="548.0" layoutY="43.0" prefWidth="150.0">
           <items>
               <FXCollections fx:factory="observableArrayList">
                   <String fx:value="MARTA" />
@@ -49,9 +49,9 @@
       <Button layoutX="522.0" layoutY="513.0" mnemonicParsing="false" onAction="#logTransit" text="Log Transit" />
       <Label layoutX="284.0" layoutY="517.0" text="Transit Date" />
       <TextField fx:id="transitDateInput" layoutX="355.0" layoutY="513.0" />
-      <Label layoutX="213.0" layoutY="87.0" text="--" />
-      <Label layoutX="478.0" layoutY="87.0" text="Sort By" />
-      <ChoiceBox fx:id="sortBySelection" layoutX="548.0" layoutY="83.0" prefWidth="150.0">
+      <Label layoutX="213.0" layoutY="96.0" text="--" />
+      <Label layoutX="478.0" layoutY="96.0" text="Sort By" />
+      <ChoiceBox fx:id="sortBySelection" layoutX="548.0" layoutY="92.0" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Type ASC" />
@@ -63,6 +63,12 @@
             </FXCollections>
          </items>
       </ChoiceBox>
-      <Button layoutX="705.0" layoutY="83.0" mnemonicParsing="false" onAction="#sortByParam" text="Sort" />
+      <Button layoutX="705.0" layoutY="92.0" mnemonicParsing="false" onAction="#sortByParam" text="Sort" />
+      <Label layoutX="335.0" layoutY="7.0" text="Take Transit">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="70.0" layoutY="47.0" prefHeight="17.0" prefWidth="80.0" text="Contain Site" />
    </children>
 </AnchorPane>

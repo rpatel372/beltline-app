@@ -9,7 +9,7 @@ public class ConnectionClass {
     public Connection getConnection() {
         String dbName = "beltline2";
         String username = "root";
-        String pass = "fakepw";
+        String pass = "fakepw!";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
