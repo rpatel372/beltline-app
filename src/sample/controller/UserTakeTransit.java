@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import sample.connectivity.ConnectionClass;
 import sample.model.Transit;
 
@@ -28,6 +29,7 @@ public class UserTakeTransit {
 
     public ChoiceBox transportOptions;
     public ChoiceBox siteOptions;
+    public ChoiceBox sortBySelection;
 
     public TextField lowPrice;
     public TextField highPrice;
@@ -35,7 +37,17 @@ public class UserTakeTransit {
 
     public Label errorMessage;
 
+
     public static Transit chosenTransit = null;
+
+    // HAVE THESE AS GLOBAL VARIABLES SO WHEN USER SELECTS TO SORT BY, YOU CAN USE THESE INSTEAD OF THE CURRENT VALUES OF THE
+    // TEXTFIELD IN CASE THE USER DID NOT CLICK THE FILTER BUTTON YET
+    Object tOption = "";
+    String lPrice = "0";
+    String hPrice = "9999999";
+    Object sOption = "";
+    String filterBy = "TransitRoute";
+    String ascOrDesc = "ASC";
 
     @FXML
     protected void initialize() {
@@ -62,22 +74,61 @@ public class UserTakeTransit {
         }
         list.add("All");
         list.add("Other");
-        siteOptions.setItems(list);
+        siteOptions.getItems().addAll(list);
 
     }
     public void filter(ActionEvent actionEvent) {
+
+        if (transportOptions.getValue() != null && !transportOptions.getValue().equals("All")) {
+            tOption = transportOptions.getValue();
+        } else {
+            tOption = "";
+        }
+        if (!lowPrice.getText().trim().equals("")) {
+            lPrice = lowPrice.getText();
+        } else {
+            lPrice = "0";
+        }
+        if (!highPrice.getText().trim().equals("")) {
+            hPrice = highPrice.getText();
+        } else {
+            hPrice = "999999";
+        }
+        if (siteOptions.getValue() != null && !siteOptions.getValue().equals("All")) {
+            sOption = siteOptions.getValue();
+        } else {
+            sOption = "";
+        }
+
+        filter();
+
+
+
+    }
+
+    public void logTransit(ActionEvent actionEvent) {
+        if (transitTable.getSelectionModel().getSelectedItem() != null) {
+            Transit selectedTransit = transitTable.getSelectionModel().getSelectedItem();
+            System.out.println(selectedTransit.getRoute());
+
+            //TODO: check to ese that date is in the correct format
+
+            //TODO: log the transit (need to have user passed in)
+
+            errorMessage.setText("Transit successfully logged.");
+            errorMessage.setTextFill(Color.web("#75c24e"));
+
+        } else {
+            errorMessage.setText("You must select a transit!");
+        }
+    }
+
+    public void filter() {
         transitTable.getItems().clear();
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
         routeCol.setCellValueFactory(new PropertyValueFactory<>("route"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         connectedCol.setCellValueFactory(new PropertyValueFactory<>("connected"));
-
-        //TODO: use a view to get the results and populate the table
-        //Reference: https://www.youtube.com/watch?v=luO2MWjUqe4
-
-        //TODO: use the FILTER command to filter results
-        //Route, Transport Type, & Price come from Transit table
-        //# of Connected Sites comes from connect table, number of places that have this combo of route & transport type
 
         List<Transit> transitsToAdd = new ArrayList<Transit>();
         ConnectionClass connectionClass = new ConnectionClass();
@@ -90,23 +141,7 @@ public class UserTakeTransit {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        Object tOption = "";
-        String lPrice = "0";
-        String hPrice = "9999999";
-        System.out.println(lowPrice.getText());
-        if (transportOptions.getValue() != null && !transportOptions.getValue().equals("All")) {
-            tOption = transportOptions.getValue();
-        }
-        if (!lowPrice.getText().trim().equals("")) {
-            lPrice = lowPrice.getText();
-        }
-        if (!highPrice.getText().trim().equals("")) {
-            hPrice = highPrice.getText();
-        }
-
-        String sql = "CALL getFilteredTransits('" + tOption + "', '" + lPrice + "', '" + hPrice + "')";
-        System.out.println(sql);
-
+        String sql = "CALL getFilteredTransits('" + tOption + "', '" + lPrice + "', '" + hPrice + "', '" + sOption + "', '" + filterBy + "', '" + ascOrDesc + "')";
 
         try {
 
@@ -126,24 +161,23 @@ public class UserTakeTransit {
             e.printStackTrace();
         }
 
-        //TODO: put radio buttons next to each option
         transitTable.getItems().addAll(transitsToAdd);
 
-
-    }
-
-    public void logTransit(ActionEvent actionEvent) {
-        if (transitTable.getSelectionModel().getSelectedItem() != null) {
-            Transit selectedTransit = transitTable.getSelectionModel().getSelectedItem();
-            System.out.println(selectedTransit.getRoute());
-        } else {
-            errorMessage.setText("You must select a transit!");
-        }
     }
 
     public void goBack(ActionEvent actionEvent) {
 
     }
 
+    public void sortByParam(ActionEvent actionEvent) {
+        //1. Take current values in the filter fi;ter by these
+        if (sortBySelection.getValue() != null) {
+            filterBy = sortBySelection.getValue().toString().split(" ")[0];
+            ascOrDesc = sortBySelection.getValue().toString().split(" ")[1];
+        }
+        //2. Sort by the parameter type
+        filter();
+        //NOTE TO SELF: involves changing the values of the TableView (maybe make this a separate method to avoid code reuse?)
+    }
 
 }

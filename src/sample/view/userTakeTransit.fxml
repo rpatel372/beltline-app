@@ -13,16 +13,16 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.UserTakeTransit">
    <children>
-      <TableView fx:id="transitTable" editable="true" layoutX="70.0" layoutY="129.0" prefHeight="362.0" prefWidth="661.0">
+      <TableView fx:id="transitTable" layoutX="70.0" layoutY="129.0" prefHeight="362.0" prefWidth="661.0">
         <columns>
-          <TableColumn fx:id="routeCol" prefWidth="75.0" sortable="false" text="Route" />
-          <TableColumn fx:id="typeCol" prefWidth="146.0" sortable="false" text="Transport Type" />
-            <TableColumn fx:id="priceCol" prefWidth="75.0" sortable="false" text="Price" />
-            <TableColumn fx:id="connectedCol" prefWidth="146.0" sortable="false" text="Connected Sites" />
+          <TableColumn fx:id="routeCol" editable="false" prefWidth="75.0" sortable="false" text="Route" />
+          <TableColumn fx:id="typeCol" editable="false" prefWidth="146.0" sortable="false" text="Transport Type" />
+            <TableColumn fx:id="priceCol" editable="false" prefWidth="75.0" sortable="false" text="Price" />
+            <TableColumn fx:id="connectedCol" editable="false" prefWidth="146.0" sortable="false" text="Connected Sites" />
         </columns>
       </TableView>
       <Label layoutX="70.0" layoutY="38.0" text="Contain Site" />
-      <Button layoutX="586.0" layoutY="79.0" mnemonicParsing="false" onAction="#filter" prefHeight="33.0" prefWidth="54.0" text="Filter" />
+      <Button layoutX="301.0" layoutY="79.0" mnemonicParsing="false" onAction="#filter" prefHeight="33.0" prefWidth="54.0" text="Filter" />
       <ChoiceBox fx:id="siteOptions" layoutX="166.0" layoutY="34.0" prefWidth="150.0">
 
       </ChoiceBox>
@@ -50,5 +50,19 @@
       <Label layoutX="284.0" layoutY="517.0" text="Transit Date" />
       <TextField fx:id="transitDateInput" layoutX="355.0" layoutY="513.0" />
       <Label layoutX="213.0" layoutY="87.0" text="--" />
+      <Label layoutX="478.0" layoutY="87.0" text="Sort By" />
+      <ChoiceBox fx:id="sortBySelection" layoutX="548.0" layoutY="83.0" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Type ASC" />
+               <String fx:value="Type DESC" />
+               <String fx:value="Price ASC" />
+               <String fx:value="Price DESC" />
+               <String fx:value="# Connected Sites ASC" />
+                <String fx:value="# Connected Sites DESC" />
+            </FXCollections>
+         </items>
+      </ChoiceBox>
+      <Button layoutX="705.0" layoutY="83.0" mnemonicParsing="false" onAction="#sortByParam" text="Sort" />
    </children>
 </AnchorPane>
