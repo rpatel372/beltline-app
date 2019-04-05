@@ -8,7 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.stage.Stage;
+import java.io.*;
 import sample.connectivity.ConnectionClass;
 import sample.model.Main;
 
@@ -46,6 +49,7 @@ public class RegisterEmployeeOnly {
     public static int x = 1;
     public static int y = 0;
 
+
     public void goBackToRegNav(ActionEvent actionEvent) {
         Parent blah = null;
         try {
@@ -61,17 +65,26 @@ public class RegisterEmployeeOnly {
     }
 
     public void register(ActionEvent actionEvent) throws SQLException {
-
-        String firstNameText = firstName.getText();
-        String lastNameText = lastName.getText();
-        String usernameText = username.getText();
+        boolean canYouRegister = true;
+        String firstNameText = firstName.getText().trim();
+        String lastNameText = lastName.getText().trim();
+        String usernameText = username.getText().trim();
         String pwText = password.getText();
         String confirmPwText = confirmPassword.getText();
-        String initialEmailText = initialEmail.getText();
+        String initialEmailText = initialEmail.getText().trim();
+        Object userTypeValue = userType.getValue();
+
+        String phoneText = phone.getText().trim();
+        String addressText = address.getText().trim();
+        String cityText = city.getText().trim();
+        Object stateValue = state.getValue();
+        String stateText = "";
+        String zipcodeText = zipcode.getText().trim();
 
         // NEED TO CHECK IF USERNAME IS IN DATABASE OR EMAIL IS IN DATABASE
-        if (firstNameText.equals("") || lastNameText.equals("") || usernameText.equals("") || pwText.equals("") || confirmPwText.equals("") || initialEmailText.equals("")) {
-            errorMessage.setText("Must fill out all fields!");
+        if (firstNameText.equals("") || lastNameText.equals("") || usernameText.equals("") || pwText.equals("") || confirmPwText.equals("") || initialEmailText.equals("")
+                || userTypeValue == null || phoneText.equals("")) {
+            errorMessage.setText("All fields except address are required!");
         } else if (pwText.length() < 8) {
             errorMessage.setText("Password must be 8 characters!");
         } else if (!pwText.equals(confirmPwText)) {
@@ -83,6 +96,22 @@ public class RegisterEmployeeOnly {
             System.out.println("Create account");
             ConnectionClass connectionClass = new ConnectionClass();
             Connection connection = connectionClass.getConnection();
+
+            //Validate zipcode if any is only 5 numbers
+            if (!zipcodeText.equals("")) {
+                if (!zipcodeText.matches("[0-9]{5}")) {
+                    errorMessage.setText("Zip code must be 5 digits.");
+                    canYouRegister = false;
+                }
+            }
+
+            //Validate phone number is only 10 numbers
+
+            if (!phoneText.matches("[0-9]{10}")) {
+                errorMessage.setText("Phone number must be 10 digits.");
+                canYouRegister = false;
+
+            }
 
             //Validate emails are in correct format
             int incorrectEmailIndex = -1;
@@ -107,6 +136,7 @@ public class RegisterEmployeeOnly {
                 errorMessage.setText("Email #" + incorrectEmailIndex + " is not a valid email.");
                 System.out.println("howdy");
             } else {
+
                 Statement statement = connection.createStatement();
 
                 //Validate username is unique
@@ -129,26 +159,66 @@ public class RegisterEmployeeOnly {
                     }
 
                     if (invalidEmail == false) {
-                        //TODO: Hash password
+
+                        //Validate phone number is unique
+                        String sql10 = "CALL checkIfPhoneUnique('" + phoneText + "')";
+                        ResultSet rs2 = statement.executeQuery(sql10);
+                        if (rs2.next()) {
+                            int count = rs2.getInt("COUNT(*)");
+                            if (count != 0) {
+                                errorMessage.setText("Phone number must be unique!");
+                                canYouRegister = false;
+                            }
+                        }
 
 
-                        String sql = "CALL registerUser('" + firstNameText + "', '" + lastNameText + "', '" + usernameText + "', '" + pwText + "', '" + "Pending" + "', '" + "User" + "')";
-                        String sql2 = "CALL addEmail('" + initialEmailText + "', '" + usernameText + "')";
-                        statement.executeUpdate(sql);
-                        statement.executeUpdate(sql2);
+                        if (canYouRegister) {
 
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/sample.fxml"));
-                        Parent root = null;
-                        try {
-                            root = (Parent)fxmlLoader.load();
-                            Controller controller = fxmlLoader.<Controller>getController();
-                            controller.displaySuccessfulReg();
-                            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                            Scene scene = new Scene(root);
-                            stage.setScene(scene);
-                            stage.show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                            //TODO: ADD TO EMPLOYEE DATABASE AS WELL
+                            if (addressText.equals("")) {
+                                addressText = "NULL";
+                            } else {
+                                addressText = "'" + addressText + "'";
+                            }
+                            if (cityText.equals("")) {
+                                cityText = "NULL";
+                            } else {
+                                cityText = "'" + cityText + "'";
+                            }
+                            if (zipcodeText.equals("")) {
+                                zipcodeText = "NULL";
+                            } else {
+                                zipcodeText = "'" + zipcodeText + "'";
+                            }
+                            if (stateValue == null) {
+                                stateText = "NULL";
+                            } else {
+                                stateText = "'" + stateValue.toString() + "'";
+                            }
+
+                            String sql = "CALL registerUser('" + firstNameText + "', '" + lastNameText + "', '" + usernameText + "', '" + pwText + "', '" + "Pending" + "', '" + "Employee" + "')";
+                            String sql2 = "CALL addEmail('" + initialEmailText + "', '" + usernameText + "')";
+
+                            String sql8 = "CALL registerEmployee('" + usernameText + "', '" + phoneText + "', " + addressText + "," + cityText
+                                    + "," + zipcodeText + "," + stateText + ", '" + userTypeValue.toString() + "')";
+                            System.out.println(sql8);
+                            statement.executeUpdate(sql);
+                            statement.executeUpdate(sql2);
+                            statement.executeUpdate(sql8);
+
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/sample.fxml"));
+                            Parent root = null;
+                            try {
+                                root = (Parent) fxmlLoader.load();
+                                Controller controller = fxmlLoader.<Controller>getController();
+                                controller.displaySuccessfulReg();
+                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                                Scene scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
 
                     }
