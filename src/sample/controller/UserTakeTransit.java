@@ -97,10 +97,10 @@ public class UserTakeTransit {
         if (transportOptions.getValue() != null && !transportOptions.getValue().equals("All")) {
             tOption = transportOptions.getValue();
         }
-        if (!lowPrice.getText().equals("")) {
+        if (!lowPrice.getText().trim().equals("")) {
             lPrice = lowPrice.getText();
         }
-        if (!highPrice.getText().equals("")) {
+        if (!highPrice.getText().trim().equals("")) {
             hPrice = highPrice.getText();
         }
 

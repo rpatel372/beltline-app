@@ -15,10 +15,10 @@
    <children>
       <TableView fx:id="transitTable" editable="true" layoutX="70.0" layoutY="129.0" prefHeight="362.0" prefWidth="661.0">
         <columns>
-          <TableColumn fx:id="routeCol" prefWidth="75.0" text="Route" />
-          <TableColumn fx:id="typeCol" prefWidth="146.0" text="Transport Type" />
-            <TableColumn fx:id="priceCol" prefWidth="75.0" text="Price" />
-            <TableColumn fx:id="connectedCol" prefWidth="146.0" text="Connected Sites" />
+          <TableColumn fx:id="routeCol" prefWidth="75.0" sortable="false" text="Route" />
+          <TableColumn fx:id="typeCol" prefWidth="146.0" sortable="false" text="Transport Type" />
+            <TableColumn fx:id="priceCol" prefWidth="75.0" sortable="false" text="Price" />
+            <TableColumn fx:id="connectedCol" prefWidth="146.0" sortable="false" text="Connected Sites" />
         </columns>
       </TableView>
       <Label layoutX="70.0" layoutY="38.0" text="Contain Site" />

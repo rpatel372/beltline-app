@@ -9,10 +9,10 @@ public class ConnectionClass {
     public Connection getConnection() {
         String dbName = "beltline2";
         String username = "root";
-        String pass = "Magicpickle11!";
+        String pass = "fakepw";
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/" + dbName,username,pass);
         } catch (Exception e) {
             e.printStackTrace();
