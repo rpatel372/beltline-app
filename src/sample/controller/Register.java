@@ -29,7 +29,7 @@ public class Register {
     public void goToVisReg(ActionEvent actionEvent) {
         Parent blah = null;
         try {
-            blah = FXMLLoader.load(getClass().getResource("../view/userTakeTransit.fxml"));
+            blah = FXMLLoader.load(getClass().getResource("../view/registerVisitorOnly.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
