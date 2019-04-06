@@ -37,7 +37,7 @@
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="199.0" layoutY="300.0" mnemonicParsing="false" text="Take Transit">
+        <Button layoutX="199.0" layoutY="300.0" mnemonicParsing="false" onAction="#takeTransit" text="Take Transit">
             <font>
                 <Font size="20.0" />
             </font>

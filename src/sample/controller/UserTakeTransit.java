@@ -4,14 +4,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
 import sample.model.Transit;
 import sample.model.User;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,6 +44,8 @@ public class UserTakeTransit {
 
     public Label errorMessage;
 
+    public String previousPage = "";
+
 
     public static Transit chosenTransit = null;
 
@@ -52,6 +60,9 @@ public class UserTakeTransit {
 
     User globalUser;
 
+    public void setPreviousPage(String page) {
+        previousPage = page;
+    }
     public void setUser(User loggedUser) {
         globalUser = loggedUser;
         System.out.println(globalUser.username);
@@ -108,8 +119,28 @@ public class UserTakeTransit {
             sOption = "";
         }
 
-        filter();
+        boolean numeric = true;
+        Double num1 = 0.0;
+        Double num2 = 0.0;
+        try {
+            num1= Double.parseDouble(lPrice);
+        } catch (NumberFormatException e) {
+            numeric = false;
+        }
+        try {
+            num2 = Double.parseDouble(hPrice);
+        } catch (NumberFormatException e) {
+            numeric = false;
+        }
 
+        if (numeric == false) {
+            errorMessage.setText("Price filters must be numbers!");
+        } else if (num2 < num1) {
+            errorMessage.setText("Higher price filter must be higher than lower price filter.");
+        }else {
+            errorMessage.setText("");
+            filter();
+        }
 
 
     }
@@ -196,14 +227,10 @@ public class UserTakeTransit {
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                String sql2 = "CALL getNumConnectedSitesForTakeTransit('" + rs.getString("TransitRoute") + "', '" + rs.getString("TransitType") + "')";
-                ResultSet rs2 = stmt2.executeQuery(sql2);
-                System.out.println(sql2);
-                while (rs2.next()) {
-                    int count = rs2.getInt("count(*)");
-                    Transit newTransit = new Transit(rs.getString("TransitRoute"), rs.getString("TransitType"), rs.getDouble("TransitPrice"), count);
-                    transitsToAdd.add(newTransit);
-                }
+
+                Transit newTransit = new Transit(rs.getString("TransitRoute"), rs.getString("TransitType"), rs.getDouble("TransitPrice"), rs.getInt("memberCount"));
+                transitsToAdd.add(newTransit);
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -214,7 +241,17 @@ public class UserTakeTransit {
     }
 
     public void goBack(ActionEvent actionEvent) {
-
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(previousPage));
+        Parent root = null;
+        try {
+            root = (Parent)fxmlLoader.load();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sortByParam(ActionEvent actionEvent) {
@@ -223,6 +260,7 @@ public class UserTakeTransit {
             filterBy = sortBySelection.getValue().toString().split(" ")[0];
             ascOrDesc = sortBySelection.getValue().toString().split(" ")[1];
         }
+        System.out.println(filterBy);
         //2. Sort by the parameter type
         filter();
         //NOTE TO SELF: involves changing the values of the TableView (maybe make this a separate method to avoid code reuse?)

@@ -27,6 +27,8 @@ public class Controller {
     public Label errorMessage;
     private Main mainApp;
 
+    public User globalUser;
+
     public void login(ActionEvent actionEvent) throws SQLException {
         ConnectionClass connectionClass = new ConnectionClass();
         Connection connection = connectionClass.getConnection();
@@ -46,23 +48,89 @@ public class Controller {
                 String userType = rs2.getString("UserType");
                 System.out.println(userType);
                 System.out.println("Successful login");
-
+                globalUser = new User(username, userType);
                 //TODO: need to figure out user type and navigate them to the correct menu page
                 if (userType.equals("User")) {
-                    navigateToCorrectMenu(username, "User", "../view/userMenu.fxml", actionEvent);
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/userMenu.fxml"));
+                    Parent root = null;
+                    try {
+                        root = (Parent)fxmlLoader.load();
+                        UserMenu controller = fxmlLoader.<UserMenu>getController();
+                        User newUser = new User(username, userType);
+                        controller.setUser(newUser);
+                        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 } else if (userType.equals("Visitor")) {
-                    navigateToCorrectMenu(username, "Visitor", "../view/visitorMenu.fxml", actionEvent);
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/visitorMenu.fxml"));
+                    Parent root = null;
+                    try {
+                        root = (Parent)fxmlLoader.load();
+                        VisitorMenu controller = fxmlLoader.<VisitorMenu>getController();
+                        User newUser = new User(username, userType);
+                        controller.setUser(newUser);
+                        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 } else if(userType.equals("Employee")) {
                     String sql9 = "CALL getEmployeeType('" + username + "')";
                     ResultSet rs3 = stmt.executeQuery(sql9);
                     if (rs3.next()) {
                         String empType = rs.getString("EmployeeType");
                         if (empType.equals("Admin")) {
-                            navigateToCorrectMenu(username, "Employee", "../view/adminOnlyMenu.fxml", actionEvent);
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/adminOnlyMenu.fxml"));
+                            Parent root = null;
+                            try {
+                                root = (Parent)fxmlLoader.load();
+                                AdminOnlyMenu controller = fxmlLoader.<AdminOnlyMenu>getController();
+                                User newUser = new User(username, userType);
+                                controller.setUser(newUser);
+                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                                Scene scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         } else if (empType.equals("Staff")) {
-                            navigateToCorrectMenu(username, "Employee", "../view/staffOnlyMenu.fxml", actionEvent);
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/staffOnlyMenu.fxml"));
+                            Parent root = null;
+                            try {
+                                root = (Parent)fxmlLoader.load();
+                                StaffOnlyMenu controller = fxmlLoader.<StaffOnlyMenu>getController();
+                                User newUser = new User(username, userType);
+                                controller.setUser(newUser);
+                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                                Scene scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         } else {
-                            navigateToCorrectMenu(username, "Employee", "../view/managerOnlyMenu.fxml", actionEvent);
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/managerOnlyMenu.fxml"));
+                            Parent root = null;
+                            try {
+                                root = (Parent)fxmlLoader.load();
+                                ManagerOnlyMenu controller = fxmlLoader.<ManagerOnlyMenu>getController();
+                                User newUser = new User(username, userType);
+                                controller.setUser(newUser);
+                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                                Scene scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 } else {
@@ -73,11 +141,50 @@ public class Controller {
                     if (rs3.next()) {
                         String empType = rs3.getString("EmployeeType");
                         if (empType.equals("Admin")) {
-                            navigateToCorrectMenu(username, "Employee-Visitor", "../view/adminVisitorMenu.fxml", actionEvent);
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/adminVisitorMenu.fxml"));
+                            Parent root = null;
+                            try {
+                                root = (Parent)fxmlLoader.load();
+                                AdminVisitorMenu controller = fxmlLoader.<AdminVisitorMenu>getController();
+                                User newUser = new User(username, userType);
+                                controller.setUser(newUser);
+                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                                Scene scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         } else if (empType.equals("Staff")) {
-                            navigateToCorrectMenu(username, "Employee-Visitor", "../view/staffVisitorMenu.fxml", actionEvent);
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/staffVisitorMenu.fxml"));
+                            Parent root = null;
+                            try {
+                                root = (Parent)fxmlLoader.load();
+                                StaffVisitorMenu controller = fxmlLoader.<StaffVisitorMenu>getController();
+                                User newUser = new User(username, userType);
+                                controller.setUser(newUser);
+                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                                Scene scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         } else {
-                            navigateToCorrectMenu(username, "Employee-Visitor", "../view/managerVisitorMenu.fxml", actionEvent);
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/managerVisitorMenu.fxml"));
+                            Parent root = null;
+                            try {
+                                root = (Parent)fxmlLoader.load();
+                                ManagerVisitorMenu controller = fxmlLoader.<ManagerVisitorMenu>getController();
+                                User newUser = new User(username, userType);
+                                controller.setUser(newUser);
+                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                                Scene scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }
@@ -104,28 +211,16 @@ public class Controller {
 
     }
 
-    public void navigateToCorrectMenu(String username, String userType, String userMenuOption, ActionEvent actionEvent) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(userMenuOption));
-        Parent root = null;
-        try {
-            root = (Parent)fxmlLoader.load();
-            UserMenu controller = fxmlLoader.<UserMenu>getController();
-            User newUser = new User(username, userType);
-            controller.setUser(newUser);
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public void displaySuccessfulReg() {
         errorMessage.setText("Registration successful! Please login.");
         errorMessage.setTextFill(Color.web("#75c24e"));
     }
 
+    public User getGlobalUser() {
+        return globalUser;
+    }
 
 
 

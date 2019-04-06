@@ -12,7 +12,7 @@
                 <Font size="31.0" />
             </font>
         </Label>
-        <Button layoutX="491.0" layoutY="112.0" mnemonicParsing="false" text="Take Transit">
+        <Button layoutX="491.0" layoutY="112.0" mnemonicParsing="false" onAction="#takeTransit" text="Take Transit">
             <font>
                 <Font size="20.0" />
             </font>

@@ -12,37 +12,37 @@
                 <Font size="31.0" />
             </font>
         </Label>
-        <Button layoutX="491.0" layoutY="112.0" mnemonicParsing="false" text="Take Transit">
+        <Button layoutX="491.0" layoutY="112.0" mnemonicParsing="false" onAction="#takeTransit" text="Take Transit">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="457.0" layoutY="213.0" mnemonicParsing="false" text="View Transit History">
+        <Button layoutX="457.0" layoutY="213.0" mnemonicParsing="false" onAction="#viewTransitHistory" text="View Transit History">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="524.0" layoutY="315.0" mnemonicParsing="false" text="Back">
+        <Button layoutX="524.0" layoutY="315.0" mnemonicParsing="false" onAction="#goBack" text="Back">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-      <Button layoutX="184.0" layoutY="112.0" mnemonicParsing="false" text="Manage Profile">
+      <Button layoutX="184.0" layoutY="112.0" mnemonicParsing="false" onAction="#manageProfile" text="Manage Profile">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="193.0" layoutY="213.0" mnemonicParsing="false" text="Manage User">
+      <Button layoutX="193.0" layoutY="213.0" mnemonicParsing="false" onAction="#manageUser" text="Manage User">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="184.0" layoutY="315.0" mnemonicParsing="false" text="Manage Transit">
+      <Button layoutX="184.0" layoutY="315.0" mnemonicParsing="false" onAction="#manageTransit" text="Manage Transit">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="197.0" layoutY="414.0" mnemonicParsing="false" text="Manage Site">
+      <Button layoutX="197.0" layoutY="414.0" mnemonicParsing="false" onAction="#manageSite" text="Manage Site">
          <font>
             <Font size="20.0" />
          </font>

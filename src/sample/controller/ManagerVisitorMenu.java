@@ -10,7 +10,7 @@ import sample.model.User;
 
 import java.io.IOException;
 
-public class VisitorMenu {
+public class ManagerVisitorMenu {
 
     public User globalUser;
 
@@ -24,7 +24,7 @@ public class VisitorMenu {
         try {
             root = (Parent)fxmlLoader.load();
             UserTakeTransit controller = fxmlLoader.<UserTakeTransit>getController();
-            controller.setPreviousPage("../view/visitorMenu.fxml");
+            controller.setPreviousPage("../view/managerVisitorMenu.fxml");
             controller.setUser(globalUser);
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

@@ -58,8 +58,8 @@
                <String fx:value="Type DESC" />
                <String fx:value="Price ASC" />
                <String fx:value="Price DESC" />
-               <String fx:value="# Connected Sites ASC" />
-                <String fx:value="# Connected Sites DESC" />
+               <String fx:value="#ConnectedSites ASC" />
+                <String fx:value="#ConnectedSites DESC" />
             </FXCollections>
          </items>
       </ChoiceBox>

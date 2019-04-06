@@ -5,59 +5,59 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.AdminVisitoryMenu">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.AdminVisitorMenu">
     <children>
         <Label layoutX="215.0" layoutY="27.0" text="Administrator Functionality">
             <font>
                 <Font size="31.0" />
             </font>
         </Label>
-        <Button layoutX="485.0" layoutY="185.0" mnemonicParsing="false" text="Take Transit">
+        <Button layoutX="485.0" layoutY="185.0" mnemonicParsing="false" onAction="#takeTransit" text="Take Transit">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="165.0" layoutY="396.0" mnemonicParsing="false" text="View Transit History">
+        <Button layoutX="165.0" layoutY="396.0" mnemonicParsing="false" onAction="#viewTransitHistory" text="View Transit History">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="517.0" layoutY="396.0" mnemonicParsing="false" text="Back">
+        <Button layoutX="517.0" layoutY="396.0" mnemonicParsing="false" onAction="#goBack" text="Back">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="184.0" layoutY="112.0" mnemonicParsing="false" text="Manage Profile">
+        <Button layoutX="184.0" layoutY="112.0" mnemonicParsing="false" onAction="#manageProfile" text="Manage Profile">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="479.0" layoutY="112.0" mnemonicParsing="false" text="Manage User">
+        <Button layoutX="479.0" layoutY="112.0" mnemonicParsing="false" onAction="#manageUser" text="Manage User">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="184.0" layoutY="185.0" mnemonicParsing="false" text="Manage Transit">
+        <Button layoutX="184.0" layoutY="185.0" mnemonicParsing="false" onAction="#manageTransit" text="Manage Transit">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="196.0" layoutY="257.0" mnemonicParsing="false" text="Manage Site">
+        <Button layoutX="196.0" layoutY="257.0" mnemonicParsing="false" onAction="#manageSite" text="Manage Site">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-      <Button layoutX="192.0" layoutY="325.0" mnemonicParsing="false" text="Explore Event">
+      <Button layoutX="192.0" layoutY="325.0" mnemonicParsing="false" onAction="#exploreEvent" text="Explore Event">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="486.0" layoutY="257.0" mnemonicParsing="false" text="Explore Site">
+      <Button layoutX="486.0" layoutY="257.0" mnemonicParsing="false" onAction="#exploreSite" text="Explore Site">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="461.0" layoutY="325.0" mnemonicParsing="false" text="View Visit History">
+      <Button layoutX="461.0" layoutY="325.0" mnemonicParsing="false" onAction="#viewVisitHistory" text="View Visit History">
          <font>
             <Font size="20.0" />
          </font>
