@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.RegisterEmployeeVisitor">
+    <children>
+        <Label layoutX="244.0" layoutY="7.0" text="Register Employee-Visitor">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <TextField fx:id="firstName" layoutX="149.0" layoutY="52.0" prefHeight="39.0" prefWidth="206.0" />
+        <Label layoutX="39.0" layoutY="58.0" text="First Name" />
+        <TextField fx:id="lastName" layoutX="549.0" layoutY="52.0" prefHeight="39.0" prefWidth="206.0" />
+        <Label layoutX="386.0" layoutY="58.0" text="Last Name" />
+        <Label layoutX="41.0" layoutY="105.0" text="Username" />
+        <Label layoutX="43.0" layoutY="161.0" text="Password" />
+        <Label layoutX="392.0" layoutY="150.0" prefHeight="39.0" prefWidth="101.0" text="Confirm Password" />
+        <PasswordField fx:id="confirmPassword" layoutX="549.0" layoutY="150.0" prefHeight="39.0" prefWidth="206.0" />
+        <PasswordField fx:id="password" layoutX="149.0" layoutY="150.0" prefHeight="39.0" prefWidth="206.0" />
+        <TextField fx:id="initialEmail" layoutX="149.0" layoutY="327.0" prefHeight="39.0" prefWidth="206.0" />
+        <Label layoutX="83.0" layoutY="338.0" text="Email" />
+        <Button fx:id="initialAddButton" layoutX="435.0" layoutY="356.0" mnemonicParsing="false" onAction="#addEmail" prefHeight="39.0" prefWidth="129.0" text="Add Email" />
+        <Button layoutX="284.0" layoutY="536.0" mnemonicParsing="false" onAction="#register" text="Register" />
+        <Button layoutX="435.0" layoutY="536.0" mnemonicParsing="false" onAction="#goBackToRegNav" text="Back" />
+        <Label fx:id="errorMessage" layoutX="61.0" layoutY="570.0" textFill="#d31e1e">
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
+        <TextField fx:id="username" layoutX="149.0" layoutY="99.0" prefHeight="39.0" prefWidth="206.0" />
+        <ScrollPane layoutX="149.0" layoutY="375.0" prefHeight="137.0" prefWidth="251.0">
+            <content>
+                <Pane fx:id="addEmailPane" />
+            </content>
+        </ScrollPane>
+        <Button layoutX="435.0" layoutY="416.0" mnemonicParsing="false" onAction="#removeEmail" prefHeight="39.0" prefWidth="142.0" text="Remove Email" />
+        <Label layoutX="387.0" layoutY="105.0" text="User Type" />
+        <ComboBox fx:id="userType" layoutX="549.0" layoutY="101.0" prefHeight="25.0" prefWidth="206.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Manager" />
+                    <String fx:value="Staff" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label layoutX="43.0" layoutY="217.0" text="Phone" />
+        <Label layoutX="393.0" layoutY="214.0" text="Address" />
+        <Label layoutX="51.0" layoutY="271.0" text="City" />
+        <Label layoutX="528.0" layoutY="271.0" text="Zipcode" />
+        <Label layoutX="334.0" layoutY="271.0" text="State" />
+
+
+        <ComboBox fx:id="state" layoutX="373.0" layoutY="267.0" prefHeight="25.0" prefWidth="60.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="AL" />
+                    <String fx:value="AK" />
+                    <String fx:value="AZ" />
+                    <String fx:value="AR" />
+                    <String fx:value="CA" />
+                    <String fx:value="CO" />
+                    <String fx:value="CT" />
+                    <String fx:value="DE" />
+                    <String fx:value="FL" />
+                    <String fx:value="GA" />
+                    <String fx:value="HI" />
+                    <String fx:value="ID" />
+                    <String fx:value="IL" />
+                    <String fx:value="IN" />
+                    <String fx:value="IA" />
+                    <String fx:value="KS" />
+                    <String fx:value="KY" />
+                    <String fx:value="LA" />
+                    <String fx:value="ME" />
+                    <String fx:value="MD" />
+                    <String fx:value="MA" />
+                    <String fx:value="MI" />
+                    <String fx:value="MN" />
+                    <String fx:value="MS" />
+                    <String fx:value="MO" />
+                    <String fx:value="MT" />
+                    <String fx:value="NE" />
+                    <String fx:value="NV" />
+                    <String fx:value="NH" />
+                    <String fx:value="NJ" />
+                    <String fx:value="NM" />
+                    <String fx:value="NY" />
+                    <String fx:value="NC" />
+                    <String fx:value="ND" />
+                    <String fx:value="OH" />
+                    <String fx:value="OK" />
+                    <String fx:value="OR" />
+                    <String fx:value="PA" />
+                    <String fx:value="RI" />
+                    <String fx:value="SC" />
+                    <String fx:value="SD" />
+                    <String fx:value="TN" />
+                    <String fx:value="TX" />
+                    <String fx:value="UT" />
+                    <String fx:value="VT" />
+                    <String fx:value="VA" />
+                    <String fx:value="WA" />
+                    <String fx:value="WV" />
+                    <String fx:value="WI" />
+                    <String fx:value="WY" />
+                    <String fx:value="Other" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+
+
+
+
+
+
+
+        <TextField fx:id="city" layoutX="93.0" layoutY="260.0" prefHeight="39.0" prefWidth="206.0" />
+        <TextField fx:id="zipcode" layoutX="580.0" layoutY="260.0" prefHeight="39.0" prefWidth="162.0" />
+        <TextField fx:id="phone" layoutX="149.0" layoutY="203.0" prefHeight="39.0" prefWidth="206.0" />
+        <TextField fx:id="address" layoutX="549.0" layoutY="198.0" prefHeight="39.0" prefWidth="206.0" />
+    </children>
+</AnchorPane>
