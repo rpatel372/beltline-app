@@ -59,7 +59,7 @@ public class Register {
     public void goToEmpVisReg(ActionEvent actionEvent) {
         Parent blah = null;
         try {
-            blah = FXMLLoader.load(getClass().getResource("../view/sample.fxml"));
+            blah = FXMLLoader.load(getClass().getResource("../view/registerEmployeeVisitor.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -42,15 +42,45 @@ public class Controller {
             String sql2 = "CALL userLogin('" + username + "', '" + passwordField.getText() + "')";
             ResultSet rs2 = stmt.executeQuery(sql2);
 
-            //TODO: MAKE SURE UESR IS NOT LOGGING IN WITH A DECLINED ACCOUNT
-
             if (rs2.next()) {
-
+                String userType = rs2.getString("UserType");
+                System.out.println(userType);
                 System.out.println("Successful login");
 
                 //TODO: need to figure out user type and navigate them to the correct menu page
-                
-                navigateToCorrectMenu(username, "User", "../view/userMenu.fxml", actionEvent);
+                if (userType.equals("User")) {
+                    navigateToCorrectMenu(username, "User", "../view/userMenu.fxml", actionEvent);
+                } else if (userType.equals("Visitor")) {
+                    navigateToCorrectMenu(username, "Visitor", "../view/visitorMenu.fxml", actionEvent);
+                } else if(userType.equals("Employee")) {
+                    String sql9 = "CALL getEmployeeType('" + username + "')";
+                    ResultSet rs3 = stmt.executeQuery(sql9);
+                    if (rs3.next()) {
+                        String empType = rs.getString("EmployeeType");
+                        if (empType.equals("Admin")) {
+                            navigateToCorrectMenu(username, "Employee", "../view/adminOnlyMenu.fxml", actionEvent);
+                        } else if (empType.equals("Staff")) {
+                            navigateToCorrectMenu(username, "Employee", "../view/staffOnlyMenu.fxml", actionEvent);
+                        } else {
+                            navigateToCorrectMenu(username, "Employee", "../view/managerOnlyMenu.fxml", actionEvent);
+                        }
+                    }
+                } else {
+                    // EMPLOYEE-VISITOR
+                    Statement stmt2 = connection.createStatement();
+                    String sql9 = "CALL getEmployeeType('" + username + "')";
+                    ResultSet rs3 = stmt2.executeQuery(sql9);
+                    if (rs3.next()) {
+                        String empType = rs3.getString("EmployeeType");
+                        if (empType.equals("Admin")) {
+                            navigateToCorrectMenu(username, "Employee-Visitor", "../view/adminVisitorMenu.fxml", actionEvent);
+                        } else if (empType.equals("Staff")) {
+                            navigateToCorrectMenu(username, "Employee-Visitor", "../view/staffVisitorMenu.fxml", actionEvent);
+                        } else {
+                            navigateToCorrectMenu(username, "Employee-Visitor", "../view/managerVisitorMenu.fxml", actionEvent);
+                        }
+                    }
+                }
 
 
             } else {
@@ -75,7 +105,7 @@ public class Controller {
     }
 
     public void navigateToCorrectMenu(String username, String userType, String userMenuOption, ActionEvent actionEvent) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/userMenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(userMenuOption));
         Parent root = null;
         try {
             root = (Parent)fxmlLoader.load();

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ManagerVisitoryMenu">
+    <children>
+        <Label layoutX="247.0" layoutY="24.0" text="Manager Functionality">
+            <font>
+                <Font size="31.0" />
+            </font>
+        </Label>
+        <Button layoutX="469.0" layoutY="185.0" mnemonicParsing="false" text="View Site Report">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button layoutX="180.0" layoutY="396.0" mnemonicParsing="false" text="View Visit History">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button layoutX="517.0" layoutY="396.0" mnemonicParsing="false" text="Back">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button layoutX="184.0" layoutY="112.0" mnemonicParsing="false" text="Manage Profile">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button layoutX="479.0" layoutY="112.0" mnemonicParsing="false" text="Manage Event">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button layoutX="204.0" layoutY="185.0" mnemonicParsing="false" text="View Staff">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button layoutX="199.0" layoutY="257.0" mnemonicParsing="false" text="Explore Site">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button layoutX="204.0" layoutY="325.0" mnemonicParsing="false" text="Take Transit">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button layoutX="486.0" layoutY="257.0" mnemonicParsing="false" text="Explore Event">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button layoutX="455.0" layoutY="325.0" mnemonicParsing="false" text="View Transit History">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>
