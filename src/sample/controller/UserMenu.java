@@ -18,11 +18,12 @@ public class UserMenu {
         globalUser = loggedUser;
     }
 
-    public void navigate(ActionEvent actionEvent, String page) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(page));
+    public void takeTransit(ActionEvent actionEvent) {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/userTakeTransit.fxml"));
         Parent root = null;
         try {
-            root = (Parent)fxmlLoader.load();
+            root = (Parent) fxmlLoader.load();
             UserTakeTransit controller = fxmlLoader.<UserTakeTransit>getController();
             controller.setPreviousPage("../view/userMenu.fxml");
             controller.setUser(globalUser);
@@ -35,16 +36,27 @@ public class UserMenu {
         }
     }
 
-    public void takeTransit(ActionEvent actionEvent) {
-        navigate(actionEvent, "../view/userTakeTransit.fxml");
-    }
-
     public void goBack(ActionEvent actionEvent) {
 
     }
 
 
     public void viewTransitHistory(ActionEvent actionEvent) {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/transitHistory.fxml"));
+        Parent root = null;
+        try {
+            root = (Parent) fxmlLoader.load();
+            TransitHistory controller = fxmlLoader.<TransitHistory>getController();
+            controller.setPreviousPage("../view/userMenu.fxml");
+            controller.setUser(globalUser);
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
