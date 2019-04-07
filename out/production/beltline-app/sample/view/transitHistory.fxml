@@ -21,8 +21,8 @@
       <Label layoutX="86.0" layoutY="82.0" text="Transport Type" />
       <Label layoutX="462.0" layoutY="82.0" text="Contains Site" />
       <Label layoutX="68.0" layoutY="131.0" text="Route" />
-      <Label layoutX="308.0" layoutY="131.0" text="Start Date" />
-      <Label layoutX="544.0" layoutY="131.0" text="End Date" />
+      <Label layoutX="308.0" layoutY="128.0" text="Start Date" />
+      <Label layoutX="544.0" layoutY="128.0" text="End Date" />
       <ChoiceBox fx:id="containsSite" layoutX="541.0" layoutY="78.0" prefWidth="150.0" />
       <ChoiceBox fx:id="transportType" layoutX="198.0" layoutY="78.0" prefWidth="150.0">
           <items>
@@ -36,8 +36,8 @@
           </items>
       </ChoiceBox>
       <TextField fx:id="route" layoutX="126.0" layoutY="127.0" />
-      <TextField fx:id="startDate" layoutX="389.0" layoutY="127.0" prefHeight="25.0" prefWidth="112.0" />
-      <TextField fx:id="endDate" layoutX="612.0" layoutY="127.0" prefHeight="25.0" prefWidth="112.0" />
+      <TextField fx:id="startDate" layoutX="389.0" layoutY="124.0" prefHeight="25.0" prefWidth="112.0" />
+      <TextField fx:id="endDate" layoutX="612.0" layoutY="124.0" prefHeight="25.0" prefWidth="112.0" />
       <Button layoutX="258.0" layoutY="183.0" mnemonicParsing="false" onAction="#filter" prefHeight="25.0" prefWidth="61.0" text="Filter" />
       <ChoiceBox fx:id="sortBy" layoutX="445.0" layoutY="180.0" prefWidth="150.0">
           <items>
@@ -55,7 +55,7 @@
       </ChoiceBox>
       <Label layoutX="389.0" layoutY="184.0" text="Sort By" />
       <Button layoutX="612.0" layoutY="180.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
-      <TableView fx:id="transitHistory" layoutX="107.0" layoutY="231.0" prefHeight="330.0" prefWidth="567.0">
+      <TableView fx:id="transitHistory" layoutX="107.0" layoutY="231.0" prefHeight="292.0" prefWidth="567.0">
         <columns>
           <TableColumn fx:id="dateCol" prefWidth="112.0" sortable="false" text="Date" />
           <TableColumn fx:id="routeCol" prefWidth="149.0" sortable="false" text="Route" />
@@ -63,6 +63,8 @@
             <TableColumn fx:id="priceCol" minWidth="0.0" prefWidth="123.0" sortable="false" text="Price" />
         </columns>
       </TableView>
-      <Button layoutX="348.0" layoutY="571.0" mnemonicParsing="false" onAction="#goBack" prefHeight="3.0" prefWidth="53.0" text="Back" />
+      <Button layoutX="674.0" layoutY="546.0" mnemonicParsing="false" onAction="#goBack" prefHeight="3.0" prefWidth="53.0" text="Back" />
+      <Label layoutX="445.0" layoutY="149.0" prefHeight="17.0" prefWidth="220.0" text="FORMAT: year(xxxx)-month(xx)-day(xx)" />
+      <Label fx:id="errorMessage" layoutX="49.0" layoutY="550.0" textFill="#f23232" />
    </children>
 </AnchorPane>

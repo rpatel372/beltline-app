@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
@@ -41,6 +38,7 @@ public class TransitHistory {
     public TableColumn transportTypeCol;
     public TableColumn priceCol;
 
+    public Label errorMessage;
     User globalUser;
     String previousPage;
 
@@ -102,7 +100,12 @@ public class TransitHistory {
         if (edate.equals("")) {
             edate = "9999-12-31";
         }
-        filterByParam();
+
+        if (!edate.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})") || !sdate.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})")) {
+            errorMessage.setText("Date is not in correct format! Please follow format listed.");
+        } else {
+            filterByParam();
+        }
 
     }
 
@@ -124,7 +127,7 @@ public class TransitHistory {
         Connection connection = connectionClass.getConnection();
 
         Statement stmt = connection.createStatement();
-        String sql = "CALL getTransitHistory('" + "mary.smith" + "', '" + ttype
+        String sql = "CALL getTransitHistory('" + globalUser.username + "', '" + ttype
                 + "', '" + sname + "', '" + rname + "', '" + sdate + "', '" + edate + "', '" + sorting + "')";
 
         System.out.println(sql);
