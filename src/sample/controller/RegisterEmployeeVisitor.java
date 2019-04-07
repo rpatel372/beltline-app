@@ -233,12 +233,12 @@ public class RegisterEmployeeVisitor {
     public void addEmail(ActionEvent actionEvent) {
 
 
-        if (i == 0 && initialEmail.getText().equals("")) {
+        if (i == 1 && initialEmail.getText().equals("")) {
             errorMessage.setText("Email cannot be blank when you hit Add!");
         } else {
             emails[0] = initialEmail;
         }
-        if (i != 0 && emails[i - 1].getText().equals("")) {
+        if (i != 1 && emails[i - 1].getText().equals("")) {
             errorMessage.setText("Email cannot be blank when you hit Add!");
         } else {
             errorMessage.setText("");
