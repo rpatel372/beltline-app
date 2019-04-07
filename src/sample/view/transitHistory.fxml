@@ -39,15 +39,28 @@
       <TextField fx:id="startDate" layoutX="389.0" layoutY="127.0" prefHeight="25.0" prefWidth="112.0" />
       <TextField fx:id="endDate" layoutX="612.0" layoutY="127.0" prefHeight="25.0" prefWidth="112.0" />
       <Button layoutX="258.0" layoutY="183.0" mnemonicParsing="false" onAction="#filter" prefHeight="25.0" prefWidth="61.0" text="Filter" />
-      <ChoiceBox layoutX="445.0" layoutY="180.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="sortBy" layoutX="445.0" layoutY="180.0" prefWidth="150.0">
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Date ASC" />
+                  <String fx:value="Date DESC" />
+                  <String fx:value="Route ASC" />
+                  <String fx:value="Route DESC" />
+                  <String fx:value="Type ASC" />
+                  <String fx:value="Type DESC" />
+                  <String fx:value="Price ASC" />
+                  <String fx:value="Price DESC" />
+              </FXCollections>
+          </items>
+      </ChoiceBox>
       <Label layoutX="389.0" layoutY="184.0" text="Sort By" />
       <Button layoutX="612.0" layoutY="180.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
       <TableView fx:id="transitHistory" layoutX="107.0" layoutY="231.0" prefHeight="330.0" prefWidth="567.0">
         <columns>
-          <TableColumn fx:id="dateCol" prefWidth="112.0" text="Date" />
-          <TableColumn fx:id="routeCol" prefWidth="149.0" text="Route" />
-            <TableColumn fx:id="transportTypeCol" prefWidth="179.0" text="Transport Type" />
-            <TableColumn fx:id="priceCol" minWidth="0.0" prefWidth="123.0" text="Price" />
+          <TableColumn fx:id="dateCol" prefWidth="112.0" sortable="false" text="Date" />
+          <TableColumn fx:id="routeCol" prefWidth="149.0" sortable="false" text="Route" />
+            <TableColumn fx:id="transportTypeCol" prefWidth="179.0" sortable="false" text="Transport Type" />
+            <TableColumn fx:id="priceCol" minWidth="0.0" prefWidth="123.0" sortable="false" text="Price" />
         </columns>
       </TableView>
       <Button layoutX="348.0" layoutY="571.0" mnemonicParsing="false" onAction="#goBack" prefHeight="3.0" prefWidth="53.0" text="Back" />

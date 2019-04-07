@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.stage.Stage;
+import sample.model.Context;
 import sample.model.Main;
 
 import java.io.IOException;
@@ -49,88 +50,26 @@ public class Controller {
                 System.out.println(userType);
                 System.out.println("Successful login");
                 globalUser = new User(username, userType);
+                Context.getInstance().globalUser.username = username;
+                Context.getInstance().globalUser.userType = userType;
+                Context.getInstance().previousPage = "../view/sample.fxml";
                 //TODO: need to figure out user type and navigate them to the correct menu page
                 if (userType.equals("User")) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/userMenu.fxml"));
-                    Parent root = null;
-                    try {
-                        root = (Parent)fxmlLoader.load();
-                        UserMenu controller = fxmlLoader.<UserMenu>getController();
-                        User newUser = new User(username, userType);
-                        controller.setUser(newUser);
-                        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                        Scene scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    navigateToPage("../view/userMenu.fxml", actionEvent);
 
                 } else if (userType.equals("Visitor")) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/visitorMenu.fxml"));
-                    Parent root = null;
-                    try {
-                        root = (Parent)fxmlLoader.load();
-                        VisitorMenu controller = fxmlLoader.<VisitorMenu>getController();
-                        User newUser = new User(username, userType);
-                        controller.setUser(newUser);
-                        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                        Scene scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    navigateToPage("../view/visitorMenu.fxml", actionEvent);
                 } else if(userType.equals("Employee")) {
                     String sql9 = "CALL getEmployeeType('" + username + "')";
                     ResultSet rs3 = stmt.executeQuery(sql9);
                     if (rs3.next()) {
                         String empType = rs.getString("EmployeeType");
                         if (empType.equals("Admin")) {
-                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/adminOnlyMenu.fxml"));
-                            Parent root = null;
-                            try {
-                                root = (Parent)fxmlLoader.load();
-                                AdminOnlyMenu controller = fxmlLoader.<AdminOnlyMenu>getController();
-                                User newUser = new User(username, userType);
-                                controller.setUser(newUser);
-                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                                Scene scene = new Scene(root);
-                                stage.setScene(scene);
-                                stage.show();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            navigateToPage("../view/adminOnlyMenu.fxml", actionEvent);
                         } else if (empType.equals("Staff")) {
-                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/staffOnlyMenu.fxml"));
-                            Parent root = null;
-                            try {
-                                root = (Parent)fxmlLoader.load();
-                                StaffOnlyMenu controller = fxmlLoader.<StaffOnlyMenu>getController();
-                                User newUser = new User(username, userType);
-                                controller.setUser(newUser);
-                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                                Scene scene = new Scene(root);
-                                stage.setScene(scene);
-                                stage.show();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            navigateToPage("../view/staffOnlyMenu.fxml", actionEvent);
                         } else {
-                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/managerOnlyMenu.fxml"));
-                            Parent root = null;
-                            try {
-                                root = (Parent)fxmlLoader.load();
-                                ManagerOnlyMenu controller = fxmlLoader.<ManagerOnlyMenu>getController();
-                                User newUser = new User(username, userType);
-                                controller.setUser(newUser);
-                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                                Scene scene = new Scene(root);
-                                stage.setScene(scene);
-                                stage.show();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            navigateToPage("../view/managerOnlyMenu.fxml", actionEvent);
                         }
                     }
                 } else {
@@ -141,50 +80,11 @@ public class Controller {
                     if (rs3.next()) {
                         String empType = rs3.getString("EmployeeType");
                         if (empType.equals("Admin")) {
-                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/adminVisitorMenu.fxml"));
-                            Parent root = null;
-                            try {
-                                root = (Parent)fxmlLoader.load();
-                                AdminVisitorMenu controller = fxmlLoader.<AdminVisitorMenu>getController();
-                                User newUser = new User(username, userType);
-                                controller.setUser(newUser);
-                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                                Scene scene = new Scene(root);
-                                stage.setScene(scene);
-                                stage.show();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            navigateToPage("../view/adminVisitorMenu.fxml", actionEvent);
                         } else if (empType.equals("Staff")) {
-                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/staffVisitorMenu.fxml"));
-                            Parent root = null;
-                            try {
-                                root = (Parent)fxmlLoader.load();
-                                StaffVisitorMenu controller = fxmlLoader.<StaffVisitorMenu>getController();
-                                User newUser = new User(username, userType);
-                                controller.setUser(newUser);
-                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                                Scene scene = new Scene(root);
-                                stage.setScene(scene);
-                                stage.show();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            navigateToPage("../view/staffVisitorMenu.fxml", actionEvent);
                         } else {
-                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/managerVisitorMenu.fxml"));
-                            Parent root = null;
-                            try {
-                                root = (Parent)fxmlLoader.load();
-                                ManagerVisitorMenu controller = fxmlLoader.<ManagerVisitorMenu>getController();
-                                User newUser = new User(username, userType);
-                                controller.setUser(newUser);
-                                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                                Scene scene = new Scene(root);
-                                stage.setScene(scene);
-                                stage.show();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            navigateToPage("../view/managerVisitorMenu.fxml", actionEvent);
                         }
                     }
                 }
@@ -209,6 +109,19 @@ public class Controller {
         appStage.show();
 
 
+    }
+
+    public void navigateToPage(String page, ActionEvent actionEvent) {
+        Parent blah = null;
+        try {
+            blah = FXMLLoader.load(getClass().getResource(page));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(blah);
+        Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        appStage.setScene(scene);
+        appStage.show();
     }
 
 

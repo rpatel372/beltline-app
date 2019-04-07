@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
+import sample.model.Context;
 import sample.model.Transit;
 import sample.model.User;
 
@@ -60,16 +61,11 @@ public class UserTakeTransit {
 
     User globalUser;
 
-    public void setPreviousPage(String page) {
-        previousPage = page;
-    }
-    public void setUser(User loggedUser) {
-        globalUser = loggedUser;
-        System.out.println(globalUser.username);
-    }
 
     @FXML
     protected void initialize() {
+        globalUser = Context.getInstance().currentUser();
+        previousPage = Context.getInstance().currentPreviousPage();
         ConnectionClass connectionClass = new ConnectionClass();
         Connection connection = connectionClass.getConnection();
         Statement stmt = null;
@@ -244,6 +240,7 @@ public class UserTakeTransit {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(previousPage));
         Parent root = null;
         try {
+            Context.getInstance().previousPage = "../view/userTakeTransit.fxml";
             root = (Parent)fxmlLoader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

@@ -6,26 +6,25 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.model.Context;
 import sample.model.User;
 
 import java.io.IOException;
 
 public class ManagerVisitorMenu {
 
-    public User globalUser;
+    public String previousPage;
 
-    public void setUser(User loggedUser) {
-        globalUser = loggedUser;
+    public void initialize() {
+        previousPage = Context.getInstance().currentPreviousPage();
     }
 
     public void navigate(ActionEvent actionEvent, String page) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(page));
         Parent root = null;
         try {
-            root = (Parent)fxmlLoader.load();
-            UserTakeTransit controller = fxmlLoader.<UserTakeTransit>getController();
-            controller.setPreviousPage("../view/managerVisitorMenu.fxml");
-            controller.setUser(globalUser);
+            Context.getInstance().previousPage = "../view/managerVisitorMenu.fxml";
+            root = (Parent) fxmlLoader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

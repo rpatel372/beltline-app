@@ -6,16 +6,20 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.model.Context;
 import sample.model.User;
 
 import java.io.IOException;
 
 public class UserMenu {
 
-    public User globalUser;
+    public String previousPage;
 
-    public void setUser(User loggedUser) {
-        globalUser = loggedUser;
+    public void initialize() {
+
+        previousPage = Context.getInstance().currentPreviousPage();
+//        System.out.println(globalUser.username);
+//        System.out.println(previousPage);
     }
 
     public void takeTransit(ActionEvent actionEvent) {
@@ -23,10 +27,8 @@ public class UserMenu {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/userTakeTransit.fxml"));
         Parent root = null;
         try {
+            Context.getInstance().previousPage = "../view/userMenu.fxml";
             root = (Parent) fxmlLoader.load();
-            UserTakeTransit controller = fxmlLoader.<UserTakeTransit>getController();
-            controller.setPreviousPage("../view/userMenu.fxml");
-            controller.setUser(globalUser);
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -46,10 +48,8 @@ public class UserMenu {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/transitHistory.fxml"));
         Parent root = null;
         try {
+            Context.getInstance().previousPage = "../view/userMenu.fxml";
             root = (Parent) fxmlLoader.load();
-            TransitHistory controller = fxmlLoader.<TransitHistory>getController();
-            controller.setPreviousPage("../view/userMenu.fxml");
-            controller.setUser(globalUser);
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

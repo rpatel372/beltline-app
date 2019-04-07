@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
+import sample.model.Context;
 import sample.model.TranHist;
 import sample.model.Transit;
 import sample.model.User;
@@ -43,14 +44,17 @@ public class TransitHistory {
     User globalUser;
     String previousPage;
 
-    public void setPreviousPage(String page) {
-        previousPage = page;
-    }
-    public void setUser(User loggedUser) {
-        globalUser = loggedUser;
-        System.out.println(globalUser.username);
-    }
+    public ChoiceBox sortBy;
+    Object ttype;
+    Object sname;
+    String rname;
+    String sdate;
+    String edate;
+    Object sorting;
+
     public void initialize() {
+        globalUser = Context.getInstance().currentUser();
+        previousPage = Context.getInstance().currentPreviousPage();
         ConnectionClass connectionClass = new ConnectionClass();
         Connection connection = connectionClass.getConnection();
         Statement stmt = null;
@@ -78,22 +82,12 @@ public class TransitHistory {
     }
 
     public void filter(ActionEvent actionEvent) throws SQLException {
-        transitHistory.getItems().clear();
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-        routeCol.setCellValueFactory(new PropertyValueFactory<>("route"));
-        transportTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-
-        List<TranHist> transitsToAdd = new ArrayList<TranHist>();
-        ConnectionClass connectionClass = new ConnectionClass();
-        Connection connection = connectionClass.getConnection();
-
-        Object ttype = transportType.getValue();
-        Object sname = containsSite.getValue();
-        String rname = route.getText();
-        String sdate = startDate.getText();
-        String edate = endDate.getText();
+        ttype = transportType.getValue();
+        sname = containsSite.getValue();
+        rname = route.getText();
+        sdate = startDate.getText();
+        edate = endDate.getText();
 
 
         if (ttype == null) {
@@ -108,10 +102,30 @@ public class TransitHistory {
         if (edate.equals("")) {
             edate = "9999-12-31";
         }
+        filterByParam();
+
+    }
+
+    public void sort(ActionEvent actionEvent) throws SQLException {
+        sorting = sortBy.getValue();
+        filterByParam();
+    }
+
+    public void filterByParam() throws SQLException {
+
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        routeCol.setCellValueFactory(new PropertyValueFactory<>("route"));
+        transportTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        transitHistory.getItems().clear();
+        List<TranHist> transitsToAdd = new ArrayList<TranHist>();
+        ConnectionClass connectionClass = new ConnectionClass();
+        Connection connection = connectionClass.getConnection();
 
         Statement stmt = connection.createStatement();
         String sql = "CALL getTransitHistory('" + "mary.smith" + "', '" + ttype
-                + "', '" + sname + "', '" + rname + "', '" + sdate + "', '" + edate + "')";
+                + "', '" + sname + "', '" + rname + "', '" + sdate + "', '" + edate + "', '" + sorting + "')";
 
         System.out.println(sql);
 
@@ -119,7 +133,8 @@ public class TransitHistory {
         while (rs.next()) {
             System.out.println("blah");
             TranHist newTransit =
-                    new TranHist(rs.getString("TransitDate"), rs.getString("TransitRoute"), rs.getString("TransitType"), 10);
+                    new TranHist(rs.getString("TransitDate"), rs.getString("TransitRoute"),
+                            rs.getString("TransitType"), rs.getDouble("TransitPrice"));
             transitsToAdd.add(newTransit);
         }
         System.out.println(transitsToAdd.toString());
@@ -127,13 +142,11 @@ public class TransitHistory {
 
     }
 
-    public void sort(ActionEvent actionEvent) {
-    }
-
     public void goBack(ActionEvent actionEvent) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(previousPage));
         Parent root = null;
         try {
+            Context.getInstance().previousPage = "../view/transitHistory.fxml";
             root = (Parent)fxmlLoader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
