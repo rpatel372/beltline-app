@@ -47,17 +47,19 @@ public class Controller {
 
             if (rs2.next()) {
                 String userType = rs2.getString("UserType");
-                System.out.println(userType);
+//                System.out.println(userType);
                 System.out.println("Successful login");
                 globalUser = new User(username, userType);
                 Context.getInstance().globalUser.username = username;
-                Context.getInstance().globalUser.userType = userType;
+
                 Context.getInstance().previousPage = "../view/sample.fxml";
                 //TODO: need to figure out user type and navigate them to the correct menu page
                 if (userType.equals("User")) {
+                    Context.getInstance().globalUser.userType = "User";
                     navigateToPage("../view/userMenu.fxml", actionEvent);
 
                 } else if (userType.equals("Visitor")) {
+                    Context.getInstance().globalUser.userType = "Visitor";
                     navigateToPage("../view/visitorMenu.fxml", actionEvent);
                 } else if(userType.equals("Employee")) {
                     String sql9 = "CALL getEmployeeType('" + username + "')";
@@ -65,10 +67,13 @@ public class Controller {
                     if (rs3.next()) {
                         String empType = rs.getString("EmployeeType");
                         if (empType.equals("Admin")) {
+                            Context.getInstance().globalUser.userType = "Admin";
                             navigateToPage("../view/adminOnlyMenu.fxml", actionEvent);
                         } else if (empType.equals("Staff")) {
+                            Context.getInstance().globalUser.userType = "Staff";
                             navigateToPage("../view/staffOnlyMenu.fxml", actionEvent);
                         } else {
+                            Context.getInstance().globalUser.userType = "Manager";
                             navigateToPage("../view/managerOnlyMenu.fxml", actionEvent);
                         }
                     }
@@ -80,10 +85,13 @@ public class Controller {
                     if (rs3.next()) {
                         String empType = rs3.getString("EmployeeType");
                         if (empType.equals("Admin")) {
+                            Context.getInstance().globalUser.userType = "Admin Visitor";
                             navigateToPage("../view/adminVisitorMenu.fxml", actionEvent);
                         } else if (empType.equals("Staff")) {
+                            Context.getInstance().globalUser.userType = "Staff Visitor";
                             navigateToPage("../view/staffVisitorMenu.fxml", actionEvent);
                         } else {
+                            Context.getInstance().globalUser.userType = "Manager Visitor";
                             navigateToPage("../view/managerVisitorMenu.fxml", actionEvent);
                         }
                     }

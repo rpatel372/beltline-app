@@ -17,7 +17,7 @@
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="323.0" layoutY="199.0" mnemonicParsing="false" onAction="#viewTransitHistory" text="View Schedule">
+        <Button layoutX="324.0" layoutY="199.0" mnemonicParsing="false" onAction="#viewTransitHistory" text="View Schedule">
             <font>
                 <Font size="20.0" />
             </font>

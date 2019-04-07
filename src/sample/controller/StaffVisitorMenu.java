@@ -36,4 +36,8 @@ public class StaffVisitorMenu {
     public void takeTransit(ActionEvent actionEvent) {
         navigate(actionEvent, "../view/userTakeTransit.fxml");
     }
+
+    public void manageProfile(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/employeeManageProfile.fxml");
+    }
 }

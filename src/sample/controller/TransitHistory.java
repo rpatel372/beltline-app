@@ -83,9 +83,9 @@ public class TransitHistory {
 
         ttype = transportType.getValue();
         sname = containsSite.getValue();
-        rname = route.getText();
-        sdate = startDate.getText();
-        edate = endDate.getText();
+        rname = route.getText().trim();
+        sdate = startDate.getText().trim();
+        edate = endDate.getText().trim();
 
 
         if (ttype == null) {

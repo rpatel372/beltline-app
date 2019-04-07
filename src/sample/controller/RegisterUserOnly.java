@@ -36,7 +36,7 @@ public class RegisterUserOnly {
 
 
     public Button initialAddButton;
-    public int i;
+    public int i = 1;
     public static int x = 1;
     public static int y = 0;
 
@@ -74,14 +74,16 @@ public class RegisterUserOnly {
             errorMessage.setText("Username cannot be more than 30 characters.");
         } else {
             emails[0] = initialEmail;
-            System.out.println("Create account");
+//            System.out.println("Create account");
             ConnectionClass connectionClass = new ConnectionClass();
             Connection connection = connectionClass.getConnection();
 
             //Validate emails are in correct format
             int incorrectEmailIndex = -1;
+            int index1 = 0;
+            while (index1 < i) {
+                System.out.println(emails[index1].getText());
 
-            for (int index1 = 0; index1 <= i; index1++) {
                 if (emails[index1] != null) {
                     System.out.println(index1);
                     Pattern p = Pattern.compile( "^[a-zA-Z0-9_+&*-]+(?:\\."+
@@ -89,6 +91,7 @@ public class RegisterUserOnly {
                             "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
                             "A-Z]{2,7}$");
                     Matcher m = p.matcher(emails[index1].getText());
+
                     if (m.find()) {
                         index1 += 1;
                     } else {
@@ -99,7 +102,7 @@ public class RegisterUserOnly {
             }
             if (incorrectEmailIndex != -1) {
                 errorMessage.setText("Email #" + incorrectEmailIndex + " is not a valid email.");
-                System.out.println("howdy");
+//                System.out.println("howdy");
             } else {
                 Statement statement = connection.createStatement();
 
@@ -107,12 +110,11 @@ public class RegisterUserOnly {
                 String sql3 = "CALL checkIfUsernameUnique('" + usernameText + "')";
                 ResultSet rs = statement.executeQuery(sql3);
                 if (rs.next()) {
-
                     errorMessage.setText("Username already exists. Please choose another.");
                 } else {
                     //Validate emails are unique
                     boolean invalidEmail = false;
-                    for (int c = 0; c <= i; c++) {
+                    for (int c = 0; c < i; c++) {
                         String sql4 = "CALL checkIfEmailUnique('" + emails[c].getText() + "')";
                         ResultSet rs2 = statement.executeQuery(sql4);
                         if (rs2.next() == true) {
@@ -123,13 +125,15 @@ public class RegisterUserOnly {
                     }
 
                     if (invalidEmail == false) {
-                        //TODO: Hash password
-
 
                         String sql = "CALL registerUser('" + firstNameText + "', '" + lastNameText + "', '" + usernameText + "', '" + pwText + "', '" + "Pending" + "', '" + "User" + "')";
-                        String sql2 = "CALL addEmail('" + initialEmailText + "', '" + usernameText + "')";
                         statement.executeUpdate(sql);
-                        statement.executeUpdate(sql2);
+                        for (int k = 0; k < i; k++) {
+                            String sql2 = "CALL addEmail('" + emails[k].getText() + "', '" + usernameText + "')";
+                            statement.executeUpdate(sql2);
+
+                        }
+
 
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/sample.fxml"));
                         Parent root = null;
@@ -156,7 +160,10 @@ public class RegisterUserOnly {
 
         if (i == 0 && initialEmail.getText().equals("")) {
             errorMessage.setText("Email cannot be blank when you hit Add!");
-        } else if (i != 0 && emails[i - 1].getText().equals("")) {
+        } else {
+            emails[0] = initialEmail;
+        }
+        if (i != 0 && emails[i - 1].getText().equals("")) {
             errorMessage.setText("Email cannot be blank when you hit Add!");
         } else {
             errorMessage.setText("");
@@ -169,19 +176,20 @@ public class RegisterUserOnly {
             addEmailPane.getChildren().add(emails[i]);
             i = i + 1;
             y = y + 48;
-            System.out.println(y);
+//            System.out.println(y);
 
         }
     }
 
     public void removeEmail(ActionEvent actionEvent) {
-        if (i == 0) {
+        if (i == 1) {
             errorMessage.setText("You must have at least one email!");
         } else {
 //            System.out.println(i);
             addEmailPane.getChildren().remove(emails[i-1]);
             emails[i] = null;
             i = i - 1;
+            y = y -48;
         }
     }
 
