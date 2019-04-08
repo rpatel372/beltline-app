@@ -50,8 +50,7 @@ public class EmployeeManageProfile {
     int x = 1;
     int y = 0;
 
-    public static String[] emailsReturned = new String[100];
-    int emailsReturnedLength = 0;
+    public List<String> emailsReturned = new ArrayList<String>();
 
     public void initialize() throws SQLException {
         globalUser = Context.getInstance().currentUser();
@@ -64,22 +63,20 @@ public class EmployeeManageProfile {
         String sql9 = "CALL getEmailForUser('" + globalUser.username + "')";
         ResultSet rs3 = stmt.executeQuery(sql9);
         while (rs3.next()) {
-            emailsReturned[i] = rs3.getString("Email");
+            emailsReturned.add(rs3.getString("Email"));
             i = i + 1;
         }
-        initialEmail.setText(emailsReturned[0]);
-        emailsReturnedLength++;
+        initialEmail.setText(emailsReturned.get(0));
         emails[0] = initialEmail;
         for (int j = 1;  j < i; j++) {
             emails[j] = new TextField();
-            emails[j].setText(emailsReturned[j]);
+            emails[j].setText(emailsReturned.get(j));
             emails[j].setPrefWidth(206.0);
             emails[j].setPrefHeight(39.0);
             emails[j].setLayoutX(x);
             emails[j].setLayoutY(y);
             addEmailPane.getChildren().add(emails[j]);
             y = y + 48;
-            emailsReturnedLength++;
         }
 
         String sql = "CALL getUserInfo('" + globalUser.username + "', '" + globalUser.userType + "')";
@@ -174,7 +171,7 @@ public class EmployeeManageProfile {
         List<String> deletedEmails = new ArrayList<String>();
 
         for (int p = 0; p < i; p++) {
-            if (!Arrays.asList(emailsReturned).contains(emails[p].getText())) {
+            if (!emailsReturned.contains(emails[p].getText())) {
                 emailsAdded.add(emails[p].getText());
 //                System.out.println(emails[p].getText());
             }
@@ -188,7 +185,7 @@ public class EmployeeManageProfile {
             String sql4 = "CALL checkIfEmailUnique('" + emailsAdded.get(c) + "')";
             ResultSet rs2 = statement.executeQuery(sql4);
             if (rs2.next() == true) {
-                errorMessage.setText("Email #" + c + " already in use.");
+                errorMessage.setText("Email already in use.");
                 canYouUpdate = false;
                 break;
             }
@@ -205,9 +202,9 @@ public class EmployeeManageProfile {
             for (int g = 0; g < i; g++) {
                 emailsAsText.add(emails[g].getText());
             }
-            for (int g = 0; g < emailsReturnedLength; g++) {
-                if (!emailsAsText.contains(emailsReturned[g])) {
-                    deletedEmails.add(emailsReturned[g]);
+            for (int g = 0; g < emailsReturned.size(); g++) {
+                if (!emailsAsText.contains(emailsReturned.get(g))) {
+                    deletedEmails.add(emailsReturned.get(g));
                 }
             }
 
@@ -247,6 +244,20 @@ public class EmployeeManageProfile {
                 Context.getInstance().previousPage = "../view/" + parts[0] + "VisitorMenu.fxml";
             }
 
+            for (String x : emailsAdded){
+                if (!emailsReturned.contains(x))
+                    emailsReturned.add(x);
+            }
+            for (String x : deletedEmails){
+                if (emailsReturned.contains(x))
+                    emailsReturned.remove(x);
+            }
+
+            for (String x : emailsReturned) {
+                System.out.println(x);
+            }
+
+
             errorMessage.setText("Updated profile successfully.");
             errorMessage.setTextFill(Color.web("#75c24e"));
         }
@@ -260,6 +271,7 @@ public class EmployeeManageProfile {
             e.printStackTrace();
         }
         Scene scene = new Scene(blah);
+        Context.getInstance().previousPage = "../view/employeeManageProfile.fxml";
         Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         appStage.setScene(scene);
         appStage.show();

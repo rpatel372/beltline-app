@@ -37,4 +37,15 @@ public class ManagerOnlyMenu {
         navigate(actionEvent, "../view/userTakeTransit.fxml");
     }
 
+    public void manageProfile(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/employeeManageProfile.fxml");
+    }
+
+    public void manageEvent(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/adminManageUser.fxml");
+    }
+
+    public void transitHistory(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/transitHistory.fxml");
+    }
 }

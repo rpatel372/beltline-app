@@ -17,7 +17,7 @@
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="457.0" layoutY="213.0" mnemonicParsing="false" text="View Transit History">
+        <Button layoutX="457.0" layoutY="213.0" mnemonicParsing="false" onAction="#transitHistory" text="View Transit History">
             <font>
                 <Font size="20.0" />
             </font>
@@ -27,12 +27,12 @@
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="184.0" layoutY="112.0" mnemonicParsing="false" text="Manage Profile">
+        <Button fx:id="manageProfile" layoutX="184.0" layoutY="112.0" mnemonicParsing="false" onAction="#manageProfile" text="Manage Profile">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="188.0" layoutY="213.0" mnemonicParsing="false" text="Manage Event">
+        <Button layoutX="188.0" layoutY="213.0" mnemonicParsing="false" onAction="#manageEvent" text="Manage Event">
             <font>
                 <Font size="20.0" />
             </font>

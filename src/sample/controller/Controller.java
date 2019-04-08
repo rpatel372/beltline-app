@@ -65,7 +65,7 @@ public class Controller {
                     String sql9 = "CALL getEmployeeType('" + username + "')";
                     ResultSet rs3 = stmt.executeQuery(sql9);
                     if (rs3.next()) {
-                        String empType = rs.getString("EmployeeType");
+                        String empType = rs3.getString("EmployeeType");
                         if (empType.equals("Admin")) {
                             Context.getInstance().globalUser.userType = "Admin";
                             navigateToPage("../view/adminOnlyMenu.fxml", actionEvent);
@@ -126,6 +126,7 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Context.getInstance().previousPage = "../view/sample.fxml";
         Scene scene = new Scene(blah);
         Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         appStage.setScene(scene);
