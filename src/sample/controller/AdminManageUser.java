@@ -1,13 +1,20 @@
 package sample.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
 import sample.model.Context;
 import sample.model.TranHist;
+import sample.model.Transit;
 import sample.model.User2;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -109,10 +116,45 @@ public class AdminManageUser {
         addToTable();
     }
 
-    public void decline(ActionEvent actionEvent) {
+    public void decline(ActionEvent actionEvent) throws SQLException {
+        //Administrator can approve a pending (or declined) account, can decline a
+        //pending account, but cannot decline an approved account
+
+        if (users.getSelectionModel().getSelectedItem() != null) {
+            User2 selectedUser = users.getSelectionModel().getSelectedItem();
+            if (selectedUser.getStatus().equals("Approved")) {
+                errorMessage.setText("You cannot decline an approved account.");
+            } else {
+                ConnectionClass connectionClass = new ConnectionClass();
+                Connection connection = connectionClass.getConnection();
+                Statement stmt = connection.createStatement();
+                String sql = "CALL changeUserStatus('" + selectedUser.getUsername() + "', '" + "Declined" + "')";
+                stmt.execute(sql);
+            }
+        } else {
+            errorMessage.setText("Must select a user first!");
+        }
+        addToTable();
     }
 
-    public void approve(ActionEvent actionEvent) {
+    public void approve(ActionEvent actionEvent) throws SQLException {
+        //Administrator can approve a pending (or declined) account, can decline a
+        //pending account, but cannot decline an approved account
+
+        if (users.getSelectionModel().getSelectedItem() != null) {
+            User2 selectedUser = users.getSelectionModel().getSelectedItem();
+
+            ConnectionClass connectionClass = new ConnectionClass();
+            Connection connection = connectionClass.getConnection();
+            Statement stmt = connection.createStatement();
+            String sql = "CALL changeUserStatus('" + selectedUser.getUsername() + "', '" + "Approved" + "')";
+            stmt.execute(sql);
+
+        } else {
+            errorMessage.setText("Must select a user first!");
+        }
+        addToTable();
+
     }
 
     public void sort(ActionEvent actionEvent) throws SQLException {
@@ -123,5 +165,17 @@ public class AdminManageUser {
     }
 
     public void goBack(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(previousPage));
+        Parent root = null;
+        try {
+            Context.getInstance().previousPage = "../view/adminManageUser.fxml";
+            root = (Parent)fxmlLoader.load();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
