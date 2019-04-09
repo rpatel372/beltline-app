@@ -41,7 +41,6 @@
                   <String fx:value="Bus" />
                   <String fx:value="Bike" />
                   <String fx:value="All" />
-                  <String fx:value="Other" />
               </FXCollections>
           </items>
       </ChoiceBox>

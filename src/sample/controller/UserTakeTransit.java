@@ -33,7 +33,7 @@ public class UserTakeTransit {
     public TableColumn<Transit, String> typeCol;
     public TableColumn<Transit, String> routeCol;
     public TableColumn<Transit, Integer> priceCol;
-    public TableColumn<Transit, String> connectedCol;
+    public TableColumn<Transit, Integer> connectedCol;
 
     public ChoiceBox transportOptions;
     public ChoiceBox siteOptions;
@@ -48,7 +48,6 @@ public class UserTakeTransit {
     public String previousPage = "";
 
 
-    public static Transit chosenTransit = null;
 
     // HAVE THESE AS GLOBAL VARIABLES SO WHEN USER SELECTS TO SORT BY, YOU CAN USE THESE INSTEAD OF THE CURRENT VALUES OF THE
     // TEXTFIELD IN CASE THE USER DID NOT CLICK THE FILTER BUTTON YET
@@ -88,7 +87,6 @@ public class UserTakeTransit {
             e.printStackTrace();
         }
         list.add("All");
-        list.add("Other");
         siteOptions.getItems().addAll(list);
 
     }
@@ -212,7 +210,6 @@ public class UserTakeTransit {
         Statement stmt2 = null;
         try {
             stmt = connection.createStatement();
-            stmt2 = connection.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -224,7 +221,7 @@ public class UserTakeTransit {
 
             while (rs.next()) {
 
-                Transit newTransit = new Transit(rs.getString("TransitRoute"), rs.getString("TransitType"), rs.getDouble("TransitPrice"), rs.getInt("memberCount"));
+                Transit newTransit = new Transit(rs.getString("TransitRoute"), rs.getString("TransitType"), rs.getDouble("TransitPrice"), rs.getInt("memberCount"), 0);
                 transitsToAdd.add(newTransit);
 
             }

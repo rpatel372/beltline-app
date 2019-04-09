@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.AdminManageTransit">
+    <children>
+        <TableView fx:id="transitTable" layoutX="82.0" layoutY="195.0" prefHeight="362.0" prefWidth="661.0">
+            <columns>
+                <TableColumn fx:id="routeCol" editable="false" prefWidth="154.0" sortable="false" text="Route" />
+                <TableColumn fx:id="typeCol" editable="false" prefWidth="146.0" sortable="false" text="Transport Type" />
+                <TableColumn fx:id="priceCol" editable="false" prefWidth="87.0" sortable="false" text="Price" />
+                <TableColumn fx:id="connectedCol" editable="false" prefWidth="128.0" sortable="false" text="# Connected Sites" />
+            <TableColumn fx:id="loggedCol" editable="false" prefWidth="129.0" sortable="false" text="# Transits Logged" />
+            </columns>
+        </TableView>
+        <Button layoutX="95.0" layoutY="134.0" mnemonicParsing="false" onAction="#filter" prefHeight="33.0" prefWidth="54.0" text="Filter" />
+        <ChoiceBox fx:id="siteOptions" layoutX="165.0" layoutY="84.0" prefWidth="150.0">
+
+        </ChoiceBox>
+        <Label fx:id="errorMessage" layoutX="69.0" layoutY="565.0" textFill="#e12828">
+            <font>
+                <Font size="18.0" />
+            </font></Label>
+        <Label layoutX="69.0" layoutY="47.0" text="Transport Type" />
+        <ChoiceBox fx:id="transportOptions" layoutX="165.0" layoutY="43.0" prefWidth="150.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="MARTA" />
+                    <String fx:value="Bus" />
+                    <String fx:value="Bike" />
+                    <String fx:value="All" />
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+        <Button layoutX="380.0" layoutY="566.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+        <Label layoutX="478.0" layoutY="142.0" text="Sort By" />
+        <ChoiceBox fx:id="sortBySelection" layoutX="548.0" layoutY="138.0" prefWidth="150.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Type ASC" />
+                    <String fx:value="Type DESC" />
+                    <String fx:value="Price ASC" />
+                    <String fx:value="Price DESC" />
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+        <Button layoutX="705.0" layoutY="138.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
+        <Label layoutX="335.0" layoutY="7.0" text="Manage Transit">
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
+        <Label layoutX="69.0" layoutY="88.0" prefHeight="17.0" prefWidth="80.0" text="Contain Site" />
+      <TextField fx:id="route" layoutX="549.0" layoutY="51.0" />
+      <Label layoutX="506.0" layoutY="55.0" text="Route" />
+      <Label layoutX="476.0" layoutY="88.0" prefHeight="17.0" prefWidth="80.0" text="Price Range" />
+      <TextField fx:id="lowPrice" layoutX="549.0" layoutY="86.0" prefHeight="25.0" prefWidth="39.0" />
+      <TextField fx:id="highPrice" layoutX="621.0" layoutY="85.0" prefHeight="25.0" prefWidth="39.0" />
+      <Label layoutX="601.0" layoutY="88.0" text="--" />
+      <Button layoutX="231.0" layoutY="134.0" mnemonicParsing="false" onAction="#create" prefHeight="33.0" prefWidth="54.0" text="Create" />
+      <Button layoutX="294.0" layoutY="134.0" mnemonicParsing="false" onAction="#edit" prefHeight="33.0" prefWidth="54.0" text="Edit" />
+      <Button layoutX="359.0" layoutY="134.0" mnemonicParsing="false" onAction="#delete" prefHeight="33.0" prefWidth="54.0" text="Delete" />
+    </children>
+</AnchorPane>

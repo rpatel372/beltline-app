@@ -37,7 +37,7 @@
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="207.0" layoutY="315.0" mnemonicParsing="false" text="View Staff">
+        <Button layoutX="207.0" layoutY="315.0" mnemonicParsing="false" onAction="#viewStaff" text="View Staff">
             <font>
                 <Font size="20.0" />
             </font>
