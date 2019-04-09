@@ -149,9 +149,32 @@ public class AdminManageSite {
     }
 
     public void create(ActionEvent actionEvent) {
+
+
     }
 
-    public void edit(ActionEvent actionEvent) {
+    public void edit(ActionEvent actionEvent) throws IOException, SQLException {
+        // GET SELECTED SITE
+        if (siteTable.getSelectionModel().getSelectedItem() != null) {
+            //NAVIGATE TO edit site page & pass info to fxml file of site selected
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/adminEditSite.fxml"));
+            Parent root = null;
+            Site site =  siteTable.getSelectionModel().getSelectedItem();
+            root = (Parent)fxmlLoader.load();
+            AdminEditSite controller = fxmlLoader.<AdminEditSite>getController();
+            controller.setSite(site);
+            Context.getInstance().previousPage = "../view/adminManageSite.fxml";
+
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+
+        } else {
+            errorMessage.setText("Must select a site to edit!");
+        }
     }
 
     public void delete(ActionEvent actionEvent) throws SQLException {
