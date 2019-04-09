@@ -3,12 +3,18 @@ package sample.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
 import sample.model.Context;
 import sample.model.Transit;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -138,6 +144,18 @@ public class AdminManageTransit {
     }
 
     public void goBack(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(previousPage));
+        Parent root = null;
+        try {
+            Context.getInstance().previousPage = "../view/adminManageTransit.fxml";
+            root = (Parent)fxmlLoader.load();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void create(ActionEvent actionEvent) {
@@ -152,6 +170,11 @@ public class AdminManageTransit {
     public void sort(ActionEvent actionEvent) {
         if (sortBySelection.getValue() != null) {
             sorting = sortBySelection.getValue().toString();
+            try {
+                addToTable();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -42,7 +42,7 @@
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="178.0" layoutY="414.0" mnemonicParsing="false" text="View Site Report">
+        <Button layoutX="178.0" layoutY="414.0" mnemonicParsing="false" onAction="#viewSiteReport" text="View Site Report">
             <font>
                 <Font size="20.0" />
             </font>
