@@ -27,7 +27,7 @@
             <font>
                 <Font size="18.0" />
             </font></Label>
-        <Button layoutX="380.0" layoutY="566.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+        <Button layoutX="699.0" layoutY="566.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
         <Label layoutX="453.0" layoutY="124.0" text="Sort By" />
         <ChoiceBox fx:id="sortBy" layoutX="523.0" layoutY="120.0" prefWidth="150.0">
             <items>
@@ -54,7 +54,7 @@
         <Button layoutX="334.0" layoutY="116.0" mnemonicParsing="false" onAction="#delete" prefHeight="33.0" prefWidth="54.0" text="Delete" />
       <ChoiceBox fx:id="manager" layoutX="569.0" layoutY="57.0" prefWidth="150.0" />
       <Label layoutX="295.0" layoutY="61.0" prefHeight="17.0" prefWidth="80.0" text="Open Everyday" />
-      <ChoiceBox fx:id="openEveryday" layoutX="392.0" layoutY="57.0" prefHeight="25.0" prefWidth="94.0" >
+      <ChoiceBox fx:id="openEveryday" layoutX="392.0" layoutY="57.0" prefHeight="25.0" prefWidth="94.0">
           <items>
               <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Yes" />

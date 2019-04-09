@@ -3,15 +3,23 @@ package sample.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
 import sample.model.Context;
 import sample.model.Site;
 import sample.model.Transit;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,6 +40,8 @@ public class AdminManageSite {
     public TableColumn<Site, String> nameCol;
     public TableColumn<Site, String> managerCol;
     public TableColumn<Site, Integer> openCol;
+
+    public Label errorMessage;
 
 
     String nameO = "";
@@ -117,6 +127,18 @@ public class AdminManageSite {
     }
 
     public void goBack(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(previousPage));
+        Parent root = null;
+        try {
+            Context.getInstance().previousPage = "../view/adminManageSite.fxml";
+            root = (Parent)fxmlLoader.load();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sort(ActionEvent actionEvent) throws SQLException {
@@ -132,6 +154,20 @@ public class AdminManageSite {
     public void edit(ActionEvent actionEvent) {
     }
 
-    public void delete(ActionEvent actionEvent) {
+    public void delete(ActionEvent actionEvent) throws SQLException {
+        if (siteTable.getSelectionModel().getSelectedItem() != null) {
+            Site deletingSite = siteTable.getSelectionModel().getSelectedItem();
+            ConnectionClass connectionClass = new ConnectionClass();
+            Connection connection = connectionClass.getConnection();
+            Statement stmt = null;
+            stmt = connection.createStatement();
+            String sql = "CALL deleteSite('" + deletingSite.getName() + "')";
+            stmt.execute(sql);
+            errorMessage.setText("Site successfully deleted.");
+            errorMessage.setTextFill(Color.web("#75c24e"));
+            addToTable();
+        } else {
+            errorMessage.setText("You must select a site to delete!");
+        }
     }
 }

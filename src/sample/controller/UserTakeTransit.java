@@ -188,6 +188,7 @@ public class UserTakeTransit {
 
                     errorMessage.setText("Transit successfully logged.");
                     errorMessage.setTextFill(Color.web("#75c24e"));
+
                 }
             }
 
