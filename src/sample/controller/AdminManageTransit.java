@@ -9,9 +9,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
 import sample.model.Context;
+import sample.model.Site;
 import sample.model.Transit;
 
 import java.io.IOException;
@@ -159,12 +161,47 @@ public class AdminManageTransit {
     }
 
     public void create(ActionEvent actionEvent) {
+
     }
 
-    public void edit(ActionEvent actionEvent) {
+    public void edit(ActionEvent actionEvent) throws IOException, SQLException {
+        if (transitTable.getSelectionModel().getSelectedItem() != null) {
+            //NAVIGATE TO edit site page & pass info to fxml file of site selected
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/adminEditTransit.fxml"));
+            Parent root = null;
+            Transit transit =  transitTable.getSelectionModel().getSelectedItem();
+            root = (Parent)fxmlLoader.load();
+            AdminEditTransit controller = fxmlLoader.<AdminEditTransit>getController();
+            controller.initializeInfo(transit);
+
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+
+        } else {
+            errorMessage.setText("Must select a site to edit!");
+        }
     }
 
-    public void delete(ActionEvent actionEvent) {
+    public void delete(ActionEvent actionEvent) throws SQLException {
+        if (transitTable.getSelectionModel().getSelectedItem() != null) {
+            Transit deletingTransit = transitTable.getSelectionModel().getSelectedItem();
+            ConnectionClass connectionClass = new ConnectionClass();
+            Connection connection = connectionClass.getConnection();
+            Statement stmt = null;
+            stmt = connection.createStatement();
+            // key is a combo of (Type, Route)
+            String sql = "CALL deleteTransit('" + deletingTransit.getType() + "', '" + deletingTransit.getRoute() + "')";
+            stmt.execute(sql);
+            errorMessage.setText("Tranist successfully deleted.");
+            errorMessage.setTextFill(Color.web("#75c24e"));
+            addToTable();
+        } else {
+            errorMessage.setText("You must select a transit to delete!");
+        }
     }
 
     public void sort(ActionEvent actionEvent) {

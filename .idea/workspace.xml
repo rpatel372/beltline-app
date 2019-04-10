@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/sample/controller/AdminCreateSite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/AdminCreateSite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controller/AdminEditSite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/AdminEditSite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controller/AdminManageSite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/AdminManageSite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controller/AdminManageTransit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/AdminManageTransit.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,22 +80,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminEditSite.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="100" column="55" selection-start-line="100" selection-start-column="48" selection-end-line="100" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminManageSite.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="136" column="34" lean-forward="true" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="34" />
+            <state relative-caret-position="331">
+              <caret line="185" column="9" lean-forward="true" selection-start-line="166" selection-start-column="8" selection-end-line="185" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,23 +92,48 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/view/adminCreateSite.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+        <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminManageTransit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="45" column="87" selection-start-line="45" selection-start-column="87" selection-end-line="45" selection-end-column="87" />
+            <state relative-caret-position="167">
+              <caret line="99" column="55" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="65" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5811#5829#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminCreateSite.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/view/adminEditTransit.fxml">
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="42" column="14" lean-forward="true" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminEditTransit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+            <state relative-caret-position="639">
+              <caret line="138" column="20" lean-forward="true" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#795#803#0" expanded="true" />
+                <element signature="e#3827#3835#0" expanded="true" />
+                <element signature="e#4226#4234#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/model/Transit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -127,6 +143,27 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1773" column="22" selection-start-line="1773" selection-start-column="22" selection-end-line="1773" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminEditSite.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="370">
+              <caret line="99" column="37" lean-forward="true" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,10 +183,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>emailsReturned</find>
-      <find>choice</find>
-      <find>sortBy</find>
-      <find>sortby</find>
       <find>logt</find>
       <find>logtransit</find>
       <find>username</find>
@@ -165,17 +198,21 @@
       <find>zip</find>
       <find>zipcode</find>
       <find>matches</find>
-      <find>edit</find>
       <find>errormessage.s</find>
       <find>gobak</find>
-      <find>goback</find>
-      <find>call</find>
       <find>all</find>
       <find>create(</find>
-      <find>createSite</find>
-      <find>create</find>
       <find>.equals</find>
       <find>list</find>
+      <find>create</find>
+      <find>createSite</find>
+      <find>goback</find>
+      <find>add</find>
+      <find>edit</find>
+      <find>call</find>
+      <find>previousPage</find>
+      <find>initially</find>
+      <find>globalTransit</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -189,8 +226,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/model/User.java" />
-        <option value="$PROJECT_DIR$/src/sample/view/registerVisitorOnly.fxml" />
         <option value="$PROJECT_DIR$/src/sample/view/registerEmployeeOnly.fxml" />
         <option value="$PROJECT_DIR$/src/sample/view/registerEmployeeVisito.fxml" />
         <option value="$PROJECT_DIR$/src/sample/view/registerEmployeeVisitor.fxml" />
@@ -228,7 +263,6 @@
         <option value="$PROJECT_DIR$/src/sample/model/Transit.java" />
         <option value="$PROJECT_DIR$/src/sample/view/userTakeTransit.fxml" />
         <option value="$PROJECT_DIR$/src/sample/view/adminManageTransit.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/controller/AdminManageTransit.java" />
         <option value="$PROJECT_DIR$/src/sample/model/Site.java" />
         <option value="$PROJECT_DIR$/src/sample/view/managerOnlyMenu.fxml" />
         <option value="$PROJECT_DIR$/src/sample/controller/ManagerOnlyMenu.java" />
@@ -237,8 +271,11 @@
         <option value="$PROJECT_DIR$/src/sample/view/adminEditSite.fxml" />
         <option value="$PROJECT_DIR$/src/sample/view/adminCreateSite.fxml" />
         <option value="$PROJECT_DIR$/src/sample/controller/AdminManageSite.java" />
-        <option value="$PROJECT_DIR$/src/sample/controller/AdminEditSite.java" />
         <option value="$PROJECT_DIR$/src/sample/controller/AdminCreateSite.java" />
+        <option value="$PROJECT_DIR$/src/sample/controller/AdminManageTransit.java" />
+        <option value="$PROJECT_DIR$/src/sample/controller/AdminEditSite.java" />
+        <option value="$PROJECT_DIR$/src/sample/view/adminEditTransit.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/controller/AdminEditTransit.java" />
         <option value="$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java" />
       </list>
     </option>
@@ -446,12 +483,12 @@
       <workItem from="1554082490162" duration="42752000" />
       <workItem from="1554391902889" duration="61385000" />
       <workItem from="1554655720582" duration="114000" />
-      <workItem from="1554656061770" duration="45475000" />
+      <workItem from="1554656061770" duration="53343000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151028000" />
+    <option name="totallyTimeSpent" value="158896000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -466,7 +503,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.12526652" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.20575693" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -516,23 +553,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/view/registerEmployeeVisito.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/sample/view/registerEmployeeOnly.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="65" column="45" selection-end-line="134" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/view/userMenu.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="80" lean-forward="true" selection-start-line="7" selection-start-column="80" selection-end-line="7" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/view/visitorMenu.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
@@ -804,13 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/Transit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/view/userTakeTransit.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
@@ -843,17 +856,6 @@
             <element signature="e#1680#1681#0" expanded="true" />
             <element signature="e#1739#1740#0" expanded="true" />
             <element signature="e#1811#1812#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminManageTransit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="157" column="9" lean-forward="true" selection-start-line="146" selection-start-column="8" selection-end-line="157" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2650#2659#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -933,25 +935,15 @@
     <entry file="file://$PROJECT_DIR$/src/sample/view/adminCreateSite.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
+        <state relative-caret-position="337">
           <caret line="45" column="87" selection-start-line="45" selection-start-column="87" selection-end-line="45" selection-end-column="87" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminManageSite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="136" column="34" lean-forward="true" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminEditSite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="100" column="55" selection-start-line="100" selection-start-column="48" selection-end-line="100" selection-end-column="55" />
+        <state relative-caret-position="331">
+          <caret line="185" column="9" lean-forward="true" selection-start-line="166" selection-start-column="8" selection-end-line="185" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -960,10 +952,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminCreateSite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+        <state relative-caret-position="72">
+          <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminManageTransit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="99" column="55" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5811#5829#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/view/adminEditTransit.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="42" column="14" lean-forward="true" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminEditSite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="99" column="37" lean-forward="true" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1773" column="22" selection-start-line="1773" selection-start-column="22" selection-end-line="1773" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/Transit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminEditTransit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="138" column="20" lean-forward="true" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#795#803#0" expanded="true" />
+            <element signature="e#3827#3835#0" expanded="true" />
+            <element signature="e#4226#4234#0" expanded="true" />
           </folding>
         </state>
       </provider>
