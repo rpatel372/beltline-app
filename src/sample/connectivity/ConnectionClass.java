@@ -7,7 +7,7 @@ public class ConnectionClass {
     public Connection connection;
 
     public Connection getConnection() {
-        String dbName = "beltline2";
+        String dbName = "beltline";
         String username = "root";
         String pass = "!";
 

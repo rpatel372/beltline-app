@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.AdminOnlyMenu">
     <children>
-        <Label layoutX="215.0" layoutY="27.0" text="Administrator Functionality">
+        <Label layoutX="215.0" layoutY="27.0" text="Administrator Functionality" AnchorPane.bottomAnchor="527.0" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="214.0" AnchorPane.topAnchor="27.0">
             <font>
                 <Font size="31.0" />
             </font>
