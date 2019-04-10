@@ -152,7 +152,6 @@ public class AdminManageSite {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/adminCreateSite.fxml"));
         Parent root = null;
         try {
-            Context.getInstance().previousPage = "../view/adminManageSite.fxml";
             root = (Parent)fxmlLoader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -174,7 +173,7 @@ public class AdminManageSite {
             root = (Parent)fxmlLoader.load();
             AdminEditSite controller = fxmlLoader.<AdminEditSite>getController();
             controller.setSite(site);
-            Context.getInstance().previousPage = "../view/adminManageSite.fxml";
+
 
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

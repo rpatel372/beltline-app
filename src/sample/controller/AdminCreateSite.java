@@ -35,6 +35,7 @@ public class AdminCreateSite {
     public Label errorMessage;
 
     public void initialize() throws SQLException {
+        manager.getItems().clear();
         previousPage = Context.getInstance().currentPreviousPage();
 
         ConnectionClass connectionClass = new ConnectionClass();
@@ -43,7 +44,7 @@ public class AdminCreateSite {
         stmt = connection.createStatement();
         String sql = "CALL getManagersNotAssignedToSite('" + "')";
         ObservableList<String> list = FXCollections.observableArrayList();
-        list.clear();
+
         ResultSet rs = stmt.executeQuery(sql);
         while (rs.next()) {
             list.add(rs.getString(1));
@@ -101,7 +102,7 @@ public class AdminCreateSite {
     }
 
     public void goBack(ActionEvent actionEvent) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(previousPage));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/adminManageSite.fxml"));
         Parent root = null;
         try {
             root = (Parent)fxmlLoader.load();

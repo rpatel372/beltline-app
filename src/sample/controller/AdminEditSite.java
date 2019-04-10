@@ -31,8 +31,6 @@ public class AdminEditSite {
     public ComboBox manager;
     public CheckBox openEveryday;
 
-    String previousPage;
-
     Site globalSite;
 
     public Label errorMessage;
@@ -42,7 +40,7 @@ public class AdminEditSite {
         globalSite = site;
         System.out.println(globalSite.getName());
         //add managers to dropdown that are not assigned to a site yet
-        previousPage = Context.getInstance().currentPreviousPage();
+
 
         ConnectionClass connectionClass = new ConnectionClass();
         Connection connection = connectionClass.getConnection();
@@ -118,13 +116,14 @@ public class AdminEditSite {
     }
 
     public void goBack(ActionEvent actionEvent) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(previousPage));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/adminManageSite.fxml"));
         Parent root = null;
         try {
             root = (Parent)fxmlLoader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
+
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
