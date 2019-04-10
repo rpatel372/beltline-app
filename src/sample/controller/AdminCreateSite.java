@@ -43,6 +43,7 @@ public class AdminCreateSite {
         stmt = connection.createStatement();
         String sql = "CALL getManagersNotAssignedToSite('" + "')";
         ObservableList<String> list = FXCollections.observableArrayList();
+        list.clear();
         ResultSet rs = stmt.executeQuery(sql);
         while (rs.next()) {
             list.add(rs.getString(1));
@@ -53,7 +54,7 @@ public class AdminCreateSite {
     public void createSite(ActionEvent actionEvent) throws SQLException {
 
         if (name.getText().trim().equals("") || zipcode.getText().trim().equals("")  || manager.getValue() == null) {
-            errorMessage.setText("You must fill out all fields!");
+            errorMessage.setText("You must fill out all fields except address!");
         } else if (!zipcode.getText().matches("[0-9]{5}")) { //make sure zipcode is five digits
             errorMessage.setText("Zip code must be 5 digits.");
         } else {
@@ -87,6 +88,13 @@ public class AdminCreateSite {
                     //pass in new site name into REFRESH PAGE (i.e. call setSite again) so new info can be displayed
                     errorMessage.setText("Site successfully created.");
                     errorMessage.setTextFill(Color.web("#75c24e"));
+
+                    name.setText("");
+                    zipcode.setText("");
+                    address.setText("");
+                    manager.setValue(null);
+                    openEveryday.setSelected(false);
+                    initialize();
                 }
             }
         }
