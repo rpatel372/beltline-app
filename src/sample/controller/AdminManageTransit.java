@@ -185,6 +185,7 @@ public class AdminManageTransit {
             AdminEditTransit controller = fxmlLoader.<AdminEditTransit>getController();
             controller.initializeInfo(transit);
 
+
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
