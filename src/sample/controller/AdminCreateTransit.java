@@ -88,17 +88,21 @@ public class AdminCreateTransit {
 
                         //allow for edit site
                         if (canYouAdd) {
-                            String sql10 = "CALL addTransit('" + type.getValue().toString() + "', '" + route.getText().trim() + "', '" + price.getText().trim() + "')";
-                            stmt.execute(sql10);
+                            if (!route.getText().trim().matches("[a-zA-Z0-9]+")) {
+                                String sql10 = "CALL addTransit('" + type.getValue().toString() + "', '" + route.getText().trim() + "', '" + price.getText().trim() + "')";
+                                stmt.execute(sql10);
 
 
-                            for (String t : connectedSites.getSelectionModel().getSelectedItems()) { //add connected sites
-                                String sql11 = "CALL addConnectedSite('" + t + "', '"
-                                        + type.getValue().toString() + "', '" + route.getText().trim() + "')";
-                                stmt.execute(sql11);
+                                for (String t : connectedSites.getSelectionModel().getSelectedItems()) { //add connected sites
+                                    String sql11 = "CALL addConnectedSite('" + t + "', '"
+                                            + type.getValue().toString() + "', '" + route.getText().trim() + "')";
+                                    stmt.execute(sql11);
+                                }
+                                errorMessage.setText("Transit successfully added.");
+                                errorMessage.setTextFill(Color.web("#75c24e"));
+                            } else {
+                                errorMessage.setText("Route must be numeric or alphanumeric only");
                             }
-                            errorMessage.setText("Transit successfully added.");
-                            errorMessage.setTextFill(Color.web("#75c24e"));
                         }
 
 

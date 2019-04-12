@@ -108,48 +108,51 @@ public class AdminEditTransit {
 
                         //allow for edit site
                         if (canYouAdd) {
-                            String sql10 = "CALL editTransit('" + globalTransit.getType() + "', '"
-                                    + globalTransit.getRoute() + "', '"
-                                    + route.getText().trim() + "', '" + price.getText().trim() + "')";
-                            stmt.execute(sql10);
+                            if (!route.getText().trim().matches("[a-zA-Z0-9]+")) {
+                                String sql10 = "CALL editTransit('" + globalTransit.getType() + "', '"
+                                        + globalTransit.getRoute() + "', '"
+                                        + route.getText().trim() + "', '" + price.getText().trim() + "')";
+                                stmt.execute(sql10);
 
-                            //TODO: delete all unselected connected sites
-                            ArrayList<String> toRemove = new ArrayList<String>();
-                            for (String t : initiallyAdded) {
-                                if (!connectedSites.getSelectionModel().getSelectedItems().contains(t)) {
-                                    toRemove.add(t);
-                                    System.out.println(t);
+                                //TODO: delete all unselected connected sites
+                                ArrayList<String> toRemove = new ArrayList<String>();
+                                for (String t : initiallyAdded) {
+                                    if (!connectedSites.getSelectionModel().getSelectedItems().contains(t)) {
+                                        toRemove.add(t);
+                                        System.out.println(t);
+                                    }
                                 }
-                            }
 
 
-                            //                        System.out.println("***********************");
-                            //TODO: add all selected connected sites
-                            ArrayList<String> toAdd = new ArrayList<String>();
-                            for (String t : connectedSites.getSelectionModel().getSelectedItems()) {
-                                if (!initiallyAdded.contains(t)) {
-                                    toAdd.add(t);
-                                    System.out.println(t);
+                                //                        System.out.println("***********************");
+                                //TODO: add all selected connected sites
+                                ArrayList<String> toAdd = new ArrayList<String>();
+                                for (String t : connectedSites.getSelectionModel().getSelectedItems()) {
+                                    if (!initiallyAdded.contains(t)) {
+                                        toAdd.add(t);
+                                        System.out.println(t);
+                                    }
                                 }
-                            }
 
-                            for (String t : toAdd) { //add connected sites
-                                String sql11 = "CALL addConnectedSite('" + t + "', '"
-                                        + type.getText().trim() + "', '" + route.getText().trim() + "')";
-                                stmt.execute(sql11);
-                            }
-                            for (String t : toRemove) {//remove deselected connected sites
-                                String sql12 = "CALL removeConnectedSite('" + t + "', '"
-                                        + type.getText().trim() + "', '" + route.getText().trim() + "')";
-                                stmt.execute(sql12);
-                            }
-                            errorMessage.setText("Transit successfully edited.");
-                            errorMessage.setTextFill(Color.web("#75c24e"));
+                                for (String t : toAdd) { //add connected sites
+                                    String sql11 = "CALL addConnectedSite('" + t + "', '"
+                                            + type.getText().trim() + "', '" + route.getText().trim() + "')";
+                                    stmt.execute(sql11);
+                                }
+                                for (String t : toRemove) {//remove deselected connected sites
+                                    String sql12 = "CALL removeConnectedSite('" + t + "', '"
+                                            + type.getText().trim() + "', '" + route.getText().trim() + "')";
+                                    stmt.execute(sql12);
+                                }
+                                errorMessage.setText("Transit successfully edited.");
+                                errorMessage.setTextFill(Color.web("#75c24e"));
 
-                            Transit newTransit = new Transit(route.getText().trim(), type.getText().trim(), 0, 0, 0);
-                            initializeInfo(newTransit);
+                                Transit newTransit = new Transit(route.getText().trim(), type.getText().trim(), 0, 0, 0);
+                                initializeInfo(newTransit);
+                            }
+                        } else {
+                            errorMessage.setText("Route must be numeric or alphanumeric only");
                         }
-
 
                     } else {
                         errorMessage.setText("Money is not in correct format");
