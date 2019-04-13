@@ -74,7 +74,7 @@ public class AdminEditSite {
     public void editSite(ActionEvent actionEvent) throws SQLException {
         //make sure all fields are filled out
         if (name.getText().trim().equals("") || zipcode.getText().trim().equals("")) {
-            errorMessage.setText("You must fill out all fields!");
+            errorMessage.setText("You must fill out all fields except address!");
         } else if (!zipcode.getText().matches("[0-9]{5}")) { //make sure zipcode is five digits
             errorMessage.setText("Zip code must be 5 digits.");
         } else {
@@ -82,35 +82,42 @@ public class AdminEditSite {
             ConnectionClass connectionClass = new ConnectionClass();
             Connection connection = connectionClass.getConnection();
             Statement stmt = connection.createStatement();
-            String sql = "CALL checkIfSiteNameUnique('" + name.getText().trim() + "')";
-            ResultSet rs = stmt.executeQuery(sql);
-            if (rs.next()) {
-                if (rs.getInt(1) > 0) {
-                    errorMessage.setText("This site name is already in use!");
+            boolean canYouAdd = true;
+            if (!globalSite.getName().equals(name.getText())) {
+                String sql = "CALL checkIfSiteNameUnique('" + name.getText().trim() + "')";
+                ResultSet rs = stmt.executeQuery(sql);
+                if (rs.next()) {
+                    if (rs.getInt(1) > 0) {
+                        errorMessage.setText("This site name is already in use!");
+                        canYouAdd = false;
+                    }
+                }
+            }
+            //CALL EDIT SITE
+            if (canYouAdd) {
+                String open = "";
+                String add = "";
+                if (openEveryday.isSelected()) {
+                    open = "Yes";
                 } else {
-                    //CALL EDIT SITE
-                    String open = "";
-                    String add = "";
-                    if (openEveryday.isSelected()) {
-                        open = "Yes";
-                    } else {
-                        open = "No";
-                    }
-                    if (address.getText().trim().equals("")) {
-                        add = "NULL";
-                    } else {
-                        add = "'" + address.getText().trim() + "'";
-                    }
-                    String sql10 = "CALL editSite('" + globalSite.getName() + "', '" + name.getText().trim() + "', '" + zipcode.getText().trim()
-                            + "', " + add + ", '" + manager.getValue().toString() + "', '"
-                            + open + "')";
-                    stmt.execute(sql10);
-                    //pass in new site name into REFRESH PAGE (i.e. call setSite again) so new info can be displayed
-                    errorMessage.setText("Site successfully edited.");
-                    errorMessage.setTextFill(Color.web("#75c24e"));
+                    open = "No";
+                }
+                if (address.getText().trim().equals("")) {
+                    add = "NULL";
+                } else {
+                    add = "'" + address.getText().trim() + "'";
+                }
+                String sql10 = "CALL editSite('" + globalSite.getName() + "', '" + name.getText().trim() + "', '" + zipcode.getText().trim()
+                        + "', " + add + ", '" + manager.getValue().toString() + "', '"
+                        + open + "')";
+                stmt.execute(sql10);
+                //pass in new site name into REFRESH PAGE (i.e. call setSite again) so new info can be displayed
+                errorMessage.setText("Site successfully edited.");
+                errorMessage.setTextFill(Color.web("#75c24e"));
 //                Site newSite = new Site(name.getText().trim(), manager.getValue().toString(), open);
 //                setSite(newSite);
-                }
+            } else {
+                errorMessage.setText("Site name already in use!");
             }
         }
     }
@@ -119,7 +126,7 @@ public class AdminEditSite {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/adminManageSite.fxml"));
         Parent root = null;
         try {
-            root = (Parent)fxmlLoader.load();
+            root = (Parent) fxmlLoader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

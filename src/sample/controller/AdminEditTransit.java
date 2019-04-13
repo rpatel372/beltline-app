@@ -70,7 +70,7 @@ public class AdminEditTransit {
         }
     }
     public void update(ActionEvent actionEvent) throws SQLException {
-        System.out.println(connectedSites.getSelectionModel().getSelectedIndices().size());
+//        System.out.println(connectedSites.getSelectionModel().getSelectedIndices().size());
         if (route.getText().trim().equals("") || price.getText().trim().equals("")) {
             errorMessage.setText("All fields are required!");
         } else if (connectedSites.getSelectionModel().getSelectedIndices().size() < 2) {
@@ -81,21 +81,24 @@ public class AdminEditTransit {
                 double d = Double.parseDouble(price.getText().trim());
             } catch (NumberFormatException | NullPointerException nfe) {
                 canYouAdd = false;
-                errorMessage.setText("Your number does not have the correct format.");
+                errorMessage.setText("Your price does not have the correct format.");
             }
             if (canYouAdd) {
-
+                System.out.println("Are you here? 1");
                 if (Double.parseDouble(price.getText().trim()) < 0) {
                     errorMessage.setText("You cannot have a negative price.");
                 } else {
+                    System.out.println("Are you here? 2");
                     String[] splitter = price.getText().trim().toString().split("\\.");
                     splitter[0].length();   // Before Decimal Count
                     int decimalLength = splitter[1].length();  // After Decimal Count
                     if (decimalLength == 2 || decimalLength == 1) {
+                        System.out.println("Are you here? 3");
                         ConnectionClass connectionClass = new ConnectionClass();
                         Connection connection = connectionClass.getConnection();
                         Statement stmt = connection.createStatement();
                         if (!globalTransit.getRoute().equals(route.getText().trim())) {
+                            System.out.println("Are you here? 4");
                             String sql = "CALL checkIfTransitUnique('" + type.getText().trim() + "', '" + route.getText().trim() + "')";
                             ResultSet rs = stmt.executeQuery(sql);
                             if (rs.next()) {
@@ -107,8 +110,11 @@ public class AdminEditTransit {
                         }
 
                         //allow for edit site
+                        System.out.println("Are you here? 7");
                         if (canYouAdd) {
-                            if (!route.getText().trim().matches("[a-zA-Z0-9]+")) {
+                            System.out.println("Are you here? 5");
+                            if (route.getText().trim().matches("[a-zA-Z0-9]+")) {
+                                System.out.println("Are you here? 6");
                                 String sql10 = "CALL editTransit('" + globalTransit.getType() + "', '"
                                         + globalTransit.getRoute() + "', '"
                                         + route.getText().trim() + "', '" + price.getText().trim() + "')";
@@ -119,7 +125,6 @@ public class AdminEditTransit {
                                 for (String t : initiallyAdded) {
                                     if (!connectedSites.getSelectionModel().getSelectedItems().contains(t)) {
                                         toRemove.add(t);
-                                        System.out.println(t);
                                     }
                                 }
 

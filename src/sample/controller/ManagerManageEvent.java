@@ -1,16 +1,22 @@
 package sample.controller;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
+import sample.model.Context;
 import sample.model.Event;
 import sample.model.TranHist;
+import sample.model.Transit;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,6 +44,8 @@ public class ManagerManageEvent {
     public TableColumn visitsCol;
     public TableColumn revenueCol;
 
+    public ComboBox sortBy;
+
     public Label errorMessage;
 
     //GLOBAL VARIABLES TO HOLD VALUES SELECTED
@@ -53,8 +61,16 @@ public class ManagerManageEvent {
     String higherRevenueValue = "99999999";
     String sortBySelection = "";
 
-    public void addToTable() throws SQLException {
+    String siteName;
 
+    public void setSiteName(String sname) {
+        siteName = sname;
+    }
+
+    String previousPage = Context.getInstance().currentPreviousPage();
+
+    public void addToTable() throws SQLException {
+        errorMessage.setText("");
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         staffCountCol.setCellValueFactory(new PropertyValueFactory<>("staffCount"));
         durationCol.setCellValueFactory(new PropertyValueFactory<>("duration"));
@@ -73,7 +89,7 @@ public class ManagerManageEvent {
                 + lowerDurationValue + "', '" + higherDurationValue
                 + "', '" + lowerVisitsValue + "', '" + higherVisitsValue
                 + "', '" + lowerRevenueValue
-                + "', '" + higherRevenueValue + "', '" + sortBySelection + "')";
+                + "', '" + higherRevenueValue + "', '" + siteName + "', '" + sortBySelection + "')";
 
         System.out.println(sql);
 
@@ -84,7 +100,9 @@ public class ManagerManageEvent {
                             rs.getInt(3),
                             rs.getInt(2),
                             rs.getInt(4),
-                            rs.getInt(5));
+                            rs.getInt(5),
+                            rs.getString(6),
+                            rs.getString(7));
             eventsToAdd.add(newEvent);
         }
         eventTable.getItems().addAll(eventsToAdd);
@@ -224,23 +242,73 @@ public class ManagerManageEvent {
             }
 
             addToTable();
-            errorMessage.setText("");
+
         }
     }
 
-    public void sort(ActionEvent actionEvent) {
+    public void sort(ActionEvent actionEvent) throws SQLException {
+        if (sortBy.getValue() != null) {
+            sortBySelection = sortBy.getValue().toString();
+        }
+        addToTable();
+    }
+
+    public void create(ActionEvent actionEvent) throws SQLException {
 
     }
 
-    public void create(ActionEvent actionEvent) {
+    public void edit(ActionEvent actionEvent) throws SQLException {
+        if (eventTable.getSelectionModel().getSelectedItem() != null) {
+            String page = "../view/managerEditEvent.fxml";
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(page));
+            Parent root = null;
+            try {
+                Context.getInstance().previousPage = "../view/managerManageEvent.fxml";
+                root = (Parent) fxmlLoader.load();
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                ManagerEditEvent controller = fxmlLoader.<ManagerEditEvent>getController();
+                controller.initializeInfo(eventTable.getSelectionModel().getSelectedItem());
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            errorMessage.setText("You must select an event to view/edit!");
+        }
     }
 
-    public void edit(ActionEvent actionEvent) {
-    }
-
-    public void delete(ActionEvent actionEvent) {
+    public void delete(ActionEvent actionEvent) throws SQLException {
+        if (eventTable.getSelectionModel().getSelectedItem() != null) {
+            Event deletingEvent = eventTable.getSelectionModel().getSelectedItem();
+            ConnectionClass connectionClass = new ConnectionClass();
+            Connection connection = connectionClass.getConnection();
+            Statement stmt = null;
+            stmt = connection.createStatement();
+            // key is a combo of (Type, Route)
+            String sql = "CALL deleteEvent('" + deletingEvent.getName() + "', '" + deletingEvent.getStartDate() + "', '" + deletingEvent.getSiteName()+ "')";
+            stmt.execute(sql);
+            errorMessage.setText("Tranist successfully deleted.");
+            errorMessage.setTextFill(Color.web("#75c24e"));
+            addToTable();
+        } else {
+            errorMessage.setText("You must select an event to delete!");
+        }
     }
 
     public void goBack(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(previousPage));
+        Parent root = null;
+        try {
+            Context.getInstance().previousPage = "../view/adminManageTransit.fxml";
+            root = (Parent)fxmlLoader.load();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
