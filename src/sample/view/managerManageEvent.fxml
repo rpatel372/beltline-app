@@ -72,11 +72,11 @@
         <Button layoutX="90.0" layoutY="272.0" mnemonicParsing="false" onAction="#filter" text="Filter" />
         <TableView fx:id="eventTable" layoutX="72.0" layoutY="305.0" prefHeight="238.0" prefWidth="672.0">
             <columns>
-                <TableColumn fx:id="nameCol" prefWidth="185.0" sortable="false" text="Name" />
-                <TableColumn fx:id="staffCountCol" prefWidth="94.0" sortable="false" text="Staff Count" />
-                <TableColumn fx:id="durationCol" prefWidth="104.0" sortable="false" text="Duration (Days)" />
-                <TableColumn fx:id="visitsCol" minWidth="0.0" prefWidth="115.0" sortable="false" text="Total Visits" />
-                <TableColumn fx:id="revenueCol" prefWidth="172.0" sortable="false" text="Total Revenue ($)" />
+                <TableColumn fx:id="nameCol" prefWidth="209.0" sortable="false" text="Name" />
+                <TableColumn fx:id="staffCountCol" prefWidth="101.0" sortable="false" text="Staff Count" />
+                <TableColumn fx:id="durationCol" prefWidth="110.0" sortable="false" text="Duration (Days)" />
+                <TableColumn fx:id="visitsCol" minWidth="0.0" prefWidth="118.0" sortable="false" text="Total Visits" />
+                <TableColumn fx:id="revenueCol" prefWidth="132.0" sortable="false" text="Total Revenue ($)" />
             </columns>
         </TableView>
         <ComboBox fx:id="sortBy" layoutX="509.0" layoutY="226.0" prefWidth="150.0">

@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
+import sample.model.Context;
 import sample.model.Event;
 import sample.model.Transit;
 
@@ -93,13 +94,13 @@ public class ManagerEditEvent {
         }
 
         //GET ALL STAFF POSSIBLE
-        String sql2 = "CALL getAllStaff()";
+        String sql2 = "CALL getAllAvailableStaff('" + startDate.getText() + "', '" + endDate.getText() + "')";
         ObservableList<String> list = FXCollections.observableArrayList();
         ResultSet rs2 = stmt.executeQuery(sql2);
         while (rs2.next()) {
             list.add(rs2.getString(1) + " " + rs2.getString(2));
         }
-        staffAssigned.setItems(list);
+
 
         //SELECT CURRENT STAFF SELECTED
         initiallyAdded.clear();
@@ -108,10 +109,13 @@ public class ManagerEditEvent {
         staffAssigned.getSelectionModel().clearSelection();
         staffAssigned.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         while (rs6.next()) {
-            staffAssigned.getSelectionModel().select(rs6.getString(1) + " " + rs6.getString(2));
+            list.add(rs6.getString(1) + " " + rs6.getString(2));
             initiallyAdded.add(rs6.getString(1) + " " + rs6.getString(2));
         }
-
+        staffAssigned.setItems(list);
+        for (String c : initiallyAdded) {
+            staffAssigned.getSelectionModel().select(c);
+        }
     }
 
     public void addToTable() throws SQLException {
@@ -261,7 +265,7 @@ public class ManagerEditEvent {
                         + splitted[0].trim() + "', '" + splitted[1].trim() + "')";
                 stmt.execute(sql12);
             }
-            errorMessage.setText("Transit successfully edited.");
+            errorMessage.setText("Event successfully edited.");
             errorMessage.setTextFill(Color.web("#75c24e"));
 
             initializeInfo(globalEvent);
@@ -273,8 +277,11 @@ public class ManagerEditEvent {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/managerManageEvent.fxml"));
         Parent root = null;
         try {
-            root = (Parent)fxmlLoader.load();
+            Context.getInstance().previousPage = "../view/managerManageEvent.fxml";
+            root = (Parent) fxmlLoader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            ManagerManageEvent controller = fxmlLoader.<ManagerManageEvent>getController();
+            controller.setSiteName(globalEvent.getSiteName());
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
