@@ -84,7 +84,7 @@ public class ManagerOnlyMenu {
     }
 
     public void transitHistory(ActionEvent actionEvent) {
-        navigate(actionEvent, "../view/transitHistory.fxml");
+        navigate(actionEvent, "../view/adminManageUser.fxml");
     }
 
     public void viewStaff(ActionEvent actionEvent) {

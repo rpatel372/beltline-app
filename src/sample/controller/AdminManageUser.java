@@ -56,7 +56,7 @@ public class AdminManageUser {
         userTypeCol.setCellValueFactory(new PropertyValueFactory<>("userType"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        users.getItems().clear();
+
         List<User2> usersToAdd = new ArrayList<User2>();
         ConnectionClass connectionClass = new ConnectionClass();
         Connection connection = connectionClass.getConnection();
@@ -92,14 +92,19 @@ public class AdminManageUser {
     }
 
     public void filter(ActionEvent actionEvent) throws SQLException {
+        users.getItems().clear();
+        boolean isItVisitor = false;
         uname = username.getText().trim();
         if (type.getValue() == null || type.getValue().toString().equals("All")) {
             utype = "";
             emptype = "";
-        } else if (type.getValue().toString().equals("User")
-                || type.getValue().toString().equals("Visitor")) {
-            utype = type.getValue().toString();
+        } else if (type.getValue().toString().equals("User")) {
+            utype = "";
             emptype = "";
+        } else if (type.getValue().toString().equals("Visitor")) {
+            utype = "Visitor";
+            emptype = "";
+            isItVisitor = true;
         } else {
             utype = "";
             emptype = type.getValue().toString();
@@ -112,11 +117,16 @@ public class AdminManageUser {
         }
         //CHECK EMPLOYEE
 
-
         addToTable();
+        if (isItVisitor) {
+            utype = "Employee-Visitor";
+            emptype = "";
+            addToTable();
+        }
     }
 
     public void decline(ActionEvent actionEvent) throws SQLException {
+        users.getItems().clear();
         //Administrator can approve a pending (or declined) account, can decline a
         //pending account, but cannot decline an approved account
 
@@ -135,9 +145,20 @@ public class AdminManageUser {
             errorMessage.setText("Must select a user first!");
         }
         addToTable();
+
+        if (utype == "Visitor") {
+            utype = "Employee-Visitor";
+            emptype = "";
+            addToTable();
+        } else if (utype == "Employee-Visitor") {
+            utype = "Visitor";
+            emptype = "";
+            addToTable();
+        }
     }
 
     public void approve(ActionEvent actionEvent) throws SQLException {
+        users.getItems().clear();
         //Administrator can approve a pending (or declined) account, can decline a
         //pending account, but cannot decline an approved account
 
@@ -155,13 +176,34 @@ public class AdminManageUser {
         }
         addToTable();
 
+        if (utype == "Visitor") {
+            utype = "Employee-Visitor";
+            emptype = "";
+            addToTable();
+        } else if (utype == "Employee-Visitor") {
+            utype = "Visitor";
+            emptype = "";
+            addToTable();
+        }
+
     }
 
     public void sort(ActionEvent actionEvent) throws SQLException {
+        users.getItems().clear();
         if (sortBy.getValue() != null) {
+
             sortParam = sortBy.getValue().toString();
         }
         addToTable();
+        if (utype == "Visitor") {
+            utype = "Employee-Visitor";
+            emptype = "";
+            addToTable();
+        } else if (utype == "Employee-Visitor") {
+            utype = "Visitor";
+            emptype = "";
+            addToTable();
+        }
     }
 
     public void goBack(ActionEvent actionEvent) {

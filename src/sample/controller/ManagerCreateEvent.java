@@ -188,7 +188,7 @@ public class ManagerCreateEvent {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/managerManageEvent.fxml"));
         Parent root = null;
         try {
-            Context.getInstance().previousPage = "../view/managerManageEvent.fxml";
+
             root = (Parent) fxmlLoader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             ManagerManageEvent controller = fxmlLoader.<ManagerManageEvent>getController();

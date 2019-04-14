@@ -24,7 +24,7 @@
          <font>
             <Font size="15.0" />
          </font></Label>
-      <Label layoutX="557.0" layoutY="68.0" text="Price ($)">
+      <Label layoutX="587.0" layoutY="68.0" text="Price ($)">
          <font>
             <Font size="15.0" />
          </font></Label>
@@ -32,7 +32,7 @@
          <font>
             <Font size="15.0" />
          </font></Label>
-      <Label layoutX="550.0" layoutY="114.0" text="End Date">
+      <Label layoutX="576.0" layoutY="114.0" text="End Date">
          <font>
             <Font size="15.0" />
          </font></Label>
@@ -46,12 +46,12 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="price" layoutX="644.0" layoutY="68.0">
+      <Label fx:id="price" layoutX="674.0" layoutY="68.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="endDate" layoutX="638.0" layoutY="114.0">
+      <Label fx:id="endDate" layoutX="660.0" layoutY="114.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -66,12 +66,12 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="551.0" layoutY="156.0" text="Capacity">
+      <Label layoutX="584.0" layoutY="156.0" text="Capacity">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="capacity" layoutX="639.0" layoutY="156.0">
+      <Label fx:id="capacity" layoutX="672.0" layoutY="156.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -128,7 +128,6 @@
         </columns>
       </TableView>
       <Button layoutX="368.0" layoutY="890.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-      <Label text="Label" />
       <Label fx:id="errorMessage" layoutX="66.0" layoutY="933.0" textFill="#f81d1d" />
    </children>
 </AnchorPane>

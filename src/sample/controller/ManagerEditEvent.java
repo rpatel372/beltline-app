@@ -21,8 +21,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class ManagerEditEvent {
     public Label eventName;
@@ -119,7 +122,7 @@ public class ManagerEditEvent {
         }
     }
 
-    public void addToTable() throws SQLException {
+    public void addToTable() throws SQLException, ParseException {
         errorMessage.setText("");
         eventTable.getItems().clear();
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -132,9 +135,17 @@ public class ManagerEditEvent {
         Statement stmt = null;
         stmt = connection.createStatement();
 
+        //TODO: get difference between start date and end date
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        Date sdate = sdf.parse(startDate.getText().trim());
+        Date edate = sdf.parse(endDate.getText().trim());
+        long diff = edate.getTime() - sdate.getTime();
+        int days = (int)TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
+
+
         String sql = "CALL getDailyEventInfo('" + globalEvent.getName() + "', '" + globalEvent.getStartDate() + "', '" + globalEvent.getSiteName()
                 + "', '" + lowerVisitsValue + "', '" + higherVisitsValue + "', '" + lowerRevenueValue
-                + "', '" + higherRevenueValue + "', '" + sorting + "')";
+                + "', '" + higherRevenueValue + "', '" + sorting + "', '" + days + "')";
 
         ResultSet rs = stmt.executeQuery(sql);
 
@@ -142,12 +153,13 @@ public class ManagerEditEvent {
             DailyEvent newDailyEvent = new DailyEvent(rs.getString(1), rs.getInt(3),
                     rs.getInt(2));
             eventsToAdd.add(newDailyEvent);
-
         }
+
         eventTable.getItems().addAll(eventsToAdd);
+
     }
 
-    public void filter(ActionEvent actionEvent) throws SQLException {
+    public void filter(ActionEvent actionEvent) throws SQLException, ParseException {
         boolean canYouAdd = true;
         if (!lowerVisits.getText().trim().equals("")) {
             //TODO: make sure it is an int
@@ -211,7 +223,7 @@ public class ManagerEditEvent {
         }
     }
 
-    public void sort(ActionEvent actionEvent) throws SQLException {
+    public void sort(ActionEvent actionEvent) throws SQLException, ParseException {
         if (sortBy.getValue() != null) {
             sorting = sortBy.getValue().toString();
             addToTable();
@@ -278,7 +290,7 @@ public class ManagerEditEvent {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/managerManageEvent.fxml"));
         Parent root = null;
         try {
-            Context.getInstance().previousPage = "../view/managerManageEvent.fxml";
+
             root = (Parent) fxmlLoader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             ManagerManageEvent controller = fxmlLoader.<ManagerManageEvent>getController();
