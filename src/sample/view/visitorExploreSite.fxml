@@ -39,15 +39,15 @@
         </Label>
         <TextField layoutX="162.0" layoutY="106.0" />
         <TextField layoutX="530.0" layoutY="106.0" />
-        <TextField fx:id="lowPrice" layoutX="217.0" layoutY="160.0" prefHeight="25.0" prefWidth="39.0" />
+        <TextField fx:id="lowVisit" layoutX="217.0" layoutY="160.0" prefHeight="25.0" prefWidth="39.0" />
         <Label layoutX="61.0" layoutY="163.0" text="Total Visits Range" />
-        <TextField fx:id="lowPrice" layoutX="288.0" layoutY="160.0" prefHeight="25.0" prefWidth="39.0" />
+        <TextField fx:id="highVisit" layoutX="288.0" layoutY="160.0" prefHeight="25.0" prefWidth="39.0" />
         <Label layoutX="266.0" layoutY="165.0" text="--" />
         <ChoiceBox layoutX="161.0" layoutY="53.0" prefHeight="31.0" prefWidth="170.0" />
         <ChoiceBox layoutX="555.0" layoutY="53.0" prefHeight="31.0" prefWidth="115.0" />
         <Label layoutX="423.0" layoutY="165.0" text="Event Count Range" />
-        <TextField fx:id="lowPrice1" layoutX="581.0" layoutY="160.0" prefHeight="25.0" prefWidth="39.0" />
-        <TextField fx:id="lowPrice1" layoutX="652.0" layoutY="160.0" prefHeight="25.0" prefWidth="39.0" />
+        <TextField fx:id="lowEvent" layoutX="581.0" layoutY="160.0" prefHeight="25.0" prefWidth="39.0" />
+        <TextField fx:id="highEvent" layoutX="652.0" layoutY="160.0" prefHeight="25.0" prefWidth="39.0" />
         <Label layoutX="630.0" layoutY="165.0" text="--" />
         <CheckBox layoutX="331.0" layoutY="205.0" mnemonicParsing="false" text="Include Visited" />
         <Button layoutX="64.0" layoutY="238.0" mnemonicParsing="false" text="Filter" />
