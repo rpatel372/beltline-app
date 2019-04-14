@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.stage.Stage;
@@ -65,6 +67,9 @@ public class RegisterEmployeeOnly {
     }
 
     public void register(ActionEvent actionEvent) throws SQLException {
+        int ma = (int) Math.pow(10, 9 - 1);
+        String empId = Integer.toString(ma + new Random().nextInt(9 * ma));
+
         boolean canYouRegister = true;
         String firstNameText = firstName.getText().trim();
         String lastNameText = lastName.getText().trim();
@@ -198,7 +203,7 @@ public class RegisterEmployeeOnly {
 
                             String sql = "CALL registerUser('" + firstNameText + "', '" + lastNameText + "', '" + usernameText + "', '" + pwText + "', '" + "Pending" + "', '" + "Employee-" + "')";
                             String sql8 = "CALL registerEmployee('" + usernameText + "', '" + phoneText + "', " + addressText + "," + cityText
-                                    + "," + zipcodeText + "," + stateText + ", '" + userTypeValue.toString() + "')";
+                                    + "," + zipcodeText + "," + stateText + ", '" + userTypeValue.toString() + ", '" + empId + "')";
                             System.out.println(sql8);
                             statement.executeUpdate(sql);
                             statement.executeUpdate(sql8);

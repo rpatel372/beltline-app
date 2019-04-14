@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/sample/controller/ManagerEditEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/ManagerEditEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/view/managerEditEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/view/managerEditEvent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/view/managerManageEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/view/managerManageEvent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeOnly.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeOnly.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeVisitor.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,23 +79,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="129" column="56" lean-forward="true" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="63" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+            <state relative-caret-position="21">
+              <caret line="256" column="102" selection-start-line="256" selection-start-column="102" selection-end-line="256" selection-end-column="102" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,48 +92,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/controller/VisitorTransitDetail.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/view/visitorTransitDetail.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="46" selection-start-line="12" selection-end-line="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/view/visitorSiteDetail.fxml">
+        <entry file="file://$PROJECT_DIR$/src/sample/view/managerCreateEvent.fxml">
           <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="237">
+              <caret line="65" column="83" selection-start-line="65" selection-start-column="83" selection-end-line="65" selection-end-column="83" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/controller/VisitorVisitHistory.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerCreateEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="32" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/controller/VisitorSiteDetail.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
+            <state relative-caret-position="119">
+              <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#213#214#0" expanded="true" />
+                <element signature="e#250#251#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -154,15 +120,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>if (canyou</find>
-      <find>managerManageEvent</find>
       <find>sortb</find>
       <find>sortby</find>
       <find>connection</find>
@@ -179,7 +143,6 @@
       <find>initiallyadded</find>
       <find>addtota</find>
       <find>addtotable</find>
-      <find>call</find>
       <find>double</find>
       <find>filter</find>
       <find>edit</find>
@@ -191,6 +154,9 @@
       <find>sort</find>
       <find>matches</find>
       <find>staffass</find>
+      <find>registerEmployee</find>
+      <find>call</find>
+      <find>registerEmp</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -204,15 +170,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$APPLICATION_CONFIG_DIR$/idea64.exe.vmoptions" />
-        <option value="$PROJECT_DIR$/src/sample/view/staffOnlyMenu.fxml" />
         <option value="$PROJECT_DIR$/src/sample/view/staffVisitorMenu.fxml" />
         <option value="$PROJECT_DIR$/src/sample/controller/StaffVisitorMenu.java" />
         <option value="$PROJECT_DIR$/src/sample/view/employeeManageProfile.fxml" />
         <option value="$PROJECT_DIR$/src/sample/view/managerVisitorMenu.fxml" />
         <option value="$PROJECT_DIR$/src/sample/controller/ManagerVisitorMenu.java" />
-        <option value="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeOnly.java" />
-        <option value="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeVisitor.java" />
         <option value="$PROJECT_DIR$/src/sample/controller/RegisterUserOnly.java" />
         <option value="$PROJECT_DIR$/src/sample/controller/RegisterVisitorOnly.java" />
         <option value="$PROJECT_DIR$/src/sample/controller/Controller.java" />
@@ -242,7 +204,6 @@
         <option value="$PROJECT_DIR$/src/sample/view/managerManageEvent.fxml" />
         <option value="$PROJECT_DIR$/src/sample/controller/ManagerOnlyMenu.java" />
         <option value="$PROJECT_DIR$/src/sample/model/Event.java" />
-        <option value="$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java" />
         <option value="$PROJECT_DIR$/src/sample/controller/AdminManageTransit.java" />
         <option value="$PROJECT_DIR$/src/sample/view/managerEditEvent.fxml" />
         <option value="$PROJECT_DIR$/src/sample/controller/ManagerEditEvent.java" />
@@ -255,6 +216,11 @@
         <option value="$PROJECT_DIR$/src/sample/controller/VisitorVisitHistory.java" />
         <option value="$PROJECT_DIR$/src/sample/view/visitorVisitHistory.fxml" />
         <option value="$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java" />
+        <option value="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeVisitor.java" />
+        <option value="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeOnly.java" />
+        <option value="$PROJECT_DIR$/src/sample/view/managerCreateEvent.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/controller/ManagerCreateEvent.java" />
+        <option value="$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java" />
       </list>
     </option>
   </component>
@@ -464,12 +430,12 @@
       <workItem from="1554656061770" duration="45475000" />
       <workItem from="1554923081753" duration="16690000" />
       <workItem from="1555108240842" duration="14195000" />
-      <workItem from="1555198840936" duration="106000" />
+      <workItem from="1555198840936" duration="2812000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182019000" />
+    <option name="totallyTimeSpent" value="184725000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -484,7 +450,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.16257995" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.16257995" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -493,7 +459,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -535,34 +501,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/view/adminVisitorMenu.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="59" column="95" selection-start-line="59" selection-start-column="95" selection-end-line="59" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/view/employeeManageProfile.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controller/VisitorMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="25" column="69" selection-start-line="25" selection-start-column="69" selection-end-line="25" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#375#376#0" expanded="true" />
-            <element signature="e#449#450#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/model/TranHist.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -589,16 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="52" column="69" lean-forward="true" selection-start-line="52" selection-start-column="69" selection-end-line="52" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controller/RegisterEmployeeVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="105" column="13" lean-forward="true" selection-start-line="100" selection-start-column="11" selection-end-line="105" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -834,16 +762,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminEditSite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="866">
-          <caret line="95" column="23" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminManageTransit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3434">
@@ -934,13 +852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controller/VisitorVisitHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/view/visitorSiteDetail.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
@@ -949,20 +860,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="129" column="56" lean-forward="true" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="63" />
+        <state relative-caret-position="201">
+          <caret line="11" column="36" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/RegisterEmployeeOnly.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        <state relative-caret-position="163">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/AdminEditSite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1546">
+          <caret line="86" column="34" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/RegisterEmployeeVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="71" lean-forward="true" selection-start-line="69" selection-start-column="7" selection-end-line="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/VisitorVisitHistory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/view/managerCreateEvent.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="65" column="83" selection-start-line="65" selection-start-column="83" selection-end-line="65" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerCreateEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#213#214#0" expanded="true" />
+            <element signature="e#250#251#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="256" column="102" selection-start-line="256" selection-start-column="102" selection-end-line="256" selection-end-column="102" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

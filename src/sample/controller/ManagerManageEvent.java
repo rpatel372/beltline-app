@@ -253,7 +253,19 @@ public class ManagerManageEvent {
         addToTable();
     }
 
-    public void create(ActionEvent actionEvent) throws SQLException {
+    public void create(ActionEvent actionEvent)  {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/managerCreateEvent.fxml"));
+        Parent root = null;
+        try {
+            Context.getInstance().previousPage = "../view/managerManageEvent.fxml";
+            root = (Parent)fxmlLoader.load();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -301,7 +313,7 @@ public class ManagerManageEvent {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(previousPage));
         Parent root = null;
         try {
-            Context.getInstance().previousPage = "../view/adminManageTransit.fxml";
+            Context.getInstance().previousPage = "../view/managerManageEvent.fxml";
             root = (Parent)fxmlLoader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
