@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="765.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ManagerCreateEvent">
+<AnchorPane prefHeight="782.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ManagerCreateEvent">
    <children>
       <Label layoutX="333.0" layoutY="22.0" text="Create Event">
          <font>
@@ -63,16 +63,22 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="303.0" layoutY="718.0" mnemonicParsing="false" onAction="#goBack" text="Back">
+      <Button layoutX="303.0" layoutY="697.0" mnemonicParsing="false" onAction="#goBack" text="Back">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="438.0" layoutY="717.0" mnemonicParsing="false" onAction="#create" text="Create">
+      <Button layoutX="438.0" layoutY="696.0" mnemonicParsing="false" onAction="#create" text="Create">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
       <Button layoutX="534.0" layoutY="565.0" mnemonicParsing="false" onAction="#displayAvailableStaff" text="Display Available Staff" />
+      <Label fx:id="errorMessage" layoutX="102.0" layoutY="744.0" textFill="#f21f1f">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="301.0" layoutY="221.0" prefHeight="17.0" prefWidth="220.0" text="FORMAT: year(xxxx)-month(xx)-day(xx)" />
    </children>
 </AnchorPane>

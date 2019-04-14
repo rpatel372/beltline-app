@@ -104,10 +104,11 @@ public class ManagerEditEvent {
 
         //SELECT CURRENT STAFF SELECTED
         initiallyAdded.clear();
+        staffAssigned.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         String sql8 = "CALL getAssignedStaff('" + globalEvent.getName() + "', '" + globalEvent.getStartDate() + "', '" + globalEvent.getSiteName() + "')";
         ResultSet rs6 = stmt.executeQuery(sql8);
         staffAssigned.getSelectionModel().clearSelection();
-        staffAssigned.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         while (rs6.next()) {
             list.add(rs6.getString(1) + " " + rs6.getString(2));
             initiallyAdded.add(rs6.getString(1) + " " + rs6.getString(2));
@@ -255,7 +256,7 @@ public class ManagerEditEvent {
                 System.out.println(splitted[1]);
                 String sql11 = "CALL addStaffToEvent('" + globalEvent.getName() + "', '"
                         + globalEvent.getStartDate() + "', '" + globalEvent.getSiteName() + "', '"
-                        + splitted[0].trim() + "', '" + splitted[1].trim() + "')";
+                        + splitted[0].trim() + "', '" + splitted[1].trim() + "', '" + endDate.getText() + "')";
                 stmt.execute(sql11);
             }
             for (String t : toRemove) {//remove deselected connected sites

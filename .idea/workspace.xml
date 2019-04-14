@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controller/ManagerCreateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/ManagerCreateEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controller/ManagerEditEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/ManagerEditEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeOnly.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeOnly.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/view/managerCreateEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/view/managerCreateEvent.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,13 +79,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="256" column="102" selection-start-line="256" selection-start-column="102" selection-end-line="256" selection-end-column="102" />
+            <state relative-caret-position="219">
+              <caret line="306" column="59" lean-forward="true" selection-start-line="305" selection-start-column="12" selection-end-line="306" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#9454#9472#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,12 +105,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerCreateEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+            <state relative-caret-position="305">
+              <caret line="170" column="48" selection-start-line="170" selection-start-column="48" selection-end-line="170" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#213#214#0" expanded="true" />
-                <element signature="e#250#251#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerEditEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="466">
+              <caret line="258" column="103" selection-start-line="258" selection-start-column="103" selection-end-line="258" selection-end-column="103" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -127,36 +150,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sortb</find>
-      <find>sortby</find>
-      <find>connection</find>
-      <find>ManagerManageEvent</find>
-      <find>manageTran</find>
       <find>system.out</find>
       <find>are you here?</find>
       <find>checkif</find>
       <find>siteName</find>
       <find>del</find>
       <find>delete</find>
-      <find>gobac</find>
       <find>controller</find>
       <find>initiallyadded</find>
       <find>addtota</find>
       <find>addtotable</find>
-      <find>double</find>
       <find>filter</find>
       <find>edit</find>
       <find>update</find>
       <find>connect</find>
       <find>staffa</find>
       <find>connectedSites</find>
-      <find>goback</find>
       <find>sort</find>
-      <find>matches</find>
       <find>staffass</find>
       <find>registerEmployee</find>
       <find>call</find>
       <find>registerEmp</find>
+      <find>gobac</find>
+      <find>matches</find>
+      <find>double</find>
+      <find>available</find>
+      <find>create</find>
+      <find>goback</find>
+      <find>execute</find>
+      <find>name.get</find>
+      <find>addstaff</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -206,7 +229,6 @@
         <option value="$PROJECT_DIR$/src/sample/model/Event.java" />
         <option value="$PROJECT_DIR$/src/sample/controller/AdminManageTransit.java" />
         <option value="$PROJECT_DIR$/src/sample/view/managerEditEvent.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/controller/ManagerEditEvent.java" />
         <option value="$PROJECT_DIR$/src/sample/controller/VisitorExploreSite.java" />
         <option value="$PROJECT_DIR$/src/sample/view/visitorExploreSite.fxml" />
         <option value="$PROJECT_DIR$/src/sample/controller/VisitorTransitDetail.java" />
@@ -215,12 +237,13 @@
         <option value="$PROJECT_DIR$/src/sample/view/visitorSiteDetail.fxml" />
         <option value="$PROJECT_DIR$/src/sample/controller/VisitorVisitHistory.java" />
         <option value="$PROJECT_DIR$/src/sample/view/visitorVisitHistory.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java" />
         <option value="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeVisitor.java" />
         <option value="$PROJECT_DIR$/src/sample/controller/RegisterEmployeeOnly.java" />
         <option value="$PROJECT_DIR$/src/sample/view/managerCreateEvent.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/controller/ManagerCreateEvent.java" />
         <option value="$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java" />
+        <option value="$PROJECT_DIR$/src/sample/controller/ManagerCreateEvent.java" />
+        <option value="$PROJECT_DIR$/src/sample/controller/ManagerEditEvent.java" />
+        <option value="$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java" />
       </list>
     </option>
   </component>
@@ -430,12 +453,12 @@
       <workItem from="1554656061770" duration="45475000" />
       <workItem from="1554923081753" duration="16690000" />
       <workItem from="1555108240842" duration="14195000" />
-      <workItem from="1555198840936" duration="2812000" />
+      <workItem from="1555198840936" duration="9391000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184725000" />
+    <option name="totallyTimeSpent" value="191304000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -450,7 +473,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.16257995" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.16257995" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -459,7 +482,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -712,14 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/view/managerManageEvent.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="81" column="83" selection-start-line="81" selection-start-column="83" selection-end-line="81" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/model/Event.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -789,24 +804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerEditEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="272" column="97" selection-start-line="272" selection-start-column="97" selection-end-line="272" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/view/managerEditEvent.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="118" column="28" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controller/VisitorExploreSite.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -860,16 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controller/RegisterEmployeeOnly.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
@@ -904,6 +891,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/view/managerManageEvent.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="81" column="83" selection-start-line="81" selection-start-column="83" selection-end-line="81" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/view/managerEditEvent.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="118" column="28" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/view/managerCreateEvent.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
@@ -912,22 +915,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerCreateEvent.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+        <state relative-caret-position="219">
+          <caret line="306" column="59" lean-forward="true" selection-start-line="305" selection-start-column="12" selection-end-line="306" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#213#214#0" expanded="true" />
-            <element signature="e#250#251#0" expanded="true" />
+            <element signature="e#9454#9472#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerManageEvent.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerCreateEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="256" column="102" selection-start-line="256" selection-start-column="102" selection-end-line="256" selection-end-column="102" />
+        <state relative-caret-position="305">
+          <caret line="170" column="48" selection-start-line="170" selection-start-column="48" selection-end-line="170" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerEditEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="258" column="103" selection-start-line="258" selection-start-column="103" selection-end-line="258" selection-end-column="103" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/connectivity/ConnectionClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

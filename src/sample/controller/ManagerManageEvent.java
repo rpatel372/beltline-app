@@ -260,6 +260,8 @@ public class ManagerManageEvent {
             Context.getInstance().previousPage = "../view/managerManageEvent.fxml";
             root = (Parent)fxmlLoader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            ManagerCreateEvent controller = fxmlLoader.<ManagerCreateEvent>getController();
+            controller.setSite(siteName);
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -301,7 +303,7 @@ public class ManagerManageEvent {
             // key is a combo of (Type, Route)
             String sql = "CALL deleteEvent('" + deletingEvent.getName() + "', '" + deletingEvent.getStartDate() + "', '" + deletingEvent.getSiteName()+ "')";
             stmt.execute(sql);
-            errorMessage.setText("Tranist successfully deleted.");
+            errorMessage.setText("Event successfully deleted.");
             errorMessage.setTextFill(Color.web("#75c24e"));
             addToTable();
         } else {
