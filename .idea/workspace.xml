@@ -74,18 +74,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/view/managerSiteReport.fxml">
-          <provider editor-type-id="text-editor">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+              <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-end-line="11" />
             </state>
           </provider>
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerSiteReport.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" selection-start-line="5" selection-end-line="11" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerManageStaff.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
@@ -93,13 +102,23 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/view/managerManageStaff.fxml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="57" column="14" lean-forward="true" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -148,8 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/view/adminManageUser.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/controller/AdminManageUser.java" />
         <option value="$PROJECT_DIR$/src/sample/model/Transit.java" />
         <option value="$PROJECT_DIR$/src/sample/view/userTakeTransit.fxml" />
         <option value="$PROJECT_DIR$/src/sample/view/adminManageTransit.fxml" />
@@ -199,6 +216,8 @@
         <option value="$PROJECT_DIR$/src/sample/controller/ManagerSiteReport.java" />
         <option value="$PROJECT_DIR$/src/sample/view/managerDailyDetail.fxml" />
         <option value="$PROJECT_DIR$/src/sample/view/managerSiteReport.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/controller/ManagerManageStaff.java" />
+        <option value="$PROJECT_DIR$/src/sample/view/managerManageStaff.fxml" />
       </list>
     </option>
   </component>
@@ -479,23 +498,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/reflect/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="497" selection-start-line="497" selection-end-line="497" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/control/TableView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="1000" selection-start-line="1000" selection-end-line="1000" />
-          <folding>
-            <element signature="e#46988#46989#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/beans/property/ObjectPropertyBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -902,15 +904,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerSiteReport.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/ManagerManageStaff.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/view/managerSiteReport.fxml">
-      <provider editor-type-id="text-editor">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+          <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-end-line="11" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/view/managerManageStaff.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="57" column="14" lean-forward="true" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
