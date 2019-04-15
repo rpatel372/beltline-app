@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
 import sample.model.Context;
 import sample.model.Event;
+import sample.model.Transit;
 import sample.model.User;
 
 import java.io.IOException;
@@ -188,7 +189,29 @@ public class StaffViewSchedule {
         }
     }
 
-    public void viewEvent(ActionEvent actionEvent) {
+    public void viewEvent(ActionEvent actionEvent) throws IOException, SQLException {
+        if (schedule.getSelectionModel().getSelectedItem() != null) {
+            //NAVIGATE TO edit site page & pass info to fxml file of site selected
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/staffEventDetail.fxml"));
+            Parent root = null;
+            ScheduleEvent event = schedule.getSelectionModel().getSelectedItem();
+            Event passingEvent = new Event(event.getName(), 0, 0, 0, 0, event.getStartDate(), event.getSite());
+
+            root = (Parent) fxmlLoader.load();
+
+            StaffEventDetail controller = fxmlLoader.<StaffEventDetail>getController();
+            controller.setEvent(passingEvent);
+
+
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } else {
+            errorMessage.setText("You must select an event before viewing event detail!");
+        }
     }
 
     public void goBack(ActionEvent actionEvent) {
