@@ -36,4 +36,20 @@ public class StaffOnlyMenu {
     public void takeTransit(ActionEvent actionEvent) {
         navigate(actionEvent, "../view/userTakeTransit.fxml");
     }
+
+    public void manageProfile(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/employeeManageProfile.fxml");
+    }
+
+    public void viewSchedule(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/staffViewSchedule.fxml");
+    }
+
+    public void viewTransitHistory(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/viewTransitHistory.fxml");
+    }
+
+    public void goBack(ActionEvent actionEvent) {
+        navigate(actionEvent, previousPage);
+    }
 }

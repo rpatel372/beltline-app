@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -8,8 +12,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.StaffViewSchedule">
+<?import javafx.collections.FXCollections?>
+<AnchorPane prefHeight="614.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.StaffViewSchedule">
    <children>
       <Label layoutX="304.0" layoutY="36.0" text="View Schedule">
          <font>
@@ -36,21 +40,44 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="240.0" layoutY="242.0" mnemonicParsing="false" text="Filter" />
-      <Button layoutX="463.0" layoutY="242.0" mnemonicParsing="false" text="View Event" />
-      <TextField layoutX="161.0" layoutY="97.0" />
-      <TextField layoutX="577.0" layoutY="97.0" />
-      <TextField layoutX="161.0" layoutY="163.0" />
-      <TextField layoutX="577.0" layoutY="163.0" />
-      <TableView layoutX="70.0" layoutY="300.0" prefHeight="224.0" prefWidth="661.0">
+      <Button layoutX="193.0" layoutY="201.0" mnemonicParsing="false" onAction="#filter" text="Filter" />
+      <Button layoutX="310.0" layoutY="201.0" mnemonicParsing="false" onAction="#viewEvent" text="View Event" />
+      <TextField fx:id="name" layoutX="161.0" layoutY="97.0" />
+      <TextField fx:id="description" layoutX="577.0" layoutY="97.0" />
+      <TextField fx:id="startDate" layoutX="161.0" layoutY="163.0" />
+      <TextField fx:id="endDate" layoutX="577.0" layoutY="163.0" />
+      <TableView fx:id="schedule" layoutX="70.0" layoutY="256.0" prefHeight="268.0" prefWidth="661.0">
         <columns>
-          <TableColumn prefWidth="128.0" text="Event Name" />
-          <TableColumn prefWidth="125.0" text="Site Name" />
-            <TableColumn prefWidth="141.0" text="Start Date" />
-            <TableColumn prefWidth="146.0" text="End Date" />
-            <TableColumn prefWidth="120.0" text="Staff Count" />
+          <TableColumn fx:id="nameCol" prefWidth="128.0" sortable="false" text="Event Name" />
+          <TableColumn fx:id="siteCol" prefWidth="125.0" sortable="false" text="Site Name" />
+            <TableColumn fx:id="startDateCol" prefWidth="141.0" sortable="false" text="Start Date" />
+            <TableColumn fx:id="endDateCol" prefWidth="146.0" sortable="false" text="End Date" />
+            <TableColumn fx:id="staffCountCol" prefWidth="110.0" sortable="false" text="Staff Count" />
         </columns>
       </TableView>
-      <Button layoutX="368.0" layoutY="537.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="368.0" layoutY="537.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+      <ChoiceBox fx:id="sortBy" layoutX="502.0" layoutY="201.0" prefWidth="150.0" >
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Event Name ASC" />
+               <String fx:value="Event Name DESC" />
+               <String fx:value="Site Name ASC" />
+               <String fx:value="Site Name DESC" />
+               <String fx:value="Start Date ASC" />
+               <String fx:value="Start Date DESC" />
+               <String fx:value="End Date ASC" />
+               <String fx:value="End Date DESC" />
+               <String fx:value="Staff Count ASC" />
+               <String fx:value="Staff Count DESC" />
+            </FXCollections>
+         </items>
+      </ChoiceBox>
+      <Button layoutX="663.0" layoutY="201.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
+      <Label layoutX="453.0" layoutY="205.0" text="Sort By" />
+      <Label fx:id="errorMessage" layoutX="77.0" layoutY="571.0" textFill="#ff1c1c">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

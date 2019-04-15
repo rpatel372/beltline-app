@@ -52,17 +52,17 @@
       <TextField fx:id="revenueLow" layoutX="575.0" layoutY="192.0" prefHeight="31.0" prefWidth="54.0" />
       <TextField fx:id="revenueHigh" layoutX="663.0" layoutY="192.0" prefHeight="31.0" prefWidth="54.0" />
       <Label layoutX="638.0" layoutY="197.0" text="--" />
-      <Button fx:id="filterButton" layoutX="160.0" layoutY="249.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" text="Filter" />
-      <Button fx:id="dailyDetButton" layoutX="484.0" layoutY="249.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="115.0" text="Daily Detail" />
+      <Button layoutX="160.0" layoutY="249.0" mnemonicParsing="false" onAction="#filter" prefHeight="31.0" prefWidth="80.0" text="Filter" />
+      <Button layoutX="484.0" layoutY="249.0" mnemonicParsing="false" onAction="#dailyDetail" prefHeight="31.0" prefWidth="115.0" text="Daily Detail" />
       <TableView layoutX="43.0" layoutY="289.0" prefHeight="247.0" prefWidth="733.0">
         <columns>
           <TableColumn prefWidth="147.0" text="Date" />
           <TableColumn prefWidth="114.0" text="Event Count" />
             <TableColumn prefWidth="127.0" text="Staff Count" />
             <TableColumn prefWidth="140.0" text="Total Visits" />
-            <TableColumn prefWidth="204.0" text="Total Revenue ($)" />
+            <TableColumn prefWidth="195.0" text="Total Revenue ($)" />
         </columns>
       </TableView>
-      <Button layoutX="377.0" layoutY="548.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="377.0" layoutY="548.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
    </children>
 </AnchorPane>

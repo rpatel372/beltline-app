@@ -12,12 +12,12 @@
                 <Font size="31.0" />
             </font>
         </Label>
-        <Button layoutX="319.0" layoutY="118.0" mnemonicParsing="false" onAction="#takeTransit" text="Manage Profile">
+        <Button layoutX="319.0" layoutY="118.0" mnemonicParsing="false" onAction="#manageProfile" text="Manage Profile">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="324.0" layoutY="199.0" mnemonicParsing="false" onAction="#viewTransitHistory" text="View Schedule">
+        <Button layoutX="324.0" layoutY="199.0" mnemonicParsing="false" onAction="#viewSchedule" text="View Schedule">
             <font>
                 <Font size="20.0" />
             </font>
@@ -32,7 +32,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="299.0" layoutY="357.0" mnemonicParsing="false" onAction="#takeTransit" text="View Transit History">
+      <Button layoutX="299.0" layoutY="357.0" mnemonicParsing="false" onAction="#viewTransitHistory" text="View Transit History">
          <font>
             <Font size="20.0" />
          </font>
