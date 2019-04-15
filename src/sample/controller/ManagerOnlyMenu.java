@@ -88,7 +88,7 @@ public class ManagerOnlyMenu {
     }
 
     public void viewStaff(ActionEvent actionEvent) {
-        navigate(actionEvent, "../view/adminManageTransit.fxml");
+        navigate(actionEvent, "../view/managerManageStaff.fxml");
     }
 
     public void viewSiteReport(ActionEvent actionEvent) {
