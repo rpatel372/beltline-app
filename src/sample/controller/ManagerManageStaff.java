@@ -109,7 +109,6 @@ public class ManagerManageStaff {
     }
     public void filter(ActionEvent actionEvent) throws SQLException, ParseException {
         boolean canYouAdd = true;
-
         if  (!startField.getText().trim().equals("") && !startField.getText().trim().matches("([0-9]{4})-([0-9]{2})-([0-9]{2})")){
             errorMessage.setText("Start Date is not in correct format! Please follow format listed.");
             canYouAdd = false;
@@ -131,8 +130,8 @@ public class ManagerManageStaff {
 
         if (canYouAdd) {
             //TODO: make sure start date comes before end date
-            Date sdate = new SimpleDateFormat("yyyy-MM-dd").parse(startField.getText().trim());
-            Date edate = new SimpleDateFormat("yyyy-MM-dd").parse(endField.getText().trim());
+            Date sdate = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+            Date edate = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
             if (sdate.compareTo(edate) > 0) {
                 errorMessage.setText("End date must come after start date!");
             } else {
