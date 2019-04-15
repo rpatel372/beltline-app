@@ -103,7 +103,7 @@ public class ManagerOnlyMenu {
         ResultSet rs = stmt.executeQuery(sql);
 
         if (rs.next()) {
-            String page = "../view/managerSiteDetail.fxml";
+            String page = "../view/managerSiteReport.fxml";
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(page));
             Parent root = null;
             try {
