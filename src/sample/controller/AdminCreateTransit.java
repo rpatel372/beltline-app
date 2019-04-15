@@ -41,6 +41,7 @@ public class AdminCreateTransit {
         while (rs.next()) {
             list.add(rs.getString(1));
         }
+
         connectedSites.setItems(list);
         connectedSites.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 

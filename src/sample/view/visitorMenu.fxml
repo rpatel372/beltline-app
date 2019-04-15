@@ -12,7 +12,7 @@
                 <Font size="31.0" />
             </font>
         </Label>
-        <Button layoutX="327.0" layoutY="97.0" mnemonicParsing="false" text="Explore Event">
+        <Button layoutX="327.0" layoutY="97.0" mnemonicParsing="false" onAction="#exploreEvent" text="Explore Event">
             <font>
                 <Font size="20.0" />
             </font>

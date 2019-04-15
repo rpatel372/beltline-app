@@ -37,4 +37,14 @@ public class VisitorMenu {
     public void takeTransit(ActionEvent actionEvent) {
         navigate(actionEvent, "../view/userTakeTransit.fxml");
     }
+
+    public void exploreEvent(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/visitorExploreEvent.fxml");
+    }
+
+    public void viewTransitHistory(ActionEvent actionEvent) {
+    }
+
+    public void goBack(ActionEvent actionEvent) {
+    }
 }
