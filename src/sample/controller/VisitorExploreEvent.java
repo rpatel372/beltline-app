@@ -3,12 +3,18 @@ package sample.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
 import sample.model.Context;
 import sample.model.Event;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -62,13 +68,15 @@ public class VisitorExploreEvent {
         int tickets;
         int totalVisits;
         int myVisits;
-        public ExploreEvent(String e, String s, double p, int t, int tv, int mv) {
+        String startDate;
+        public ExploreEvent(String e, String s, double p, int t, int tv, int mv, String sd) {
             event = e;
             site = s;
             price = p;
             tickets = t;
             totalVisits = tv;
             myVisits = mv;
+            startDate = sd;
         }
         public String getEvent() { return event; }
         public String getSite() { return site; }
@@ -76,6 +84,7 @@ public class VisitorExploreEvent {
         public int getTickets() { return tickets; }
         public int getTotalVisits() { return totalVisits; }
         public int getMyVisits() { return myVisits; }
+        public String getStartDate() { return startDate; }
     }
 
     public void initialize() throws SQLException {
@@ -127,7 +136,8 @@ public class VisitorExploreEvent {
                             rs.getDouble(3),
                             rs.getInt(4),
                             rs.getInt(5),
-                            rs.getInt(6));
+                            rs.getInt(6),
+                            rs.getString(7));
             eventsToAdd.add(newEvent);
         }
         eventTable.getItems().addAll(eventsToAdd);
@@ -266,9 +276,43 @@ public class VisitorExploreEvent {
         }
     }
 
-    public void eventDetail(ActionEvent actionEvent) {
+    public void eventDetail(ActionEvent actionEvent) throws IOException, SQLException {
+        if (eventTable.getSelectionModel().getSelectedItem() != null) {
+            //NAVIGATE TO edit site page & pass info to fxml file of site selected
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/visitorEventDetail.fxml"));
+            Parent root = null;
+            ExploreEvent event = eventTable.getSelectionModel().getSelectedItem();
+            Event passingEvent = new Event(event.getEvent(), 0, 0, 0, 0, event.getStartDate(), event.getSite());
+
+            root = (Parent) fxmlLoader.load();
+
+            VisitorEventDetail controller = fxmlLoader.<VisitorEventDetail>getController();
+            controller.setEvent(passingEvent);
+
+
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } else {
+            errorMessage.setText("You must select an event before viewing event detail!");
+        }
     }
 
     public void goBack(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(previousPage));
+        Parent root = null;
+        try {
+            Context.getInstance().previousPage = "../view/visitorExploreEvent.fxml";
+            root = (Parent)fxmlLoader.load();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

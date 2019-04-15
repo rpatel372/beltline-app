@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.VisitorEventDetail">
+<AnchorPane prefHeight="656.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.VisitorEventDetail">
    <children>
       <Label layoutX="300.0" layoutY="39.0" prefHeight="55.0" prefWidth="200.0" text="Event Detail" textAlignment="CENTER">
          <font>
@@ -17,7 +17,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="414.0" layoutY="120.0" text="Site">
+      <Label layoutX="451.0" layoutY="120.0" text="Site">
          <font>
             <Font size="17.0" />
          </font>
@@ -27,7 +27,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="414.0" layoutY="173.0" text="End Date">
+      <Label layoutX="451.0" layoutY="173.0" text="End Date">
          <font>
             <Font size="17.0" />
          </font>
@@ -37,19 +37,63 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="415.0" layoutY="229.0" text="Tickets Remaining">
+      <Label layoutX="452.0" layoutY="229.0" text="Tickets Remaining">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="44.0" layoutY="279.0" text="Description" />
-      <Label layoutX="54.0" layoutY="424.0" text="Visit Date">
+      <Label layoutX="44.0" layoutY="279.0" text="Description">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label layoutX="96.0" layoutY="539.0" text="Visit Date">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField layoutX="207.0" layoutY="422.0" />
-      <Button layoutX="416.0" layoutY="422.0" mnemonicParsing="false" text="Log Visit" />
-      <Button layoutX="340.0" layoutY="509.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Back" />
+      <TextField fx:id="visitDate" layoutX="189.0" layoutY="540.0" prefHeight="25.0" prefWidth="184.0" />
+      <Button layoutX="384.0" layoutY="540.0" mnemonicParsing="false" onAction="#logVisit" text="Log Visit" />
+      <Button layoutX="596.0" layoutY="540.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="69.0" text="Back" />
+      <Label fx:id="errorMessage" layoutX="61.0" layoutY="611.0" textFill="#e10707">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="event" layoutX="96.0" layoutY="123.0" prefHeight="17.0" prefWidth="337.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="startDate" layoutX="132.0" layoutY="176.0" prefHeight="20.0" prefWidth="287.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="price" layoutX="168.0" layoutY="232.0" prefHeight="20.0" prefWidth="222.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="site" layoutX="500.0" layoutY="123.0" prefHeight="20.0" prefWidth="260.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="endDate" layoutX="531.0" layoutY="176.0" prefHeight="20.0" prefWidth="200.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="ticketsRemaining" layoutX="600.0" layoutY="232.0" prefHeight="20.0" prefWidth="165.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="description" alignment="TOP_LEFT" layoutX="48.0" layoutY="308.0" prefHeight="212.0" prefWidth="699.0" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="180.0" layoutY="565.0" prefHeight="17.0" prefWidth="220.0" text="FORMAT: year(xxxx)-month(xx)-day(xx)" />
    </children>
 </AnchorPane>
