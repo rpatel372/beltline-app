@@ -1,13 +1,20 @@
 package sample.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
 import sample.model.Context;
 import sample.model.Event;
 import sample.model.Site;
+import sample.model.Transit;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -67,7 +74,7 @@ public class ManagerSiteReport {
         int totalVisits;
         double totalRevenue;
 
-        public SiteReportEntry(String d, int e, int s, int v, int r) {
+        public SiteReportEntry(String d, int e, int s, int v, double r) {
             date = d;
             eventCount = e;
             staffCount = s;
@@ -117,7 +124,7 @@ public class ManagerSiteReport {
                             rs.getInt(2),
                             rs.getInt(3),
                             rs.getInt(4),
-                            rs.getInt(5));
+                            rs.getDouble(5));
             entries.add(newEntry);
         }
         siteReportTable.getItems().addAll(entries);
@@ -238,7 +245,22 @@ public class ManagerSiteReport {
         }
     }
 
-    public void dailyDetail(ActionEvent actionEvent) {
+    public void dailyDetail(ActionEvent actionEvent) throws IOException, SQLException {
+        if (siteReportTable.getSelectionModel().getSelectedItem() != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/managerDailyDetail.fxml"));
+            Parent root = null;
+            SiteReportEntry entry =  siteReportTable.getSelectionModel().getSelectedItem();
+            root = (Parent)fxmlLoader.load();
+            ManagerDailyDetail controller = fxmlLoader.<ManagerDailyDetail>getController();
+            controller.initializeInfo(entry.getDate(), siteName);
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } else {
+            errorMessage.setText("Must select a date to view daily detail!");
+        }
     }
 
     public void sort(ActionEvent actionEvent) throws SQLException {
