@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -8,7 +12,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ManagerSiteReport">
+<?import javafx.collections.FXCollections?>
+<AnchorPane prefHeight="643.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ManagerSiteReport">
     <children>
         <Label layoutX="331.0" layoutY="26.0" text="Site Report">
             <font>
@@ -52,17 +57,40 @@
         <TextField fx:id="revenueLow" layoutX="575.0" layoutY="192.0" prefHeight="31.0" prefWidth="54.0" />
         <TextField fx:id="revenueHigh" layoutX="663.0" layoutY="192.0" prefHeight="31.0" prefWidth="54.0" />
         <Label layoutX="638.0" layoutY="197.0" text="--" />
-        <Button layoutX="160.0" layoutY="249.0" mnemonicParsing="false" onAction="#filter" prefHeight="31.0" prefWidth="80.0" text="Filter" />
-        <Button layoutX="484.0" layoutY="249.0" mnemonicParsing="false" onAction="#dailyDetail" prefHeight="31.0" prefWidth="115.0" text="Daily Detail" />
-        <TableView layoutX="43.0" layoutY="289.0" prefHeight="247.0" prefWidth="733.0">
+        <Button layoutX="120.0" layoutY="249.0" mnemonicParsing="false" onAction="#filter" prefHeight="31.0" prefWidth="80.0" text="Filter" />
+        <Button layoutX="258.0" layoutY="249.0" mnemonicParsing="false" onAction="#dailyDetail" prefHeight="31.0" prefWidth="115.0" text="Daily Detail" />
+        <TableView fx:id="siteReportTable" layoutX="43.0" layoutY="289.0" prefHeight="260.0" prefWidth="733.0">
             <columns>
-                <TableColumn prefWidth="147.0" text="Date" />
-                <TableColumn prefWidth="114.0" text="Event Count" />
-                <TableColumn prefWidth="127.0" text="Staff Count" />
-                <TableColumn prefWidth="140.0" text="Total Visits" />
-                <TableColumn prefWidth="195.0" text="Total Revenue ($)" />
+                <TableColumn fx:id="dateCol" prefWidth="173.0" sortable="false" text="Date" />
+                <TableColumn fx:id="eventCountCol" prefWidth="124.0" sortable="false" text="Event Count" />
+                <TableColumn fx:id="staffCountCol" prefWidth="133.0" sortable="false" text="Staff Count" />
+                <TableColumn fx:id="totalVisitsCol" prefWidth="142.0" sortable="false" text="Total Visits" />
+                <TableColumn fx:id="totalRevenueCol" prefWidth="151.0" sortable="false" text="Total Revenue ($)" />
             </columns>
         </TableView>
-        <Button layoutX="377.0" layoutY="548.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+        <Button layoutX="376.0" layoutY="561.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+      <ChoiceBox fx:id="sortBy" layoutX="513.0" layoutY="252.0" prefWidth="150.0" >
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Date ASC" />
+                  <String fx:value="Date DESC" />
+                  <String fx:value="Event Count ASC" />
+                  <String fx:value="Event Count DESC" />
+                  <String fx:value="Staff Count ASC" />
+                  <String fx:value="Staff Count DESC" />
+                  <String fx:value="Total Visits ASC" />
+                  <String fx:value="Total Visits DESC" />
+                  <String fx:value="Total Revenue ASC" />
+                  <String fx:value="Total Revenue DESC" />
+              </FXCollections>
+          </items>
+      </ChoiceBox>
+      <Button layoutX="672.0" layoutY="252.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
+      <Label layoutX="469.0" layoutY="256.0" text="Sort By" />
+      <Label fx:id="errorMessage" layoutX="61.0" layoutY="601.0" textFill="#f22020">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
