@@ -40,22 +40,29 @@ public class AdminOnlyMenu {
     public void takeTransit(ActionEvent actionEvent) {
         navigate(actionEvent, "../view/userTakeTransit.fxml");
     }
+
     public void manageSite(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/adminManageSite.fxml");
     }
 
     public void manageTransit(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/adminManageTransit.fxml");
     }
 
     public void manageUser(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/adminManageUser.fxml");
     }
 
     public void manageProfile(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/employeeManageProfile.fxml");
     }
 
     public void goBack(ActionEvent actionEvent) {
+        navigate(actionEvent, previousPage);
     }
 
     public void viewTransitHistory(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/transitHistory.fxml");
     }
 
 

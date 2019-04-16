@@ -54,15 +54,10 @@ public class ManagerOnlyMenu {
         Connection connection = connectionClass.getConnection();
         Statement stmt = null;
         stmt = connection.createStatement();
-
         String sql = "CALL getSiteManaged('" + Context.getInstance().currentUser().username + "')";
         System.out.println(sql);
-
-
         ResultSet rs = stmt.executeQuery(sql);
-
         if (rs.next()) {
-
             String page = "../view/managerManageEvent.fxml";
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(page));
             Parent root = null;
@@ -124,5 +119,6 @@ public class ManagerOnlyMenu {
     }
 
     public void goBack(ActionEvent actionEvent) {
+        navigate(actionEvent, previousPage);
     }
 }

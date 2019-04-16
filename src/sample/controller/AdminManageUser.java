@@ -46,7 +46,7 @@ public class AdminManageUser {
 
     String previousPage;
 
-    public void initialize(ActionEvent actionEvent) {
+    public void initialize() {
         previousPage = Context.getInstance().currentPreviousPage();
     }
 
@@ -211,7 +211,7 @@ public class AdminManageUser {
         Parent root = null;
         try {
             Context.getInstance().previousPage = "../view/adminManageUser.fxml";
-            root = (Parent)fxmlLoader.load();
+            root = (Parent) fxmlLoader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

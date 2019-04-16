@@ -40,4 +40,28 @@ public class StaffVisitorMenu {
     public void manageProfile(ActionEvent actionEvent) {
         navigate(actionEvent, "../view/employeeManageProfile.fxml");
     }
+
+    public void exploreEvent(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/visitorExploreEvent.fxml");
+    }
+
+    public void viewTransitHistory(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/transitHistory.fxml");
+    }
+
+    public void goBack(ActionEvent actionEvent) {
+        navigate(actionEvent, previousPage);
+    }
+
+    public void viewSchedule(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/staffViewSchedule.fxml");
+    }
+
+    public void viewVisitHistory(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/visitorVisitHistory.fxml");
+    }
+
+    public void exploreSite(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/visitorExploreSite.fxml");
+    }
 }

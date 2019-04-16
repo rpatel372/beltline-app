@@ -43,8 +43,19 @@ public class VisitorMenu {
     }
 
     public void viewTransitHistory(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/transitHistory.fxml");
     }
 
+
     public void goBack(ActionEvent actionEvent) {
+        navigate(actionEvent, previousPage);
+    }
+
+    public void exploreSite(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/visitorExploreSite.fxml");
+    }
+
+    public void viewVisitHistory(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/visitorVisitHistory.fxml");
     }
 }

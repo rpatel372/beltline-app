@@ -12,17 +12,17 @@
                 <Font size="31.0" />
             </font>
         </Label>
-        <Button layoutX="469.0" layoutY="185.0" mnemonicParsing="false" text="View Site Report">
+        <Button layoutX="469.0" layoutY="185.0" mnemonicParsing="false" onAction="#viewSiteReport" text="View Site Report">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="180.0" layoutY="396.0" mnemonicParsing="false" text="View Visit History">
+        <Button layoutX="180.0" layoutY="396.0" mnemonicParsing="false" onAction="#viewTransitHistory" text="View Visit History">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="517.0" layoutY="396.0" mnemonicParsing="false" text="Back">
+        <Button layoutX="517.0" layoutY="396.0" mnemonicParsing="false" onAction="#goBack" text="Back">
             <font>
                 <Font size="20.0" />
             </font>
@@ -32,17 +32,17 @@
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="479.0" layoutY="112.0" mnemonicParsing="false" text="Manage Event">
+        <Button layoutX="479.0" layoutY="112.0" mnemonicParsing="false" onAction="#manageEvent" text="Manage Event">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="204.0" layoutY="185.0" mnemonicParsing="false" text="View Staff">
+        <Button layoutX="204.0" layoutY="185.0" mnemonicParsing="false" onAction="#viewStaff" text="View Staff">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="199.0" layoutY="257.0" mnemonicParsing="false" text="Explore Site">
+        <Button layoutX="199.0" layoutY="257.0" mnemonicParsing="false" onAction="#exploreSite" text="Explore Site">
             <font>
                 <Font size="20.0" />
             </font>
@@ -52,15 +52,20 @@
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="486.0" layoutY="257.0" mnemonicParsing="false" text="Explore Event">
+        <Button layoutX="486.0" layoutY="257.0" mnemonicParsing="false" onAction="#exploreEvent" text="Explore Event">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button layoutX="455.0" layoutY="325.0" mnemonicParsing="false" text="View Transit History">
+        <Button layoutX="455.0" layoutY="325.0" mnemonicParsing="false" onAction="#viewTransitHistory" text="View Transit History">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
+      <Label fx:id="errorMessage" layoutX="120.0" layoutY="495.0" textFill="#fc2424">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

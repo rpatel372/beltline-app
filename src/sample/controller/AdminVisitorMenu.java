@@ -41,29 +41,38 @@ public class AdminVisitorMenu {
     }
 
     public void viewTransitHistory(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/transitHistory.fxml");
     }
 
     public void goBack(ActionEvent actionEvent) {
+        navigate(actionEvent, previousPage);
     }
 
     public void manageProfile(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/employeeManageProfile.fxml");
     }
 
     public void manageUser(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/adminManageUser.fxml");
     }
 
     public void manageTransit(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/adminManageTransit.fxml");
     }
 
     public void manageSite(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/adminManageSite.fxml");
     }
 
     public void exploreEvent(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/visitorExploreEvent.fxml");
     }
 
     public void exploreSite(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/visitorExploreSite.fxml");
     }
 
     public void viewVisitHistory(ActionEvent actionEvent) {
+        navigate(actionEvent, "../view/visitorVisitHistory.fxml");
     }
 }
