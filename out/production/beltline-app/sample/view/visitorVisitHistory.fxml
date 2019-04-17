@@ -9,7 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.VisitorVisitHistory">
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane prefHeight="634.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.VisitorVisitHistory">
    <children>
       <Label layoutX="332.0" layoutY="44.0" text="Visit History">
          <font>
@@ -36,19 +38,40 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="167.0" layoutY="166.0" />
-      <TextField layoutX="551.0" layoutY="169.0" />
-      <TextField layoutX="167.0" layoutY="105.0" />
-      <ChoiceBox layoutX="551.0" layoutY="105.0" prefWidth="150.0" />
-      <Button layoutX="374.0" layoutY="213.0" mnemonicParsing="false" text="Filter" />
-      <TableView layoutX="63.0" layoutY="258.0" prefHeight="288.0" prefWidth="681.0">
+      <TextField fx:id="startDate" layoutX="167.0" layoutY="166.0" />
+      <TextField fx:id="endDate" layoutX="551.0" layoutY="169.0" />
+      <TextField fx:id="event" layoutX="167.0" layoutY="105.0" />
+      <ChoiceBox fx:id="site" layoutX="551.0" layoutY="105.0" prefWidth="150.0" />
+      <Button layoutX="266.0" layoutY="221.0" mnemonicParsing="false" onAction="#filter" text="Filter" />
+      <TableView fx:id="visitHistory" layoutX="63.0" layoutY="258.0" prefHeight="288.0" prefWidth="681.0">
         <columns>
-          <TableColumn prefWidth="144.0" text="Date" />
-          <TableColumn prefWidth="201.0" text="Event" />
-            <TableColumn prefWidth="227.0" text="Site" />
-            <TableColumn prefWidth="108.0" text="Price" />
+          <TableColumn fx:id="dateCol" prefWidth="127.0" sortable="false" text="Date" />
+          <TableColumn fx:id="eventCol" prefWidth="236.0" sortable="false" text="Event" />
+            <TableColumn fx:id="siteCol" prefWidth="198.0" sortable="false" text="Site" />
+            <TableColumn fx:id="priceCol" prefWidth="105.0" sortable="false" text="Price" />
         </columns>
       </TableView>
-      <Button layoutX="386.0" layoutY="555.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="386.0" layoutY="555.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+      <ChoiceBox fx:id="sortBy" layoutX="460.0" layoutY="221.0" prefWidth="150.0" >
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Date ASC" />
+               <String fx:value="Date DESC" />
+               <String fx:value="Event ASC" />
+               <String fx:value="Event DESC" />
+               <String fx:value="Site ASC" />
+               <String fx:value="Site DESC" />
+               <String fx:value="Price ASC" />
+               <String fx:value="Price DESC" />
+            </FXCollections>
+         </items>
+      </ChoiceBox>
+      <Button layoutX="620.0" layoutY="221.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
+      <Label layoutX="408.0" layoutY="225.0" text="Sort By" />
+      <Label fx:id="errorMessage" layoutX="71.0" layoutY="596.0" textFill="#ee1313">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
