@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -10,9 +12,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.VisitorExploreSite">
+<AnchorPane prefHeight="634.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.VisitorExploreSite">
     <children>
-        <Label alignment="CENTER" layoutX="307.0" text="Explore Site" textAlignment="CENTER" AnchorPane.bottomAnchor="547.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="307.0" AnchorPane.topAnchor="0.0">
+        <Label alignment="CENTER" layoutX="307.0" layoutY="-1.0" prefHeight="56.0" prefWidth="186.0" text="Explore Site" textAlignment="CENTER" AnchorPane.bottomAnchor="579.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="307.0" AnchorPane.topAnchor="-1.0">
             <font>
                 <Font size="27.0" />
             </font>
@@ -37,30 +39,62 @@
                 <Font size="16.0" />
             </font>
         </Label>
-        <TextField layoutX="162.0" layoutY="106.0" />
-        <TextField layoutX="530.0" layoutY="106.0" />
+        <TextField fx:id="startDate" layoutX="162.0" layoutY="106.0" />
+        <TextField fx:id="endDate" layoutX="530.0" layoutY="106.0" />
         <TextField fx:id="lowVisit" layoutX="217.0" layoutY="160.0" prefHeight="25.0" prefWidth="39.0" />
         <Label layoutX="61.0" layoutY="163.0" text="Total Visits Range" />
         <TextField fx:id="highVisit" layoutX="288.0" layoutY="160.0" prefHeight="25.0" prefWidth="39.0" />
         <Label layoutX="266.0" layoutY="165.0" text="--" />
-        <ChoiceBox layoutX="161.0" layoutY="53.0" prefHeight="31.0" prefWidth="170.0" />
-        <ChoiceBox layoutX="555.0" layoutY="53.0" prefHeight="31.0" prefWidth="115.0" />
+        <ChoiceBox fx:id="name" layoutX="161.0" layoutY="53.0" prefHeight="31.0" prefWidth="170.0" />
+        <ChoiceBox fx:id="openEveryday" layoutX="555.0" layoutY="53.0" prefHeight="31.0" prefWidth="115.0">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Yes" />
+                <String fx:value="No" />
+                <String fx:value="All" />
+            </FXCollections>
+        </items>
+        </ChoiceBox>
         <Label layoutX="423.0" layoutY="165.0" text="Event Count Range" />
         <TextField fx:id="lowEvent" layoutX="581.0" layoutY="160.0" prefHeight="25.0" prefWidth="39.0" />
         <TextField fx:id="highEvent" layoutX="652.0" layoutY="160.0" prefHeight="25.0" prefWidth="39.0" />
         <Label layoutX="630.0" layoutY="165.0" text="--" />
-        <CheckBox layoutX="331.0" layoutY="205.0" mnemonicParsing="false" text="Include Visited" />
-        <Button layoutX="64.0" layoutY="238.0" mnemonicParsing="false" text="Filter" />
-        <Button layoutX="444.0" layoutY="238.0" mnemonicParsing="false" text="Site Detail" />
-        <Button layoutX="610.0" layoutY="238.0" mnemonicParsing="false" text="Transit Detail" />
-        <TableView layoutX="61.0" layoutY="284.0" prefHeight="257.0" prefWidth="662.0">
+        <CheckBox fx:id="visited" layoutX="331.0" layoutY="201.0" mnemonicParsing="false" text="Include Visited">
+         <font>
+            <Font size="14.0" />
+         </font></CheckBox>
+        <Button layoutX="64.0" layoutY="238.0" mnemonicParsing="false" onAction="#filter" text="Filter" />
+        <Button layoutX="511.0" layoutY="238.0" mnemonicParsing="false" onAction="#siteDetail" text="Site Detail" />
+        <Button layoutX="610.0" layoutY="238.0" mnemonicParsing="false" onAction="#transitDetail" text="Transit Detail" />
+        <TableView fx:id="siteTable" layoutX="61.0" layoutY="284.0" prefHeight="257.0" prefWidth="662.0">
             <columns>
-                <TableColumn prefWidth="150.00001525878906" text="Site Name" />
-                <TableColumn prefWidth="160.0" text="Event Count" />
-                <TableColumn prefWidth="196.0" text="Total Visits" />
-                <TableColumn prefWidth="154.0" text="My Visits" />
+                <TableColumn fx:id="siteCol" prefWidth="217.0" sortable="false" text="Site Name" />
+                <TableColumn fx:id="eventCountCol" prefWidth="153.0" sortable="false" text="Event Count" />
+                <TableColumn fx:id="totalVisitsCol" prefWidth="137.0" sortable="false" text="Total Visits" />
+                <TableColumn fx:id="myVisitsCol" prefWidth="133.0" sortable="false" text="My Visits" />
             </columns>
         </TableView>
-        <Button layoutX="375.0" layoutY="555.0" mnemonicParsing="false" text="Back" />
+        <Button layoutX="375.0" layoutY="555.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+      <ChoiceBox fx:id="sortBy" layoutX="196.0" layoutY="238.0" prefWidth="150.0">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Site Name ASC" />
+                <String fx:value="Site Name DESC" />
+                <String fx:value="Event Count ASC" />
+                <String fx:value="Event Count DESC" />
+                <String fx:value="Total Visits ASC" />
+                <String fx:value="Total Visits DESC" />
+                <String fx:value="My Visits ASC" />
+                <String fx:value="My Visits DESC" />
+            </FXCollections>
+        </items>
+      </ChoiceBox>
+      <Button layoutX="357.0" layoutY="238.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
+      <Label layoutX="155.0" layoutY="242.0" text="Sort By" />
+      <Label fx:id="errorMessage" layoutX="83.0" layoutY="595.0" textFill="#f22525">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
