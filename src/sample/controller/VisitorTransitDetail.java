@@ -107,52 +107,54 @@ public class VisitorTransitDetail {
         if (transitDetail.getSelectionModel().getSelectedItem() != null) {
             Transit selectedTransit = transitDetail.getSelectionModel().getSelectedItem();
             System.out.println(selectedTransit.getRoute());
-
-            if (!transitDate.getText().matches("([0-9]{4})-([0-9]{2})-([0-9]{2})")) {
-                errorMessage.setText("Date is not in correct format! Follow format indicated.");
+            if (transitDate.getText().trim().equals("")) {
+                errorMessage.setText("You must fill in transit date before logging transit.");
             } else {
-                //TODO: log the transit (need to have user passed in)
-                ConnectionClass connectionClass = new ConnectionClass();
-                Connection connection = connectionClass.getConnection();
-                Statement stmt = null;
-                try {
-                    stmt = connection.createStatement();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                String sql2 = "CALL checkIfTransitAlreadyTaken('" + globalUser.username + "', '" + selectedTransit.getType()
-                        + "', '" + selectedTransit.getRoute() + "', '" + transitDate.getText().trim() + "')";
-                ResultSet rs = null;
-                try {
-                    rs = stmt.executeQuery(sql2);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                int count = 0;
-                if (rs.next()) {
-                    count = rs.getInt("COUNT(*)");
-                }
-
-                if (count != 0) {
-                    errorMessage.setText("You have already taken this transit today. You can only take the same transit once a day.");
+                if (!transitDate.getText().trim().matches("([0-9]{4})-([0-9]{2})-([0-9]{2})")) {
+                    errorMessage.setText("Date is not in correct format! Follow format indicated.");
                 } else {
-                    String sql = "CALL logTransit('" + globalUser.username + "', '"
-                            + selectedTransit.getType() + "', '" + selectedTransit.getRoute() + "', '"
-                            + transitDate.getText().trim() + "')";
-                    System.out.println(sql);
+                    //TODO: log the transit (need to have user passed in)
+                    ConnectionClass connectionClass = new ConnectionClass();
+                    Connection connection = connectionClass.getConnection();
+                    Statement stmt = null;
                     try {
-                        stmt.execute(sql);
+                        stmt = connection.createStatement();
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
+                    String sql2 = "CALL checkIfTransitAlreadyTaken('" + globalUser.username + "', '" + selectedTransit.getType()
+                            + "', '" + selectedTransit.getRoute() + "', '" + transitDate.getText().trim() + "')";
+                    ResultSet rs = null;
+                    try {
+                        rs = stmt.executeQuery(sql2);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    int count = 0;
+                    if (rs.next()) {
+                        count = rs.getInt("COUNT(*)");
+                    }
+
+                    if (count != 0) {
+                        errorMessage.setText("You have already taken this transit today. You can only take the same transit once a day.");
+                    } else {
+                        String sql = "CALL logTransit('" + globalUser.username + "', '"
+                                + selectedTransit.getType() + "', '" + selectedTransit.getRoute() + "', '"
+                                + transitDate.getText().trim() + "')";
+                        System.out.println(sql);
+                        try {
+                            stmt.execute(sql);
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
 
 
-                    errorMessage.setText("Transit successfully logged.");
-                    errorMessage.setTextFill(Color.web("#75c24e"));
+                        errorMessage.setText("Transit successfully logged.");
+                        errorMessage.setTextFill(Color.web("#75c24e"));
 
+                    }
                 }
             }
-
         } else {
             errorMessage.setText("You must select a transit!");
         }

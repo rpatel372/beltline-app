@@ -214,7 +214,21 @@ public class VisitorExploreSite {
         }
     }
 
-    public void siteDetail(ActionEvent actionEvent) throws IOException {
+    public void siteDetail(ActionEvent actionEvent) throws IOException, SQLException {
+        if (siteTable.getSelectionModel().getSelectedItem() != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/visitorSiteDetail.fxml"));
+            Parent root = null;
+            ExploreSiteEntry site =  siteTable.getSelectionModel().getSelectedItem();
+            root = (Parent)fxmlLoader.load();
+            VisitorSiteDetail controller = fxmlLoader.<VisitorSiteDetail>getController();
+            controller.initializeInfo(site.getSite());
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            errorMessage.setText("Must select a site to view site detail!");
+        }
 
     }
 
