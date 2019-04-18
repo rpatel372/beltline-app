@@ -9,12 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.connectivity.ConnectionClass;
 import sample.model.Context;
 import sample.model.Event;
 import sample.model.Site;
 import sample.model.User;
+import sun.reflect.generics.visitor.Visitor;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -213,11 +215,24 @@ public class VisitorExploreSite {
     }
 
     public void siteDetail(ActionEvent actionEvent) throws IOException {
-        
+
     }
 
-    public void transitDetail(ActionEvent actionEvent) {
-
+    public void transitDetail(ActionEvent actionEvent) throws SQLException, IOException {
+        if (siteTable.getSelectionModel().getSelectedItem() != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/visitorTransitDetail.fxml"));
+            Parent root = null;
+            ExploreSiteEntry site =  siteTable.getSelectionModel().getSelectedItem();
+            root = (Parent)fxmlLoader.load();
+            VisitorTransitDetail controller = fxmlLoader.<VisitorTransitDetail>getController();
+            controller.initializeInfo(site.getSite());
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            errorMessage.setText("Must select a site to view transit detail!");
+        }
     }
 
 
