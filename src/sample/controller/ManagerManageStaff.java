@@ -69,14 +69,16 @@ public class ManagerManageStaff {
         Statement stmt = null;
         stmt = connection.createStatement();
 
-        String sql = "CALL getSitesForDropdown()";
+        String sql = "CALL getSiteManaged('" + Context.getInstance().currentUser().username + "')";
+        System.out.println(sql);
+
         ObservableList<String> list = FXCollections.observableArrayList();
 
         ResultSet rs = stmt.executeQuery(sql);
         while (rs.next()) {
-            list.add(rs.getString("SiteName"));
+            list.add(rs.getString(1));
+            site = rs.getString(1);
         }
-        list.add("All");
         siteDropdown.getItems().addAll(list);
     }
 
@@ -145,11 +147,7 @@ public class ManagerManageStaff {
                 } else {
                     lastName = lastField.getText().trim();
                 }
-                if (siteDropdown.getValue() == null || siteDropdown.getValue().toString().equals("All")) {
-                    site = "";
-                } else {
-                    site = siteDropdown.getValue().toString().trim();
-                }
+
                 addToTable();
             }
         }
