@@ -149,4 +149,6 @@ public class ManagerOnlyMenu {
     public void goBack(ActionEvent actionEvent) {
         navigate(actionEvent, previousPage);
     }
+
+    public void logOut(ActionEvent actionEvent) { navigate(actionEvent, "../view/sample.fxml"); }
 }

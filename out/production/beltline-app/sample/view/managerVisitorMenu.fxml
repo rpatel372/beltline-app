@@ -62,10 +62,15 @@
                 <Font size="20.0" />
             </font>
         </Button>
-      <Label fx:id="errorMessage" layoutX="120.0" layoutY="495.0" textFill="#fc2424">
+      <Label fx:id="errorMessage" layoutX="120.0" layoutY="550.0" textFill="#fc2424">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
+      <Button layoutX="348.0" layoutY="473.0" mnemonicParsing="false" onAction="#logOut" text="Log Out">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

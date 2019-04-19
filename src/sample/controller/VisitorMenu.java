@@ -58,4 +58,6 @@ public class VisitorMenu {
     public void viewVisitHistory(ActionEvent actionEvent) {
         navigate(actionEvent, "../view/visitorVisitHistory.fxml");
     }
+
+    public void logOut(ActionEvent actionEvent) { navigate(actionEvent, "../view/sample.fxml"); }
 }

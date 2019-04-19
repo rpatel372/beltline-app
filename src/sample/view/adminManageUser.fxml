@@ -61,7 +61,7 @@
           </items>
       </ChoiceBox>
       <Button layoutX="666.0" layoutY="123.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
-      <TableView fx:id="users" layoutX="59.0" layoutY="190.0" prefHeight="325.0" prefWidth="683.0">
+      <TableView fx:id="users" editable="true" layoutX="59.0" layoutY="190.0" prefHeight="325.0" prefWidth="683.0">
         <columns>
           <TableColumn fx:id="usernameCol" prefWidth="150.0" sortable="false" text="Username" />
           <TableColumn fx:id="emailCountCol" minWidth="0.0" prefWidth="193.0" sortable="false" text="Email Count" />

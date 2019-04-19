@@ -51,6 +51,7 @@ public class AdminManageUser {
     }
 
     public void addToTable() throws SQLException {
+
         usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         emailCountCol.setCellValueFactory(new PropertyValueFactory<>("emailCount"));
         userTypeCol.setCellValueFactory(new PropertyValueFactory<>("userType"));
@@ -92,7 +93,7 @@ public class AdminManageUser {
     }
 
     public void filter(ActionEvent actionEvent) throws SQLException {
-        users.getItems().clear();
+
         boolean isItVisitor = false;
         uname = username.getText().trim();
         if (type.getValue() == null || type.getValue().toString().equals("All")) {
@@ -116,7 +117,7 @@ public class AdminManageUser {
             ustatus = status.getValue().toString();
         }
         //CHECK EMPLOYEE
-
+        users.getItems().clear();
         addToTable();
         if (isItVisitor) {
             utype = "Employee-Visitor";
@@ -126,7 +127,7 @@ public class AdminManageUser {
     }
 
     public void decline(ActionEvent actionEvent) throws SQLException {
-        users.getItems().clear();
+
         //Administrator can approve a pending (or declined) account, can decline a
         //pending account, but cannot decline an approved account
 
@@ -144,6 +145,7 @@ public class AdminManageUser {
         } else {
             errorMessage.setText("Must select a user first!");
         }
+        users.getItems().clear();
         addToTable();
 
         if (utype == "Visitor") {
@@ -158,10 +160,10 @@ public class AdminManageUser {
     }
 
     public void approve(ActionEvent actionEvent) throws SQLException {
-        users.getItems().clear();
+
         //Administrator can approve a pending (or declined) account, can decline a
         //pending account, but cannot decline an approved account
-
+        System.out.println(users.getSelectionModel().getSelectedItem());
         if (users.getSelectionModel().getSelectedItem() != null) {
             User2 selectedUser = users.getSelectionModel().getSelectedItem();
 
@@ -174,6 +176,7 @@ public class AdminManageUser {
         } else {
             errorMessage.setText("Must select a user first!");
         }
+        users.getItems().clear();
         addToTable();
 
         if (utype == "Visitor") {
@@ -189,9 +192,9 @@ public class AdminManageUser {
     }
 
     public void sort(ActionEvent actionEvent) throws SQLException {
-        users.getItems().clear();
-        if (sortBy.getValue() != null) {
 
+        if (sortBy.getValue() != null) {
+            users.getItems().clear();
             sortParam = sortBy.getValue().toString();
         }
         addToTable();

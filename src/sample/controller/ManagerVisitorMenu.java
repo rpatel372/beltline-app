@@ -157,4 +157,6 @@ public class ManagerVisitorMenu {
     public void exploreEvent(ActionEvent actionEvent) {
         navigate(actionEvent, "../view/visitorExploreEvent.fxml");
     }
+
+    public void logOut(ActionEvent actionEvent) { navigate(actionEvent, "../view/sample.fxml"); }
 }

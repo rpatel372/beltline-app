@@ -65,5 +65,7 @@ public class AdminOnlyMenu {
         navigate(actionEvent, "../view/transitHistory.fxml");
     }
 
+    public void logOut(ActionEvent actionEvent) { navigate(actionEvent, "../view/sample.fxml"); }
+
 
 }

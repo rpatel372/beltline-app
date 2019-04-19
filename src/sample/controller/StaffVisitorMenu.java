@@ -64,4 +64,6 @@ public class StaffVisitorMenu {
     public void exploreSite(ActionEvent actionEvent) {
         navigate(actionEvent, "../view/visitorExploreSite.fxml");
     }
+
+    public void logOut(ActionEvent actionEvent) { navigate(actionEvent, "../view/sample.fxml"); }
 }

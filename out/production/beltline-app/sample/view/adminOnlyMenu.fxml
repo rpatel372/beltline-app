@@ -47,5 +47,10 @@
             <Font size="20.0" />
          </font>
       </Button>
+      <Button layoutX="350.0" layoutY="503.0" mnemonicParsing="false" onAction="#logOut" text="Log Out">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
