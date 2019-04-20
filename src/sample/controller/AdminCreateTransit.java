@@ -53,6 +53,8 @@ public class AdminCreateTransit {
             errorMessage.setText("All fields are required!");
         } else if (connectedSites.getSelectionModel().getSelectedIndices().size() < 2) {
             errorMessage.setText("You must select at least 2 connected sites!");
+        } else if (route.getText().trim().length() > 30) {
+            errorMessage.setText("Transit route must be less than 30 characters");
         } else {
             boolean canYouAdd = true;
             try {

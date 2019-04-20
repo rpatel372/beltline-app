@@ -37,10 +37,11 @@ public class AdminManageUser {
 
     public Label errorMessage;
 
-    String uname;
-    String utype;
-    String emptype;
-    String ustatus;
+    String uname = "";
+    String utype = "";
+    String utype2 = "";
+    String emptype = "";
+    String ustatus = "";
 
     String sortParam = "";
 
@@ -51,7 +52,7 @@ public class AdminManageUser {
     }
 
     public void addToTable() throws SQLException {
-
+        users.getItems().clear();
         usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         emailCountCol.setCellValueFactory(new PropertyValueFactory<>("emailCount"));
         userTypeCol.setCellValueFactory(new PropertyValueFactory<>("userType"));
@@ -63,7 +64,7 @@ public class AdminManageUser {
         Connection connection = connectionClass.getConnection();
 
         Statement stmt = connection.createStatement();
-        String sql = "CALL filterUsers('" + uname + "', '" + utype
+        String sql = "CALL filterUsers('" + uname + "', '" + utype + "', '" + utype2
                 + "', '" + emptype + "', '" + ustatus
                 + "', '" + sortParam  + "')";
 
@@ -94,20 +95,22 @@ public class AdminManageUser {
 
     public void filter(ActionEvent actionEvent) throws SQLException {
 
-        boolean isItVisitor = false;
         uname = username.getText().trim();
         if (type.getValue() == null || type.getValue().toString().equals("All")) {
             utype = "";
+            utype2 = "";
             emptype = "";
         } else if (type.getValue().toString().equals("User")) {
             utype = "";
+            utype2 = "";
             emptype = "";
         } else if (type.getValue().toString().equals("Visitor")) {
             utype = "Visitor";
+            utype2 = "Employee-Visitor";
             emptype = "";
-            isItVisitor = true;
         } else {
             utype = "";
+            utype2 = "";
             emptype = type.getValue().toString();
         }
 
@@ -117,13 +120,8 @@ public class AdminManageUser {
             ustatus = status.getValue().toString();
         }
         //CHECK EMPLOYEE
-        users.getItems().clear();
         addToTable();
-        if (isItVisitor) {
-            utype = "Employee-Visitor";
-            emptype = "";
-            addToTable();
-        }
+
     }
 
     public void decline(ActionEvent actionEvent) throws SQLException {
@@ -141,22 +139,13 @@ public class AdminManageUser {
                 Statement stmt = connection.createStatement();
                 String sql = "CALL changeUserStatus('" + selectedUser.getUsername() + "', '" + "Declined" + "')";
                 stmt.execute(sql);
+                addToTable();
             }
         } else {
             errorMessage.setText("Must select a user first!");
         }
-        users.getItems().clear();
-        addToTable();
 
-        if (utype == "Visitor") {
-            utype = "Employee-Visitor";
-            emptype = "";
-            addToTable();
-        } else if (utype == "Employee-Visitor") {
-            utype = "Visitor";
-            emptype = "";
-            addToTable();
-        }
+
     }
 
     public void approve(ActionEvent actionEvent) throws SQLException {
@@ -172,22 +161,12 @@ public class AdminManageUser {
             Statement stmt = connection.createStatement();
             String sql = "CALL changeUserStatus('" + selectedUser.getUsername() + "', '" + "Approved" + "')";
             stmt.execute(sql);
+            addToTable();
 
         } else {
             errorMessage.setText("Must select a user first!");
         }
-        users.getItems().clear();
-        addToTable();
 
-        if (utype == "Visitor") {
-            utype = "Employee-Visitor";
-            emptype = "";
-            addToTable();
-        } else if (utype == "Employee-Visitor") {
-            utype = "Visitor";
-            emptype = "";
-            addToTable();
-        }
 
     }
 
@@ -196,17 +175,9 @@ public class AdminManageUser {
         if (sortBy.getValue() != null) {
             users.getItems().clear();
             sortParam = sortBy.getValue().toString();
-        }
-        addToTable();
-        if (utype == "Visitor") {
-            utype = "Employee-Visitor";
-            emptype = "";
-            addToTable();
-        } else if (utype == "Employee-Visitor") {
-            utype = "Visitor";
-            emptype = "";
             addToTable();
         }
+
     }
 
     public void goBack(ActionEvent actionEvent) {

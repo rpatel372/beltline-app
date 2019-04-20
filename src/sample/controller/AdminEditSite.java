@@ -77,6 +77,8 @@ public class AdminEditSite {
             errorMessage.setText("You must fill out all fields except address!");
         } else if (!zipcode.getText().matches("[0-9]{5}")) { //make sure zipcode is five digits
             errorMessage.setText("Zip code must be 5 digits.");
+        } else if (name.getText().trim().length() < 30) {
+            errorMessage.setText("Site name must be less than 30 chars.");
         } else {
             //make sure Site Name is unique
             ConnectionClass connectionClass = new ConnectionClass();

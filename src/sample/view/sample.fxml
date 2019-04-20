@@ -58,7 +58,7 @@
                         <Button id="registerButton" layoutX="431.0" layoutY="-3.0" mnemonicParsing="false" onAction="#navigateToRegister" prefHeight="39.0" prefWidth="89.0" text="Register" />
                         <Label fx:id="errorMessage" layoutX="32.0" layoutY="56.0" textFill="#cd2121">
                            <font>
-                              <Font size="22.0" />
+                              <Font size="19.0" />
                            </font>
                         </Label>
                      </children>
