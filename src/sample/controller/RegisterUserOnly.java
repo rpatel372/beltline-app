@@ -67,7 +67,7 @@ public class RegisterUserOnly {
         if (firstNameText.equals("") || lastNameText.equals("") || usernameText.equals("") || pwText.equals("") || confirmPwText.equals("") || initialEmailText.equals("")) {
             errorMessage.setText("Must fill out all fields!");
         } else if (pwText.length() < 8) {
-            errorMessage.setText("Password must be 8 characters!");
+            errorMessage.setText("Password must be at least 8 characters!");
         } else if (!pwText.equals(confirmPwText)) {
             errorMessage.setText("The passwords do not match!");
         } else if (usernameText.length() > 30) {

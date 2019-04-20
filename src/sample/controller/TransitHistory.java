@@ -75,7 +75,6 @@ public class TransitHistory {
             e.printStackTrace();
         }
         list.add("All");
-        list.add("Other");
         containsSite.getItems().addAll(list);
     }
 
@@ -88,10 +87,10 @@ public class TransitHistory {
         edate = endDate.getText().trim();
 
 
-        if (ttype == null) {
+        if (ttype == null || ttype.toString().equals("All")) {
             ttype = "";
         }
-        if (sname == null) {
+        if (sname == null || sname.toString().equals("All")) {
             sname = "";
         }
         if (sdate.equals("")) {
@@ -115,7 +114,7 @@ public class TransitHistory {
     }
 
     public void filterByParam() throws SQLException {
-
+        errorMessage.setText("");
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         routeCol.setCellValueFactory(new PropertyValueFactory<>("route"));
         transportTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));

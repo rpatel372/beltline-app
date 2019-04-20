@@ -91,7 +91,7 @@ public class RegisterEmployeeOnly {
                 || userTypeValue == null || phoneText.equals("")) {
             errorMessage.setText("All fields except address are required!");
         } else if (pwText.length() < 8) {
-            errorMessage.setText("Password must be 8 characters!");
+            errorMessage.setText("Password must at least 8 characters!");
         } else if (!pwText.equals(confirmPwText)) {
             errorMessage.setText("The passwords do not match!");
         } else if (usernameText.length() > 30) {
@@ -201,9 +201,9 @@ public class RegisterEmployeeOnly {
                                 stateText = "'" + stateValue.toString() + "'";
                             }
 
-                            String sql = "CALL registerUser('" + firstNameText + "', '" + lastNameText + "', '" + usernameText + "', '" + pwText + "', '" + "Pending" + "', '" + "Employee-" + "')";
+                            String sql = "CALL registerUser('" + firstNameText + "', '" + lastNameText + "', '" + usernameText + "', '" + pwText + "', '" + "Pending" + "', '" + "Employee" + "')";
                             String sql8 = "CALL registerEmployee('" + usernameText + "', '" + phoneText + "', " + addressText + "," + cityText
-                                    + "," + zipcodeText + "," + stateText + ", '" + userTypeValue.toString() + ", '" + empId + "')";
+                                    + "," + zipcodeText + "," + stateText + ", '" + userTypeValue.toString() + "', '" + empId + "')";
                             System.out.println(sql8);
                             statement.executeUpdate(sql);
                             statement.executeUpdate(sql8);
