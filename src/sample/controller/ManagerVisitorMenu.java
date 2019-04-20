@@ -65,7 +65,7 @@ public class ManagerVisitorMenu {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(page));
             Parent root = null;
             try {
-                Context.getInstance().previousPage = "../view/managerOnlyMenu.fxml";
+                Context.getInstance().previousPage = "../view/managerVisitorMenu.fxml";
                 root = (Parent) fxmlLoader.load();
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 ManagerSiteReport controller = fxmlLoader.<ManagerSiteReport>getController();
@@ -134,11 +134,9 @@ public class ManagerVisitorMenu {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(page));
             Parent root = null;
             try {
-                Context.getInstance().previousPage = "../view/managerOnlyMenu.fxml";
+                Context.getInstance().previousPage = "../view/managerVisitorMenu.fxml";
                 root = (Parent) fxmlLoader.load();
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                ManagerSiteReport controller = fxmlLoader.<ManagerSiteReport>getController();
-                controller.setSiteName(rs.getString(1));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();

@@ -70,7 +70,7 @@ public class VisitorSiteDetail {
                 count = rs.getInt(1);
             }
             if (count != 0) {
-                errorMessage.setText("You already visited this site today!");
+                errorMessage.setText("You can only visit the same site once a day!");
             } else {
                 //log visit
                 String sql = "CALL logVisitToSite('" + site.getText() + "', '"
