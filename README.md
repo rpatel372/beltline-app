@@ -1,6 +1,5 @@
 # beltline-app
 
-1. Right click mysql-connector-java-8.0.15 in lib directory and click Add as Library 
-2. Add credentials for MySQL in ConnectionClass.java
-3. Build project
-4. Run
+1. Add credentials for MySQL in /src/sample/connectivity/ConnectionClass.java
+2. Build project
+3. Run
